@@ -70,7 +70,7 @@ else
 for i in range(n)
      print(&amp;quot;Hello World!&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Here we have a for loop that runs in time proportional to the size of the input. In this case we say that the algorithm runs in &lt;code&gt;O(n)&lt;/code&gt; or &amp;ldquo;big O of n time&amp;rdquo;. This means the algorithm runtime grows in a linear fashion with respect to the input size much like the function y=x. Below is a visual of the different common time complexities you may encounter when developing algorithms.&lt;/p&gt;
+&lt;p&gt;Here we have a for loop that runs in time proportional to the size of the input. In this case we say that the algorithm runs in $O(n)$ or &amp;ldquo;big O of n time&amp;rdquo;. This means the algorithm runtime grows in a linear fashion with respect to the input size much like the function $f(x) = x$. Below is a visual of the different common time complexities you may encounter when developing algorithms.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/bigo.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;basics&#34; &gt;
 &lt;div&gt;
@@ -90,9 +90,9 @@ for i in range(n)
 &lt;/div&gt;
 &lt;/h3&gt;
 &lt;p&gt;Before starting on algorithm development, it is important to be aware of various data structures. In this tutorial we are only concerned with the list or array, but there exists a wide variety of data structures each of which have their purpose and can help algorithms run faster. So lets learn a little more about our friend the list/array, as with most data structures we associate a time complexity to the operations we can perform on the structure. Here we have three distinct tasks i.e. insertion, deletion, and query.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Insertion&lt;/strong&gt; of an element into a list in &lt;code&gt;O(1)&lt;/code&gt; or &amp;ldquo;constant&amp;rdquo; time because we simply add it to the end of the list effortlessly.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Deletion&lt;/strong&gt; of an element in a list can get a little complicated. If the element we want to delete just happens to be the last element in the list then we can achieve a deletion in &lt;code&gt;O(1)&lt;/code&gt;. However, suppose the element we want to delete just happens to be the first in the list, now we&amp;rsquo;d have to delete the first element then shift the remaining elements forward by one. Here we now have a &lt;code&gt;O(n)&lt;/code&gt; operation since we are required to work with each element at one time.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Query&lt;/strong&gt; or searching of a particular element in a list is similar to the example of deletion. For querying we have to search through our various elements and check for a match, this mean manually checking each and every element at least once. So the time complexity of querying an element in a list is &lt;code&gt;O(n)&lt;/code&gt;. Later in this tutorial you will have the chance to implement an algorithm to perform this query operation.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Insertion&lt;/strong&gt; of an element into a list in $O(1)$ or &amp;ldquo;constant&amp;rdquo; time because we simply add it to the end of the list effortlessly.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Deletion&lt;/strong&gt; of an element in a list can get a little complicated. If the element we want to delete just happens to be the last element in the list then we can achieve a deletion in $O(1)$. However, suppose the element we want to delete just happens to be the first in the list, now we&amp;rsquo;d have to delete the first element then shift the remaining elements forward by one. Here we now have a $O(n)$ operation since we are required to work with each element at one time.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Query&lt;/strong&gt; or searching of a particular element in a list is similar to the example of deletion. For querying we have to search through our various elements and check for a match, this mean manually checking each and every element at least once. So the time complexity of querying an element in a list is $O(n)$. Later in this tutorial you will have the chance to implement an algorithm to perform this query operation.&lt;/p&gt;
 &lt;h3 id=&#34;searchingquerying-tasks&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#searchingquerying-tasks&#34;&gt;
@@ -166,6 +166,9 @@ else
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Remark 1&lt;/strong&gt; Can we prove that this will always work? In algorithms we must prove that an algorithm will return the correct output and run under specific time bounds. This is beyond the scope of this tutorial but I will provide an example below for those who are interested.&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt; This proof will be pretty informal but for the purpose of this tutorial it really doesn&amp;rsquo;t matter. Selection sort works because, in each step, you find the smallest thing left and put it where it belongs. By the time you’ve gone through all the steps, everything is in the right place.&lt;/p&gt;
+&lt;p&gt;Think of organizing a deck of cards: you look for the smallest card, put it at the front, then look for the next smallest card, and so on. Since you&amp;rsquo;re always finding the smallest and putting it where it should go, by the end, everything is perfectly sorted!&lt;/p&gt;
+&lt;p&gt;In all algorithms courses and in research we always look for two fundamental pieces when an algorithm is presented, a proof of its time complexity and a proof of correctness.&lt;/p&gt;
 &lt;h3 id=&#34;on-generalization&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#on-generalization&#34;&gt;
@@ -184,7 +187,10 @@ else
 &lt;/div&gt;
 &lt;/h2&gt;
 &lt;p&gt;This concludes the first part of this algorithms primer tutorial, in the next tutorial you will learn more about general algorithm development frameworks that can be useful during your journey. Below I have also attached an amazing Computerphile video covering sorting algorithms and time complexity topics, I hope you enjoy! See you next time.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Readings&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.math.umd.edu/~immortal/CMSC351/notes/algorithmtimecomplexity.pdf&#34;&gt;Time Complexity Notes: Justin Wyss-Gallifent&lt;/a&gt;&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;strong&gt;Videos&lt;/strong&gt;&lt;/p&gt;
 
 &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
   &lt;iframe src=&#34;https://www.youtube.com/embed/kgBjXUE_Nwc&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
@@ -211,7 +217,10 @@ else
 &lt;p&gt;It is often the case that beginners struggle with algorithms puzzles/problems such as those found on popular websites like LeetCode. The struggle primarily comes from a lack of a developed algorithms toolbox, the truth is that inventing a complicated algorithm just to solve a puzzle is not ideal. As we expand our knowledge of algorithmic techniques, data structures, and types of problems we find that some of these puzzles are trivial once you know the technique it is testing. Therefore your goal should be to learn as many techniques as possible to have the easiest time solving an algorithms problem.  In this tutorial we will cover two of the most popular techniques we see in algorithms development along with some examples and exercises. The two techniques being covered are divide and conquer and greedy, these can be often be applied to a wide range of problems regardless of domain.&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;Like all tutorials we will start with an example that incorporates these techniques. For the sake of this example suppose you are a working as part of a team of marmots whose diets are made up entirely of strawberries, they are also having a hard time working out the logistics of their food supply. This means that they are distributing strawberries to marmots at random, the problem with this approach is that small marmots are getting large strawberries (surplus) and large marmots are getting small strawberries (shortage). Thus, small marmots are contributing to a large amount of food waste and large marmots are going hungry, how can we use algorithms to solve this problem quickly as the marmots are very hungry?&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/marmot.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;http://localhost:1313/images/marmot.jpg&#34;
+         alt=&#34;Example Image&#34; width=&#34;300px&#34;/&gt;
+&lt;/figure&gt;
+
 &lt;h3 id=&#34;divide-and-conquer&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#divide-and-conquer&#34;&gt;
@@ -265,6 +274,33 @@ else
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Possible Solution&lt;/strong&gt; $denominations = {1,2,4,5}$ make change for 8 cents $5+1+1+1$ vs $4+4$&lt;/p&gt;
 &lt;p&gt;Here the problem is that it is more efficient to make change using the 4 cent coins as opposed to using the 5 cent coin.&lt;/p&gt;
+&lt;p&gt;Below I provide some example code for the greedy coin change problem&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GREEDY-COIN-CHANGE(coins, amount):
+    #coins is array of coin denominations
+    
+    sort(coins) # in decreasing order
+
+    result = 0
+
+    # Iterate over each coin
+    for coin in coins:
+        if amount == 0:
+            break
+        
+        # Use as many of this coin as possible
+        count = amount / coin
+        result = result + count
+
+        # Reduce the remaining amount
+        amount = amount - count * coin
+
+    # If amount is not 0, the greedy approach may not work for this set of coins
+    
+    if amount &amp;gt; 0:
+        return -1  # Indicates it&#39;s not possible to make the exact amount
+
+    return result
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;As you can see, the greedy approach is a very general framework, it can be applied in many different settings so we always have to keep an eye out. Next we will get a chance to apply this framework alongside the greedy approach to solve the problem from the introduction.&lt;/p&gt;
 &lt;h3 id=&#34;addressing-food-insecurity-in-marmot-communities&#34; &gt;
 &lt;div&gt;
@@ -276,13 +312,16 @@ else
 &lt;/h3&gt;
 &lt;p&gt;Now that we are equipped with more algorithmic tools to solve problems we are ready to solve the marmot-strawberry problem. Recall the problem statement; given that the community of marmots consists of n members each with an associated weight and we want to distribute n strawberries each with an associated size, find the best marmot-strawberry matching. Target time complexity: $O(nlog(n))$&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Exercise&lt;/strong&gt; Think about a potential solution to this problem, think about the algorithms and techniques we have learned so far in this chapter.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Exercise 3&lt;/strong&gt; Think about a potential solution to this problem, think about the algorithms and techniques we have learned so far in this chapter.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Hint&lt;/strong&gt; Remember our goal here is to match big strawberries with big marmots and small strawberries with small marmots. Which tool can help us order objects?&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Exercise&lt;/strong&gt; Given the two ordered lists of marmots and strawberries, how can we optimally choose marmot-strawberry assignments?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Exercise 4&lt;/strong&gt; Given the two ordered lists of marmots and strawberries, how can we optimally choose marmot-strawberry assignments?&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;The idea here is to create arrays with the weights and sizes of both the marmots and the strawberries and then sort them in descending order. Since we know that the number of marmots and strawberries are the same then we know each marmot will get exactly one strawberry. Thus we can simply assign strawberries to marmots greedily, let the largest marmot take the largest strawberry then remove the pair from the list, continue this procedure until the lists are empty. This gives us a very simply greedy strawberry allocation algorithm, we can make things a little harder by allowing there to be more strawberries than marmots and thinking about how we would distribute the strawberries then.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Exercise 5&lt;/strong&gt; Implement an algorithm to solve the marmot-strawberry problem&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;conclusions&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#conclusions&#34;&gt;
@@ -291,8 +330,13 @@ else
     Conclusions
 &lt;/div&gt;
 &lt;/h3&gt;
-&lt;p&gt;In future tutorials you will have the opportunity to develop your algorithmic thinking skills through applications in the biological sciences. Specifically we will be dealing with imaging data. There are countless procedures/assays that produce images, learning how to write the programs that analyze this type of data is crucial in modern lab settings.&lt;/p&gt;
+&lt;p&gt;In future tutorials you will have the opportunity to develop your algorithmic thinking skills through applications in the biological sciences. Specifically we will be dealing with imaging data. There are countless procedures/assays that produce images, learning how to write the programs that analyze this type of data is crucial in modern lab settings. Below I have provided some additional readings on greedy algorithms and a video for divide and conquer. See you next time!&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;strong&gt;Readings&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.math.umd.edu/~immortal/CMSC351/notes/mergesort.pdf&#34;&gt;Merge Sort: Justin Wyss-Gallifent&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.math.umd.edu/~immortal/CMSC351/notes/coinchanging.pdf&#34;&gt;Coin Change: Justin Wyss-Gallifent&lt;/a&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;strong&gt;Videos&lt;/strong&gt;&lt;/p&gt;
 
 &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
   &lt;iframe src=&#34;https://www.youtube.com/embed/ib4BHvr5-Ao&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;

@@ -469,7 +469,7 @@ else
 for i in range(n)
      print(&quot;Hello World!&quot;)
 </code></pre>
-<p>Here we have a for loop that runs in time proportional to the size of the input. In this case we say that the algorithm runs in <code>O(n)</code> or &ldquo;big O of n time&rdquo;. This means the algorithm runtime grows in a linear fashion with respect to the input size much like the function y=x. Below is a visual of the different common time complexities you may encounter when developing algorithms.</p>
+<p>Here we have a for loop that runs in time proportional to the size of the input. In this case we say that the algorithm runs in $O(n)$ or &ldquo;big O of n time&rdquo;. This means the algorithm runtime grows in a linear fashion with respect to the input size much like the function $f(x) = x$. Below is a visual of the different common time complexities you may encounter when developing algorithms.</p>
 <p><img src="/images/bigo.png" alt="Sunset"></p>
 <h2 id="basics" >
 <div>
@@ -489,9 +489,9 @@ for i in range(n)
 </div>
 </h3>
 <p>Before starting on algorithm development, it is important to be aware of various data structures. In this tutorial we are only concerned with the list or array, but there exists a wide variety of data structures each of which have their purpose and can help algorithms run faster. So lets learn a little more about our friend the list/array, as with most data structures we associate a time complexity to the operations we can perform on the structure. Here we have three distinct tasks i.e. insertion, deletion, and query.</p>
-<p><strong>Insertion</strong> of an element into a list in <code>O(1)</code> or &ldquo;constant&rdquo; time because we simply add it to the end of the list effortlessly.</p>
-<p><strong>Deletion</strong> of an element in a list can get a little complicated. If the element we want to delete just happens to be the last element in the list then we can achieve a deletion in <code>O(1)</code>. However, suppose the element we want to delete just happens to be the first in the list, now we&rsquo;d have to delete the first element then shift the remaining elements forward by one. Here we now have a <code>O(n)</code> operation since we are required to work with each element at one time.</p>
-<p><strong>Query</strong> or searching of a particular element in a list is similar to the example of deletion. For querying we have to search through our various elements and check for a match, this mean manually checking each and every element at least once. So the time complexity of querying an element in a list is <code>O(n)</code>. Later in this tutorial you will have the chance to implement an algorithm to perform this query operation.</p>
+<p><strong>Insertion</strong> of an element into a list in $O(1)$ or &ldquo;constant&rdquo; time because we simply add it to the end of the list effortlessly.</p>
+<p><strong>Deletion</strong> of an element in a list can get a little complicated. If the element we want to delete just happens to be the last element in the list then we can achieve a deletion in $O(1)$. However, suppose the element we want to delete just happens to be the first in the list, now we&rsquo;d have to delete the first element then shift the remaining elements forward by one. Here we now have a $O(n)$ operation since we are required to work with each element at one time.</p>
+<p><strong>Query</strong> or searching of a particular element in a list is similar to the example of deletion. For querying we have to search through our various elements and check for a match, this mean manually checking each and every element at least once. So the time complexity of querying an element in a list is $O(n)$. Later in this tutorial you will have the chance to implement an algorithm to perform this query operation.</p>
 <h3 id="searchingquerying-tasks" >
 <div>
     <a href="#searchingquerying-tasks">
@@ -565,6 +565,9 @@ else
 <blockquote>
 <p><strong>Remark 1</strong> Can we prove that this will always work? In algorithms we must prove that an algorithm will return the correct output and run under specific time bounds. This is beyond the scope of this tutorial but I will provide an example below for those who are interested.</p>
 </blockquote>
+<p><strong>Proof</strong> This proof will be pretty informal but for the purpose of this tutorial it really doesn&rsquo;t matter. Selection sort works because, in each step, you find the smallest thing left and put it where it belongs. By the time you’ve gone through all the steps, everything is in the right place.</p>
+<p>Think of organizing a deck of cards: you look for the smallest card, put it at the front, then look for the next smallest card, and so on. Since you&rsquo;re always finding the smallest and putting it where it should go, by the end, everything is perfectly sorted!</p>
+<p>In all algorithms courses and in research we always look for two fundamental pieces when an algorithm is presented, a proof of its time complexity and a proof of correctness.</p>
 <h3 id="on-generalization" >
 <div>
     <a href="#on-generalization">
@@ -583,7 +586,10 @@ else
 </div>
 </h2>
 <p>This concludes the first part of this algorithms primer tutorial, in the next tutorial you will learn more about general algorithm development frameworks that can be useful during your journey. Below I have also attached an amazing Computerphile video covering sorting algorithms and time complexity topics, I hope you enjoy! See you next time.</p>
+<p><strong>Readings</strong></p>
+<p><a href="https://www.math.umd.edu/~immortal/CMSC351/notes/algorithmtimecomplexity.pdf">Time Complexity Notes: Justin Wyss-Gallifent</a></p>
 <!-- raw HTML omitted -->
+<p><strong>Videos</strong></p>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
   <iframe src="https://www.youtube.com/embed/kgBjXUE_Nwc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
