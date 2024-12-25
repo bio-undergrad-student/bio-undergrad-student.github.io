@@ -64,7 +64,7 @@
 &lt;p&gt;Move forward 3 steps → Move left 2 steps → Raise arm → Grab refrigerator door → Open refrigerator → Find strawberry → Grab strawberry → Put strawberry in basket → Close refrigerator door → Turn around → Move forward 2 steps → Move right 3 steps → Drop basket on target&lt;/p&gt;
 &lt;p&gt;This is basically just a sequence of steps that the robot must follow, this is a very simple example of an algorithm. In practice we would have to translate each step into a code version, but that is secondary to designing algorithms.&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/robot.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/robot.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;basic-coding-refresher&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#basic-coding-refresher&#34;&gt;
@@ -103,7 +103,7 @@ for i in range(n)
      print(&amp;quot;Hello World!&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here we have a for loop that runs in time proportional to the size of the input. In this case we say that the algorithm runs in $O(n)$ or &amp;ldquo;big O of n time&amp;rdquo;. This means the algorithm runtime grows in a linear fashion with respect to the input size much like the function $f(x) = x$. Below is a visual of the different common time complexities you may encounter when developing algorithms.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/bigo.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/bigo.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;basics&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#basics&#34;&gt;
@@ -135,7 +135,7 @@ for i in range(n)
 &lt;/h3&gt;
 &lt;p&gt;A searching task is exactly what it sounds like, generally our goal is to search for a particular element within a data structure which is what holds our data. In this part of the tutorial our main objective will be to find a particular number within a list. More formally this problem is defined as searching for a particular integer value within an array. Take the list below as an example&amp;hellip;&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/array.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/array.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;It is simple enough for us to determine if the number 5 is in the list, we can just look at it, for the computer it is a bit more complicated than that, we have to explicitly tell it how to know if a number is present. This is something we have to get used to.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -249,7 +249,7 @@ else
 &lt;p&gt;It is often the case that beginners struggle with algorithms puzzles/problems such as those found on popular websites like LeetCode. The struggle primarily comes from a lack of a developed algorithms toolbox, the truth is that inventing a complicated algorithm just to solve a puzzle is not ideal. As we expand our knowledge of algorithmic techniques, data structures, and types of problems we find that some of these puzzles are trivial once you know the technique it is testing. Therefore your goal should be to learn as many techniques as possible to have the easiest time solving an algorithms problem.  In this tutorial we will cover two of the most popular techniques we see in algorithms development along with some examples and exercises. The two techniques being covered are divide and conquer and greedy, these can be often be applied to a wide range of problems regardless of domain.&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;Like all tutorials we will start with an example that incorporates these techniques. For the sake of this example suppose you are a working as part of a team of marmots whose diets are made up entirely of strawberries, they are also having a hard time working out the logistics of their food supply. This means that they are distributing strawberries to marmots at random, the problem with this approach is that small marmots are getting large strawberries (surplus) and large marmots are getting small strawberries (shortage). Thus, small marmots are contributing to a large amount of food waste and large marmots are going hungry, how can we use algorithms to solve this problem quickly as the marmots are very hungry?&lt;/p&gt;
-&lt;figure&gt;&lt;img src=&#34;http://localhost:1313/images/marmot.jpg&#34;
+&lt;figure&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/marmot.jpg&#34;
          alt=&#34;Example Image&#34; width=&#34;300px&#34;/&gt;
 &lt;/figure&gt;
 
@@ -262,15 +262,15 @@ else
 &lt;/div&gt;
 &lt;/h3&gt;
 &lt;p&gt;Divide and conquer is a problem solving approach/framework which is a bit self explanatory. The technique works by splitting our input in smaller chunks, solving the smaller instances of the problem and then combine the results to solve the full problem. Now this approach cannot be applied to every problem, there are some limitations such as independence that we must be cautious of. Independence in this context refers to the idea that each one of our sub-problems, after splitting the input data, has no relation at all to the other sub-problems. This may become a little more clear once we go over the following example for sorting a list of integers. Suppose we are given the list below…&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/lilarray.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/lilarray.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;p&gt;We want to sort this list under a time constraint but the size of the input array is far too large to be done using our sorting algorithm we learned in part 1, how do we address this problem? Let’s apply the divide and conquer problem solving approach to this!&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Exercise 1&lt;/strong&gt; Come up with three ideas of how we can split our input array in order to solve it more efficiently.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Great! Now the splitting of the array we are interested in is depicted below, here we do the splitting in half each time until we can’t split any further.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/dand1.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/dand1.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;p&gt;At this point we have a bunch of arrays of size 1 that are each in sorted order, why? Any list of one element is automatically in sorted order because there is only one element. Now how will this help us sort the entire list, we haven’t done any type of sorting so far? The trick comes in when we combine the sub-lists, we will sort them as we reconstruct a list of the original size. Take a look at the example below which completes one step of this reconstruction&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/dand2.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/dand2.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Here we take all of our lists of size 1 and construct $\frac{n}{2}$ lists of size 2 which are in sorted order. The sorting happens when we insert our elements into the list of size 2, the smallest element comes first and then the larger element. The algorithm will continue this procedure until we end up with a single list of size $n$, we call this algorithm Merge Sort. The algorithm makes use of a recursive function, meaning a function that calls itself over and over until some base case is reached, in this case we continue calling the &lt;code&gt;MERGE-SORT&lt;/code&gt; function as long as our lists have size greater than 1. Below is some code for the Merge Sort algorithm and the complete reconstruction of the list.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;MERGE-SORT(array, left, right):
     if left &amp;lt; right:
@@ -283,7 +283,7 @@ else
         # Merge the sorted halves
         MERGE(array, left, mid, right)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/dand3.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/dand3.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;p&gt;By using the divide and conquer approach we have now solved the sorting problem much faster than we could before, lets analyze to confirm.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Splitting Operation:&lt;/strong&gt; The big question is how do we represent this splitting and combining operation, clearly this doesn’t touch each element once so it’s not $O(n)$ nor is it doing constant $O(1)$ work, it’s something in between. We call this behavior $O(log(n))$, why? First we must understand what it is that the log function does, think about the following equation&amp;hellip;&lt;/p&gt;
 &lt;p&gt;$$log_2(n) = c \iff 2^c =n$$&lt;/p&gt;
@@ -299,7 +299,7 @@ else
 &lt;/div&gt;
 &lt;/h3&gt;
 &lt;p&gt;The greedy approach to algorithm development is where we make a greedy decision in order to accomplish some task. In this context greedy refers to always taking as much as possible of some quantity. As an example we will go through the well known coin change problem. This is a problem where we are given a set of coin denominations (e.g. 1 cent, 5 cent, 10 cent) and we are asked what is the minimum number of coins required to make a certain amount of change. For example, 35 cents change can be made from 3x10 cent coins and 1x5 cent coin. In this case the greedy approach can be used to find the minimum number of coins required to make change for 35 cents. We simply take as many 10 cent coins as possible followed up by as many 5 cent coins as possible, this gives us 35 cents using 4 coins, any other combination would use more coins. As we can see we make a greedy decision at every step, always take as much as we can.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/coins.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/coins.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Now the problem with the greedy approach is that it doesn’t always work&amp;hellip;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Exercise 2&lt;/strong&gt; Can you find a counterexample for the greedy algorithm for the coin change problem?&lt;/p&gt;
