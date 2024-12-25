@@ -14,11 +14,43 @@
     
     
     <item>
-      <title>Algorithms Primer Part 1 :abacus:</title>
-      <link>/posts/mypost/</link>
+      <title>About</title>
+      <link>/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/posts/mypost/</guid>
+      <guid>/about/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Author&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;My name is Luiz Mata Lopez, I am a student at the University of Maryland, College Park where I study computer science and mathematics. My research and coursework is centered around bioinformatics and I tend to focus on computational genomics and cellular image analysis, a skill I picked up during my time at the Broad Institute. Feel free to reach out to me on linkedin regarding any questions or concerns about this website. If you were wondering about the artwork on some of the tutorials, the drawing are by me :))&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Tutorials&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Hello, i&amp;rsquo;m glad you decided to drop by! This website is dedicated to various image analysis algorithms I have come across in my research or coursework. For the most part the tutorials are meant for analyzing data for various cellular imaging assays, I cannot speak for any other type of image. I was originally writing these tutorials/lectures for a class I am teaching but decided to upload online for everyone.&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Resources for cell image analysis&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://forum.image.sc/&#34;&gt;https://forum.image.sc/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://carpenter-singh-lab.broadinstitute.org/&#34;&gt;https://carpenter-singh-lab.broadinstitute.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://jump-cellpainting.broadinstitute.org/&#34;&gt;https://jump-cellpainting.broadinstitute.org/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Contact&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;email: luizmata56 [at] gmail.com&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Algorithms Primer Part 1 :abacus:</title>
+      <link>/posts/algorithms1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/algorithms1/</guid>
       <description>&lt;p&gt;In this tutorial we will go over some basic algorithms concepts along with some examples and exercises.&lt;/p&gt;
 &lt;h2 id=&#34;what-are-algorithms&#34; &gt;
 &lt;div&gt;
@@ -201,10 +233,10 @@ else
     
     <item>
       <title>Algorithms Primer Part 2 :gear:</title>
-      <link>/posts/mypost2/</link>
+      <link>/posts/algorithms2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/posts/mypost2/</guid>
+      <guid>/posts/algorithms2/</guid>
       <description>&lt;p&gt;In this tutorial we will go over some more general frameworks that are used in the algorithm development process, along the way we will cover some examples and exercises.&lt;/p&gt;
 &lt;h2 id=&#34;general-frameworks&#34; &gt;
 &lt;div&gt;

@@ -15,10 +15,10 @@
     
     <item>
       <title>Algorithms Primer Part 1 :abacus:</title>
-      <link>/posts/mypost/</link>
+      <link>/posts/algorithms1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/posts/mypost/</guid>
+      <guid>/posts/algorithms1/</guid>
       <description>&lt;p&gt;In this tutorial we will go over some basic algorithms concepts along with some examples and exercises.&lt;/p&gt;
 &lt;h2 id=&#34;what-are-algorithms&#34; &gt;
 &lt;div&gt;
@@ -201,10 +201,10 @@ else
     
     <item>
       <title>Algorithms Primer Part 2 :gear:</title>
-      <link>/posts/mypost2/</link>
+      <link>/posts/algorithms2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/posts/mypost2/</guid>
+      <guid>/posts/algorithms2/</guid>
       <description>&lt;p&gt;In this tutorial we will go over some more general frameworks that are used in the algorithm development process, along the way we will cover some examples and exercises.&lt;/p&gt;
 &lt;h2 id=&#34;general-frameworks&#34; &gt;
 &lt;div&gt;
