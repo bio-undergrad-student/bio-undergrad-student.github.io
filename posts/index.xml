@@ -9,22 +9,296 @@
     
 
     
-    <lastBuildDate>Sat, 21 Dec 2024 21:56:10 -0500</lastBuildDate>
     
     <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Algorithms Primer</title>
+      <title>Algorithms Primer Part 1</title>
       <link>/posts/mypost/</link>
-      <pubDate>Sat, 21 Dec 2024 21:56:10 -0500</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/posts/mypost/</guid>
-      <description>&lt;p&gt;This is some content&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;(String&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt;args) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;This is a print statement!&amp;#34;&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <description>&lt;p&gt;In this tutorial we will go over some basic algorithms concepts along with some examples and exercises.&lt;/p&gt;
+&lt;h2 id=&#34;what-are-algorithms&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#what-are-algorithms&#34;&gt;
+        #
+    &lt;/a&gt;
+    What are algorithms?
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;An algorithm is essentially a set of instructions. Think about writing a bulleted list of everything you’d want a robot to do in sequential order. Take a look at the following example where we come up with a simple algorithm to retrieve a strawberry from a refrigerator.&lt;/p&gt;
+&lt;p&gt;Move forward 3 steps → Move left 2 steps → Raise arm → Grab refrigerator door → Open refrigerator → Find strawberry → Grab strawberry → Put strawberry in basket → Close refrigerator door → Turn around → Move forward 2 steps → Move right 3 steps → Drop basket on target&lt;/p&gt;
+&lt;p&gt;This is basically just a sequence of steps that the robot must follow, this is a very simple example of an algorithm. In practice we would have to translate each step into a code version, but that is secondary to designing algorithms.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/robot.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;basic-coding-refresher&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#basic-coding-refresher&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Basic Coding Refresher
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;Knowing basic coding operations is crucial in developing algorithms. The two main control structures we are concerned with are the if-else statement and for loop. These are the most frequently used in writing algorithms and it is important to understand exactly how they work.&lt;/p&gt;
+&lt;p&gt;In the example of a real strawberry retrieving robot we have to specify exactly what we want from it using a programming language. Below is an example of what an instruction might look like in Python.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if is_in_refrigerator(strawberry) == true
+    Robot.retrieve_item(strawberry)
+else
+    Robot.return()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now if we wanted to use a for loop to retrieve multiple strawberries then we could use the following instruction &amp;hellip;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;for i in range(10)
+    if is_in_refrigerator(strawberry) == true
+        Robot.retrieve_item(strawberry)
+    else
+        Robot.return()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;what-makes-a-good-algorithm&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#what-makes-a-good-algorithm&#34;&gt;
+        ##
+    &lt;/a&gt;
+    What makes a good algorithm?
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;Whether an algorithm is considered good depends on the many qualities of that algorithm. Two of the most important qualities of an algorithm are space and time.&lt;/p&gt;
+&lt;p&gt;Now what does space and time mean in the context of something running on a computer? Space refers to the amount of information that an algorithm saves during runtime. An example of space would be if we were required to store location information in our strawberry retrieval algorithm in order to backtrack and get back to our starting point. For systems such as robots that run on tight memory limitations, being mindful of memory usage is very important.&lt;/p&gt;
+&lt;p&gt;Time is often thought to be the most important factor when designing an algorithm. Here time refers not to the literal wall clock time your algorithm runs in but rather the asymptotic complexity. The best way to think of time complexity is to think of your algorithm as a function of the input size. So ask yourself &amp;ldquo;as my input size increases how much additional work do I have to do?&amp;rdquo; As an example lets think about the time complexity of the code below using a for loop&amp;hellip;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;n = len(input)
+for i in range(n)
+     print(&amp;quot;Hello World!&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here we have a for loop that runs in time proportional to the size of the input. In this case we say that the algorithm runs in &lt;code&gt;O(n)&lt;/code&gt; or &amp;ldquo;big O of n time&amp;rdquo;. This means the algorithm runtime grows in a linear fashion with respect to the input size much like the function y=x. Below is a visual of the different common time complexities you may encounter when developing algorithms.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/bigo.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;basics&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#basics&#34;&gt;
+        #
+    &lt;/a&gt;
+    Basics
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Most of the algorithms we first learn about in computer science courses are very basic, we are tasked with completing tasks such as ordering a list of numbers or finding the maximum element in that list. In this section of the algorithms primer you will learn a bit about these two tasks in an interactive way. The two tasks are formally known as searching and sorting tasks and by the end of this section you will implement your own list searching and sorting algorithms.&lt;/p&gt;
+&lt;h3 id=&#34;data-structures&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#data-structures&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Data Structures
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;Before starting on algorithm development, it is important to be aware of various data structures. In this tutorial we are only concerned with the list or array, but there exists a wide variety of data structures each of which have their purpose and can help algorithms run faster. So lets learn a little more about our friend the list/array, as with most data structures we associate a time complexity to the operations we can perform on the structure. Here we have three distinct tasks i.e. insertion, deletion, and query.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Insertion&lt;/strong&gt; of an element into a list in &lt;code&gt;O(1)&lt;/code&gt; or &amp;ldquo;constant&amp;rdquo; time because we simply add it to the end of the list effortlessly.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Deletion&lt;/strong&gt; of an element in a list can get a little complicated. If the element we want to delete just happens to be the last element in the list then we can achieve a deletion in &lt;code&gt;O(1)&lt;/code&gt;. However, suppose the element we want to delete just happens to be the first in the list, now we&amp;rsquo;d have to delete the first element then shift the remaining elements forward by one. Here we now have a &lt;code&gt;O(n)&lt;/code&gt; operation since we are required to work with each element at one time.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Query&lt;/strong&gt; or searching of a particular element in a list is similar to the example of deletion. For querying we have to search through our various elements and check for a match, this mean manually checking each and every element at least once. So the time complexity of querying an element in a list is &lt;code&gt;O(n)&lt;/code&gt;. Later in this tutorial you will have the chance to implement an algorithm to perform this query operation.&lt;/p&gt;
+&lt;h3 id=&#34;searchingquerying-tasks&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#searchingquerying-tasks&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Searching/Querying Tasks
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;A searching task is exactly what it sounds like, generally our goal is to search for a particular element within a data structure which is what holds our data. In this part of the tutorial our main objective will be to find a particular number within a list. More formally this problem is defined as searching for a particular integer value within an array. Take the list below as an example&amp;hellip;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/array.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;It is simple enough for us to determine if the number 5 is in the list, we can just look at it, for the computer it is a bit more complicated than that, we have to explicitly tell it how to know if a number is present. This is something we have to get used to.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Exercise 1&lt;/strong&gt; What is the simplest way to have the computer tell us if a known number is present in a list?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We have an array named myList, and we can query the fourth element in the list as follows&amp;hellip;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;myNumber = myList[3]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Exercise 2&lt;/strong&gt; Write some code to tell us if the 6th element in the list is equal to 3.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;How can we apply a conditional statement to all elements in an array of unknown length? Regardless of what the size of an array is at runtime we can retrieve that number using the length function i.e. &lt;code&gt;len(myList)&lt;/code&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Exercise 3&lt;/strong&gt; Write some code to check all elements of the list to see if they are equal to 7.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;That’s cool, but now imagine that we are given a stream of queries and we don’t know what the numbers are, how can we check if all of these numbers are present in our array? Suppose we have two arrays now, we have myList and we have a new array named queries. This is a list containing random numbers, our goal is to for each number in queries, check if it is present in myList.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Exercise 4&lt;/strong&gt; Now lets generalize, write an algorithm to search the myList array for all of the numbers in the queries array.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Congratulations, you just wrote an algorithm to query lists of integers!&lt;/p&gt;
+&lt;h3 id=&#34;sorting-tasks&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#sorting-tasks&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Sorting Tasks
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;Now lets try a different, and more challenging, example, this time we want to take a list of numbers and sort them in increasing order. To write an algorithm for this problem we will take the same approach as we did for searching and try to solve simpler instances of the problem and then generalize.&lt;/p&gt;
+&lt;p&gt;Lets start with an example of a list of size 2. What is the simplest way to sort the list below of size 2? Don’t think about the code for now just think about what the flowchart would look like.&lt;/p&gt;
+&lt;p&gt;Assume you have access to a swap function that work as in the example below…&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;myList = [1,2,3,4,5]
+
+swap(myList[0],myList[1])
+
+print(myList) # Output: [2,1,3,4,5]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Exercise 5&lt;/strong&gt; Implement some code to sort a list of numbers of size 2.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if myList[0] &amp;gt; myList[1]
+        swap(myList[0], myList[1])
+        return myList
+else
+        return myList
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This code essentially asks one fundamental question i.e. is the first element smaller than the second? Now we are going to make a intellectual jump in order to generalize this problem, think about the following idea to sort a list of arbitrary size.&lt;/p&gt;
+&lt;p&gt;What process would you use in order to solve this problem on a list of size 3 like the one below?&lt;/p&gt;
+&lt;p&gt;What if we ask this same fundamental question repeatedly on sublists of a larger list. Take the list below as an example, first we will ask the same question from earlier “is the first element smaller than all subsequent numbers” the only difference is that we are now talking about all the numbers that follow. Next we will ask the same question but starting at the second index, ignoring all prior elements. We will repeat this process until we are left with only the last two elements, before we know it our list will be in increasing order.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Exercise 6&lt;/strong&gt; Write some code that will sort an array of integers using the idea above.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;for i in range(len(myList))
+    for j in range(i, len(myList))
+        if(myList[j] &amp;lt; myList[i])
+            swap(myList[i], myList[j])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Remark 1&lt;/strong&gt; Can we prove that this will always work? In algorithms we must prove that an algorithm will return the correct output and run under specific time bounds. This is beyond the scope of this tutorial but I will provide an example below for those who are interested.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;on-generalization&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#on-generalization&#34;&gt;
+        ##
+    &lt;/a&gt;
+    On generalization
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;Notice in the examples above, in searching and sorting we were able to take a simple task such as searching for the number 15 or determining the order of two integers and then generalize to arbitrary sets of data. Ultimately this is exactly what we do in order to solve the hardest problems in computer science. Think back to the robot problem from the beginning of this tutorial, we wanted to address the task of retrieving a strawberry from a refrigerator. Now imagine we wanted to generalize this algorithm to work on arbitrary item, not necessarily a strawberry and also imagine we wanted to generalize the location of the item. What you are now thinking would be an example of a more sophisticated artificial intelligence algorithm. In many cases we can generalize a problem enough and reframe it to solve a seemingly unrelated problem. For example what if instead of a strawberry in a kitchen setting we were in a torn down town after a natural disaster and the objective is to find survivors. This is a much more complicated task as the size of the space we are searching has become exponentially larger and the stakes are higher as we are searching for human life.&lt;/p&gt;
+&lt;h2 id=&#34;conclusions-and-additional-resources&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#conclusions-and-additional-resources&#34;&gt;
+        #
+    &lt;/a&gt;
+    Conclusions and additional resources
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;This concludes the first part of this algorithms primer tutorial, in the next tutorial you will learn more about general algorithm development frameworks that can be useful during your journey. Below I have also attached an amazing Computerphile video covering sorting algorithms and time complexity topics, I hope you enjoy! See you next time.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/kgBjXUE_Nwc&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;!-- raw HTML omitted --&gt;</description>
+    </item>
+    
+    <item>
+      <title>Algorithms Primer Part 2</title>
+      <link>/posts/mypost2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/mypost2/</guid>
+      <description>&lt;p&gt;In this tutorial we will go over some more general frameworks that are used in the algorithm development process, along the way we will cover some examples and exercises.&lt;/p&gt;
+&lt;h2 id=&#34;general-frameworks&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#general-frameworks&#34;&gt;
+        #
+    &lt;/a&gt;
+    General Frameworks
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;It is often the case that beginners struggle with algorithms puzzles/problems such as those found on popular websites like LeetCode. The struggle primarily comes from a lack of a developed algorithms toolbox, the truth is that inventing a complicated algorithm just to solve a puzzle is not ideal. As we expand our knowledge of algorithmic techniques, data structures, and types of problems we find that some of these puzzles are trivial once you know the technique it is testing. Therefore your goal should be to learn as many techniques as possible to have the easiest time solving an algorithms problem.  In this tutorial we will cover two of the most popular techniques we see in algorithms development along with some examples and exercises. The two techniques being covered are divide and conquer and greedy, these can be often be applied to a wide range of problems regardless of domain.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;Like all tutorials we will start with an example that incorporates these techniques. For the sake of this example suppose you are a working as part of a team of marmots whose diets are made up entirely of strawberries, they are also having a hard time working out the logistics of their food supply. This means that they are distributing strawberries to marmots at random, the problem with this approach is that small marmots are getting large strawberries (surplus) and large marmots are getting small strawberries (shortage). Thus, small marmots are contributing to a large amount of food waste and large marmots are going hungry, how can we use algorithms to solve this problem quickly as the marmots are very hungry?&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/marmot.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;divide-and-conquer&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#divide-and-conquer&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Divide and Conquer
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;Divide and conquer is a problem solving approach/framework which is a bit self explanatory. The technique works by splitting our input in smaller chunks, solving the smaller instances of the problem and then combine the results to solve the full problem. Now this approach cannot be applied to every problem, there are some limitations such as independence that we must be cautious of. Independence in this context refers to the idea that each one of our sub-problems, after splitting the input data, has no relation at all to the other sub-problems. This may become a little more clear once we go over the following example for sorting a list of integers. Suppose we are given the list below…&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/lilarray.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We want to sort this list under a time constraint but the size of the input array is far too large to be done using our sorting algorithm we learned in part 1, how do we address this problem? Let’s apply the divide and conquer problem solving approach to this!&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Exercise 1&lt;/strong&gt; Come up with three ideas of how we can split our input array in order to solve it more efficiently.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Great! Now the splitting of the array we are interested in is depicted below, here we do the splitting in half each time until we can’t split any further.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/dand1.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;At this point we have a bunch of arrays of size 1 that are each in sorted order, why? Any list of one element is automatically in sorted order because there is only one element. Now how will this help us sort the entire list, we haven’t done any type of sorting so far? The trick comes in when we combine the sub-lists, we will sort them as we reconstruct a list of the original size. Take a look at the example below which completes one step of this reconstruction&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/dand2.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Here we take all of our lists of size 1 and construct $\frac{n}{2}$ lists of size 2 which are in sorted order. The sorting happens when we insert our elements into the list of size 2, the smallest element comes first and then the larger element. The algorithm will continue this procedure until we end up with a single list of size $n$, we call this algorithm Merge Sort. The algorithm makes use of a recursive function, meaning a function that calls itself over and over until some base case is reached, in this case we continue calling the &lt;code&gt;MERGE-SORT&lt;/code&gt; function as long as our lists have size greater than 1. Below is some code for the Merge Sort algorithm and the complete reconstruction of the list.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;MERGE-SORT(array, left, right):
+    if left &amp;lt; right:
+        mid = (left + right) / 2
+
+        # Recursively sort the two halves
+        MERGE-SORT(array, left, mid)
+        MERGE-SORT(array, mid + 1, right)
+
+        # Merge the sorted halves
+        MERGE(array, left, mid, right)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/dand3.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;By using the divide and conquer approach we have now solved the sorting problem much faster than we could before, lets analyze to confirm.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Splitting Operation:&lt;/strong&gt; The big question is how do we represent this splitting and combining operation, clearly this doesn’t touch each element once so it’s not $O(n)$ nor is it doing constant $O(1)$ work, it’s something in between. We call this behavior $O(log(n))$, why? First we must understand what it is that the log function does, think about the following equation&amp;hellip;&lt;/p&gt;
+&lt;p&gt;$$log_2(n) = c \iff 2^c =n$$&lt;/p&gt;
+&lt;p&gt;When we take the log base 2 of some number what we get in return is the exact exponent of a base 2 exponential required to get of that “some number”. It takes a while to grasp but another way to think of it in terms of a list of size n, the log base 2 of n is equal to the number of times we have to split this list and it’s sub-lists in two before we get lists of size 1. This is the exact operation we are doing in Merge Sort, hence the reason why this splitting operation runs in $O(log(n))$.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Merging Operation:&lt;/strong&gt; Now you might be asking if the splitting operation is $O(log(n))$ then combining is also $O(log(n))$ right? So why is the total time complexity of Merge Sort $O(n log(n))$? This is because the combining operation is not $O(log(n))$, lets really think about what is happening here, when we merge two lists we have to ask the question “which of these elements is the smallest?” And we ask this same question for all other sub-lists, in the worst case scenario we’d have to look through all $n$ of our elements one time just to make sure we have the smallest element each time. Furthermore, we are doing these checks totaling to $n$ comparison at each step of the combination process so that is $log(n)$ steps times $n$ checks $= nlog(n) \in O(n log(n))$. This completes the time analysis of Merge Sort.&lt;/p&gt;
+&lt;p&gt;So as we have seen, divide and conquer approach can be very useful in cases such as sorting where sub problems are completely independent of each other. Next we will take a look at another approach which we will use alongside divide and conquer in order to solve the marmot-strawberry crisis.&lt;/p&gt;
+&lt;h3 id=&#34;greedy-algorithms&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#greedy-algorithms&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Greedy Algorithms
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;The greedy approach to algorithm development is where we make a greedy decision in order to accomplish some task. In this context greedy refers to always taking as much as possible of some quantity. As an example we will go through the well known coin change problem. This is a problem where we are given a set of coin denominations (e.g. 1 cent, 5 cent, 10 cent) and we are asked what is the minimum number of coins required to make a certain amount of change. For example, 35 cents change can be made from 3x10 cent coins and 1x5 cent coin. In this case the greedy approach can be used to find the minimum number of coins required to make change for 35 cents. We simply take as many 10 cent coins as possible followed up by as many 5 cent coins as possible, this gives us 35 cents using 4 coins, any other combination would use more coins. As we can see we make a greedy decision at every step, always take as much as we can.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/coins.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Now the problem with the greedy approach is that it doesn’t always work&amp;hellip;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Exercise 2&lt;/strong&gt; Can you find a counterexample for the greedy algorithm for the coin change problem?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Possible Solution&lt;/strong&gt; $denominations = {1,2,4,5}$ make change for 8 cents $5+1+1+1$ vs $4+4$&lt;/p&gt;
+&lt;p&gt;Here the problem is that it is more efficient to make change using the 4 cent coins as opposed to using the 5 cent coin.&lt;/p&gt;
+&lt;p&gt;As you can see, the greedy approach is a very general framework, it can be applied in many different settings so we always have to keep an eye out. Next we will get a chance to apply this framework alongside the greedy approach to solve the problem from the introduction.&lt;/p&gt;
+&lt;h3 id=&#34;addressing-food-insecurity-in-marmot-communities&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#addressing-food-insecurity-in-marmot-communities&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Addressing food insecurity in marmot communities
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;Now that we are equipped with more algorithmic tools to solve problems we are ready to solve the marmot-strawberry problem. Recall the problem statement; given that the community of marmots consists of n members each with an associated weight and we want to distribute n strawberries each with an associated size, find the best marmot-strawberry matching. Target time complexity: $O(nlog(n))$&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Exercise&lt;/strong&gt; Think about a potential solution to this problem, think about the algorithms and techniques we have learned so far in this chapter.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Hint&lt;/strong&gt; Remember our goal here is to match big strawberries with big marmots and small strawberries with small marmots. Which tool can help us order objects?&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Exercise&lt;/strong&gt; Given the two ordered lists of marmots and strawberries, how can we optimally choose marmot-strawberry assignments?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The idea here is to create arrays with the weights and sizes of both the marmots and the strawberries and then sort them in descending order. Since we know that the number of marmots and strawberries are the same then we know each marmot will get exactly one strawberry. Thus we can simply assign strawberries to marmots greedily, let the largest marmot take the largest strawberry then remove the pair from the list, continue this procedure until the lists are empty. This gives us a very simply greedy strawberry allocation algorithm, we can make things a little harder by allowing there to be more strawberries than marmots and thinking about how we would distribute the strawberries then.&lt;/p&gt;
+&lt;h3 id=&#34;conclusions&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#conclusions&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Conclusions
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;In future tutorials you will have the opportunity to develop your algorithmic thinking skills through applications in the biological sciences. Specifically we will be dealing with imaging data. There are countless procedures/assays that produce images, learning how to write the programs that analyze this type of data is crucial in modern lab settings.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/ib4BHvr5-Ao&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;!-- raw HTML omitted --&gt;</description>
     </item>
     
   </channel>

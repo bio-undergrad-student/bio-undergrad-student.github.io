@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-theme="">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<title>Algorithms Primer Part 2 - Tutorials on Image Analysis Algorithms</title>
+
+<meta name="description" content="In this tutorial we will go over some more general frameworks that are used in the algorithm development process, along the way we will cover some examples and exercises.">
+
+
+
+
+
+<link rel="icon" type="image/x-icon" href="http://localhost:1313/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="http://localhost:1313/favicon.png">
+
+
+
+
+
+
+
+
+    
+
+
+
+<style>
+  body {
+    visibility: hidden;
+    opacity: 0;
+  }
+</style>
+
+<noscript>
+  <style>
+    body {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</noscript>
+
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.4c42aa0abeac804c4933c54677c449cea1f723caae778425d031e98565a0cdef.css" integrity="sha256-TEKqCr6sgExJM8VGd8RJzqH3I8qud4Ql0DHphWWgze8=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.9c1888ebff42c0224ce04dac10cb2c401f1b77f54f78e8d87d73c3bed781c263.css" integrity="sha256-nBiI6/9CwCJM4E2sEMssQB8bd/VPeOjYfXPDvteBwmM=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.acd606c0fce58853afe0248d37bb41acbbcdd8b1aca2412b6c0fa760da0137f3.css" integrity="sha256-rNYGwPzliFOv4CSNN7tBrLvN2LGsokErbA&#43;nYNoBN/M=">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <script src="/js/script.672e2309c296e07c18bcd08b28d797a56222ff941d65f308fba3158c44885b14.js" type="text/javascript" charset="utf-8" integrity="sha256-Zy4jCcKW4HwYvNCLKNeXpWIi/5QdZfMI&#43;6MVjESIWxQ="></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <div class="container">
+        <header class="common-header">
+            
+                <div class="header-top">
+    <div class="header-top-left">
+        <h1 class="site-title noselect">
+    <a href="/">Tutorials on Image Analysis Algorithms</a>
+</h1>
+
+        
+
+
+
+
+
+
+
+    
+        <div class="theme-switcher">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
+
+
+</span>
+
+        </div>
+    
+
+    <script>
+        const STORAGE_KEY = 'user-color-scheme'
+        const defaultTheme = "light"
+
+        let currentTheme
+        let switchButton
+        let autoDefinedScheme = window.matchMedia('(prefers-color-scheme: dark)')
+
+        function switchTheme(e) {
+            currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+            if (localStorage) localStorage.setItem(STORAGE_KEY, currentTheme);
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        const autoChangeScheme = e => {
+            currentTheme = e.matches ? 'dark' : 'light'
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            switchButton = document.querySelector('.theme-switcher')
+            currentTheme = detectCurrentScheme()
+
+            if (currentTheme === 'auto') {
+                autoChangeScheme(autoDefinedScheme);
+                autoDefinedScheme.addListener(autoChangeScheme);
+            } else {
+                document.documentElement.setAttribute('data-theme', currentTheme)
+            }
+
+            if (switchButton) {
+                switchButton.addEventListener('click', switchTheme, false)
+            }
+
+            showContent();
+        })
+
+        function detectCurrentScheme() {
+            if (localStorage !== null && localStorage.getItem(STORAGE_KEY)) {
+                return localStorage.getItem(STORAGE_KEY)
+            }
+            if (defaultTheme) {
+                return defaultTheme
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function showContent() {
+            document.body.style.visibility = 'visible';
+            document.body.style.opacity = 1;
+        }
+
+        function changeGiscusTheme (theme) {
+            function sendMessage(message) {
+              const iframe = document.querySelector('iframe.giscus-frame');
+              if (!iframe) return;
+              iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+            }
+
+            sendMessage({
+              setConfig: {
+                theme: theme
+              }
+            });
+        }
+    </script>
+
+
+        <ul class="social-icons noselect">
+
+
+
+
+
+
+
+    <li>
+            <a href="/index.xml" title="RSS" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+</ul>
+
+    </div>
+    <div class="header-top-right">
+
+    </div>
+</div>
+
+
+    <nav></nav>
+
+
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+
+
+            
+        </header>
+        <main id="main" tabindex="-1">
+            
+    
+
+    <article class="post h-entry">
+        <div class="post-header">
+            <header>
+                <h1 class="p-name post-title">Algorithms Primer Part 2</h1>
+                
+
+            </header>
+            
+
+
+
+<div class="post-info noselect">
+    
+
+    <a class="post-hidden-url u-url" href="/posts/mypost2/">/posts/mypost2/</a>
+    <a href="http://localhost:1313/" class="p-name p-author post-hidden-author h-card" rel="me"></a>
+
+
+    <div class="post-taxonomies">
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+        
+
+  
+  
+
+
+
+
+  
+  
+  
+  <details class="toc noselect">
+    <summary>Table of Contents</summary>
+    <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#general-frameworks">General Frameworks</a>
+      <ul>
+        <li><a href="#divide-and-conquer">Divide and Conquer</a></li>
+        <li><a href="#greedy-algorithms">Greedy Algorithms</a></li>
+        <li><a href="#addressing-food-insecurity-in-marmot-communities">Addressing food insecurity in marmot communities</a></li>
+        <li><a href="#conclusions">Conclusions</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+  </details>
+  
+
+
+
+<script>
+  var toc = document.querySelector(".toc");
+  if (toc) {
+    toc.addEventListener("click", function () {
+      if (event.target.tagName !== "A") {
+        event.preventDefault();
+        if (this.open) {
+          this.open = false;
+          this.classList.remove("expanded");
+        } else {
+          this.open = true;
+          this.classList.add("expanded");
+        }
+      }
+    });
+  }
+</script>
+
+        <div class="content e-content">
+            <p>In this tutorial we will go over some more general frameworks that are used in the algorithm development process, along the way we will cover some examples and exercises.</p>
+<h2 id="general-frameworks" >
+<div>
+    <a href="#general-frameworks">
+        #
+    </a>
+    General Frameworks
+</div>
+</h2>
+<p>It is often the case that beginners struggle with algorithms puzzles/problems such as those found on popular websites like LeetCode. The struggle primarily comes from a lack of a developed algorithms toolbox, the truth is that inventing a complicated algorithm just to solve a puzzle is not ideal. As we expand our knowledge of algorithmic techniques, data structures, and types of problems we find that some of these puzzles are trivial once you know the technique it is testing. Therefore your goal should be to learn as many techniques as possible to have the easiest time solving an algorithms problem.  In this tutorial we will cover two of the most popular techniques we see in algorithms development along with some examples and exercises. The two techniques being covered are divide and conquer and greedy, these can be often be applied to a wide range of problems regardless of domain.</p>
+<!-- raw HTML omitted -->
+<p>Like all tutorials we will start with an example that incorporates these techniques. For the sake of this example suppose you are a working as part of a team of marmots whose diets are made up entirely of strawberries, they are also having a hard time working out the logistics of their food supply. This means that they are distributing strawberries to marmots at random, the problem with this approach is that small marmots are getting large strawberries (surplus) and large marmots are getting small strawberries (shortage). Thus, small marmots are contributing to a large amount of food waste and large marmots are going hungry, how can we use algorithms to solve this problem quickly as the marmots are very hungry?</p>
+<p><img src="/images/marmot.jpg" alt="Sunset"></p>
+<h3 id="divide-and-conquer" >
+<div>
+    <a href="#divide-and-conquer">
+        ##
+    </a>
+    Divide and Conquer
+</div>
+</h3>
+<p>Divide and conquer is a problem solving approach/framework which is a bit self explanatory. The technique works by splitting our input in smaller chunks, solving the smaller instances of the problem and then combine the results to solve the full problem. Now this approach cannot be applied to every problem, there are some limitations such as independence that we must be cautious of. Independence in this context refers to the idea that each one of our sub-problems, after splitting the input data, has no relation at all to the other sub-problems. This may become a little more clear once we go over the following example for sorting a list of integers. Suppose we are given the list below…</p>
+<p><img src="/images/lilarray.jpg" alt="Sunset"></p>
+<p>We want to sort this list under a time constraint but the size of the input array is far too large to be done using our sorting algorithm we learned in part 1, how do we address this problem? Let’s apply the divide and conquer problem solving approach to this!</p>
+<blockquote>
+<p><strong>Exercise 1</strong> Come up with three ideas of how we can split our input array in order to solve it more efficiently.</p>
+</blockquote>
+<p>Great! Now the splitting of the array we are interested in is depicted below, here we do the splitting in half each time until we can’t split any further.</p>
+<p><img src="/images/dand1.jpg" alt="Sunset"></p>
+<p>At this point we have a bunch of arrays of size 1 that are each in sorted order, why? Any list of one element is automatically in sorted order because there is only one element. Now how will this help us sort the entire list, we haven’t done any type of sorting so far? The trick comes in when we combine the sub-lists, we will sort them as we reconstruct a list of the original size. Take a look at the example below which completes one step of this reconstruction&hellip;</p>
+<p><img src="/images/dand2.jpg" alt="Sunset"></p>
+<p>Here we take all of our lists of size 1 and construct $\frac{n}{2}$ lists of size 2 which are in sorted order. The sorting happens when we insert our elements into the list of size 2, the smallest element comes first and then the larger element. The algorithm will continue this procedure until we end up with a single list of size $n$, we call this algorithm Merge Sort. The algorithm makes use of a recursive function, meaning a function that calls itself over and over until some base case is reached, in this case we continue calling the <code>MERGE-SORT</code> function as long as our lists have size greater than 1. Below is some code for the Merge Sort algorithm and the complete reconstruction of the list.</p>
+<pre><code>MERGE-SORT(array, left, right):
+    if left &lt; right:
+        mid = (left + right) / 2
+
+        # Recursively sort the two halves
+        MERGE-SORT(array, left, mid)
+        MERGE-SORT(array, mid + 1, right)
+
+        # Merge the sorted halves
+        MERGE(array, left, mid, right)
+</code></pre>
+<p><img src="/images/dand3.jpg" alt="Sunset"></p>
+<p>By using the divide and conquer approach we have now solved the sorting problem much faster than we could before, lets analyze to confirm.</p>
+<p><strong>Splitting Operation:</strong> The big question is how do we represent this splitting and combining operation, clearly this doesn’t touch each element once so it’s not $O(n)$ nor is it doing constant $O(1)$ work, it’s something in between. We call this behavior $O(log(n))$, why? First we must understand what it is that the log function does, think about the following equation&hellip;</p>
+<p>$$log_2(n) = c \iff 2^c =n$$</p>
+<p>When we take the log base 2 of some number what we get in return is the exact exponent of a base 2 exponential required to get of that “some number”. It takes a while to grasp but another way to think of it in terms of a list of size n, the log base 2 of n is equal to the number of times we have to split this list and it’s sub-lists in two before we get lists of size 1. This is the exact operation we are doing in Merge Sort, hence the reason why this splitting operation runs in $O(log(n))$.</p>
+<p><strong>Merging Operation:</strong> Now you might be asking if the splitting operation is $O(log(n))$ then combining is also $O(log(n))$ right? So why is the total time complexity of Merge Sort $O(n log(n))$? This is because the combining operation is not $O(log(n))$, lets really think about what is happening here, when we merge two lists we have to ask the question “which of these elements is the smallest?” And we ask this same question for all other sub-lists, in the worst case scenario we’d have to look through all $n$ of our elements one time just to make sure we have the smallest element each time. Furthermore, we are doing these checks totaling to $n$ comparison at each step of the combination process so that is $log(n)$ steps times $n$ checks $= nlog(n) \in O(n log(n))$. This completes the time analysis of Merge Sort.</p>
+<p>So as we have seen, divide and conquer approach can be very useful in cases such as sorting where sub problems are completely independent of each other. Next we will take a look at another approach which we will use alongside divide and conquer in order to solve the marmot-strawberry crisis.</p>
+<h3 id="greedy-algorithms" >
+<div>
+    <a href="#greedy-algorithms">
+        ##
+    </a>
+    Greedy Algorithms
+</div>
+</h3>
+<p>The greedy approach to algorithm development is where we make a greedy decision in order to accomplish some task. In this context greedy refers to always taking as much as possible of some quantity. As an example we will go through the well known coin change problem. This is a problem where we are given a set of coin denominations (e.g. 1 cent, 5 cent, 10 cent) and we are asked what is the minimum number of coins required to make a certain amount of change. For example, 35 cents change can be made from 3x10 cent coins and 1x5 cent coin. In this case the greedy approach can be used to find the minimum number of coins required to make change for 35 cents. We simply take as many 10 cent coins as possible followed up by as many 5 cent coins as possible, this gives us 35 cents using 4 coins, any other combination would use more coins. As we can see we make a greedy decision at every step, always take as much as we can.</p>
+<p><img src="/images/coins.jpg" alt="Sunset"></p>
+<p>Now the problem with the greedy approach is that it doesn’t always work&hellip;</p>
+<blockquote>
+<p><strong>Exercise 2</strong> Can you find a counterexample for the greedy algorithm for the coin change problem?</p>
+</blockquote>
+<p><strong>Possible Solution</strong> $denominations = {1,2,4,5}$ make change for 8 cents $5+1+1+1$ vs $4+4$</p>
+<p>Here the problem is that it is more efficient to make change using the 4 cent coins as opposed to using the 5 cent coin.</p>
+<p>As you can see, the greedy approach is a very general framework, it can be applied in many different settings so we always have to keep an eye out. Next we will get a chance to apply this framework alongside the greedy approach to solve the problem from the introduction.</p>
+<h3 id="addressing-food-insecurity-in-marmot-communities" >
+<div>
+    <a href="#addressing-food-insecurity-in-marmot-communities">
+        ##
+    </a>
+    Addressing food insecurity in marmot communities
+</div>
+</h3>
+<p>Now that we are equipped with more algorithmic tools to solve problems we are ready to solve the marmot-strawberry problem. Recall the problem statement; given that the community of marmots consists of n members each with an associated weight and we want to distribute n strawberries each with an associated size, find the best marmot-strawberry matching. Target time complexity: $O(nlog(n))$</p>
+<blockquote>
+<p><strong>Exercise</strong> Think about a potential solution to this problem, think about the algorithms and techniques we have learned so far in this chapter.</p>
+</blockquote>
+<p><strong>Hint</strong> Remember our goal here is to match big strawberries with big marmots and small strawberries with small marmots. Which tool can help us order objects?</p>
+<blockquote>
+<p><strong>Exercise</strong> Given the two ordered lists of marmots and strawberries, how can we optimally choose marmot-strawberry assignments?</p>
+</blockquote>
+<p>The idea here is to create arrays with the weights and sizes of both the marmots and the strawberries and then sort them in descending order. Since we know that the number of marmots and strawberries are the same then we know each marmot will get exactly one strawberry. Thus we can simply assign strawberries to marmots greedily, let the largest marmot take the largest strawberry then remove the pair from the list, continue this procedure until the lists are empty. This gives us a very simply greedy strawberry allocation algorithm, we can make things a little harder by allowing there to be more strawberries than marmots and thinking about how we would distribute the strawberries then.</p>
+<h3 id="conclusions" >
+<div>
+    <a href="#conclusions">
+        ##
+    </a>
+    Conclusions
+</div>
+</h3>
+<p>In future tutorials you will have the opportunity to develop your algorithmic thinking skills through applications in the biological sciences. Specifically we will be dealing with imaging data. There are countless procedures/assays that produce images, learning how to write the programs that analyze this type of data is crucial in modern lab settings.</p>
+<!-- raw HTML omitted -->
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/ib4BHvr5-Ao" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<!-- raw HTML omitted -->
+        </div>
+
+    </article>
+
+    
+    
+
+    
+        
+        
+    
+
+    
+
+    
+        
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+        </main>
+        
+            <footer class="common-footer noselect">
+    
+    
+
+    <div class="common-footer-bottom">
+        
+
+        <div style="display: flex; align-items: center; gap:8px">
+            ©  2024
+            
+        </div>
+        <div style="display:flex;align-items: center">
+            
+            
+            
+            
+            
+            
+        </div>
+        <div>
+            Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/Junyi-99/hugo-theme-anubis2">Anubis2</a>.<br>
+            
+
+        </div>
+    </div>
+
+    <p class="h-card vcard">
+
+    <a href=http://localhost:1313/ class="p-name u-url url fn" rel="me"></a>
+
+    
+
+    
+</p>
+
+</footer>
+
+        
+    </div>
+</body>
+</html>
