@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-theme="">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<title>Analyzing Images With Fiji &#x1f3dd;&#xfe0f; - Tutorials on Image Analysis Algorithms</title>
+
+<meta name="description" content="In this tutorial we will go over the basic analysis functionalities of the image analysis software Fiji.">
+
+
+
+
+
+<link rel="icon" type="image/x-icon" href="http://localhost:1313/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="http://localhost:1313/favicon.png">
+
+
+
+
+
+
+
+
+    
+
+
+
+<style>
+  body {
+    visibility: hidden;
+    opacity: 0;
+  }
+</style>
+
+<noscript>
+  <style>
+    body {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</noscript>
+
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.4c42aa0abeac804c4933c54677c449cea1f723caae778425d031e98565a0cdef.css" integrity="sha256-TEKqCr6sgExJM8VGd8RJzqH3I8qud4Ql0DHphWWgze8=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.9c1888ebff42c0224ce04dac10cb2c401f1b77f54f78e8d87d73c3bed781c263.css" integrity="sha256-nBiI6/9CwCJM4E2sEMssQB8bd/VPeOjYfXPDvteBwmM=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.acd606c0fce58853afe0248d37bb41acbbcdd8b1aca2412b6c0fa760da0137f3.css" integrity="sha256-rNYGwPzliFOv4CSNN7tBrLvN2LGsokErbA&#43;nYNoBN/M=">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <script src="/js/script.672e2309c296e07c18bcd08b28d797a56222ff941d65f308fba3158c44885b14.js" type="text/javascript" charset="utf-8" integrity="sha256-Zy4jCcKW4HwYvNCLKNeXpWIi/5QdZfMI&#43;6MVjESIWxQ="></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <div class="container">
+        <header class="common-header">
+            
+                <div class="header-top">
+    <div class="header-top-left">
+        <h1 class="site-title noselect">
+    <a href="/">Tutorials on Image Analysis Algorithms</a>
+</h1>
+
+        
+
+
+
+
+
+
+
+    
+        <div class="theme-switcher">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
+
+
+</span>
+
+        </div>
+    
+
+    <script>
+        const STORAGE_KEY = 'user-color-scheme'
+        const defaultTheme = "light"
+
+        let currentTheme
+        let switchButton
+        let autoDefinedScheme = window.matchMedia('(prefers-color-scheme: dark)')
+
+        function switchTheme(e) {
+            currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+            if (localStorage) localStorage.setItem(STORAGE_KEY, currentTheme);
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        const autoChangeScheme = e => {
+            currentTheme = e.matches ? 'dark' : 'light'
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            switchButton = document.querySelector('.theme-switcher')
+            currentTheme = detectCurrentScheme()
+
+            if (currentTheme === 'auto') {
+                autoChangeScheme(autoDefinedScheme);
+                autoDefinedScheme.addListener(autoChangeScheme);
+            } else {
+                document.documentElement.setAttribute('data-theme', currentTheme)
+            }
+
+            if (switchButton) {
+                switchButton.addEventListener('click', switchTheme, false)
+            }
+
+            showContent();
+        })
+
+        function detectCurrentScheme() {
+            if (localStorage !== null && localStorage.getItem(STORAGE_KEY)) {
+                return localStorage.getItem(STORAGE_KEY)
+            }
+            if (defaultTheme) {
+                return defaultTheme
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function showContent() {
+            document.body.style.visibility = 'visible';
+            document.body.style.opacity = 1;
+        }
+
+        function changeGiscusTheme (theme) {
+            function sendMessage(message) {
+              const iframe = document.querySelector('iframe.giscus-frame');
+              if (!iframe) return;
+              iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+            }
+
+            sendMessage({
+              setConfig: {
+                theme: theme
+              }
+            });
+        }
+    </script>
+
+
+        <ul class="social-icons noselect">
+
+
+
+
+
+
+
+    <li>
+            <a href="/index.xml" title="RSS" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+</ul>
+
+    </div>
+    <div class="header-top-right">
+
+    </div>
+</div>
+
+
+    <nav class="noselect">
+        
+        
+        <a class="" href="http://localhost:1313/" title="">Home</a>
+        
+        <a class="" href="http://localhost:1313/about/" title="">About</a>
+        
+        <a class="" href="http://localhost:1313/posts/" title="">Archive</a>
+        
+    </nav>
+
+
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+
+
+            
+        </header>
+        <main id="main" tabindex="-1">
+            
+    
+
+    <article class="post h-entry">
+        <div class="post-header">
+            <header>
+                <h1 class="p-name post-title">Analyzing Images With Fiji &#x1f3dd;&#xfe0f;</h1>
+                
+
+            </header>
+            
+
+
+
+<div class="post-info noselect">
+    
+
+    <a class="post-hidden-url u-url" href="/posts/fiji/">/posts/fiji/</a>
+    <a href="http://localhost:1313/" class="p-name p-author post-hidden-author h-card" rel="me"></a>
+
+
+    <div class="post-taxonomies">
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+        
+
+  
+  
+
+
+
+
+  
+  
+  
+  <details class="toc noselect">
+    <summary>Table of Contents</summary>
+    <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#some-basics">Some Basics</a></li>
+    <li><a href="#filters">Filters</a></li>
+    <li><a href="#segmentation">Segmentation</a></li>
+    <li><a href="#analysis">Analysis</a></li>
+    <li><a href="#some-final-remarks">Some Final Remarks</a></li>
+  </ul>
+</nav></div>
+  </details>
+  
+
+
+
+<script>
+  var toc = document.querySelector(".toc");
+  if (toc) {
+    toc.addEventListener("click", function () {
+      if (event.target.tagName !== "A") {
+        event.preventDefault();
+        if (this.open) {
+          this.open = false;
+          this.classList.remove("expanded");
+        } else {
+          this.open = true;
+          this.classList.add("expanded");
+        }
+      }
+    });
+  }
+</script>
+
+        <div class="content e-content">
+            <p>In this tutorial we will go over the basic analysis functionalities of the image analysis software Fiji.</p>
+<p>This the following couple of posts will be a series of tutorials on existing software for analyzing cellular imaging data. We will provide an essential quick start guide and encourage everyone to spend time messing around with these tools and some provided datasets to familiarize themselves with them. There will be 3/4 tutorials for this series where we will cover software for image analysis for small and large scale experiments, after we will dive into more experimental deep learning methods and introduction to cellular imaging data integration and batch correction.</p>
+<h2 id="background" >
+<div>
+    <a href="#background">
+        #
+    </a>
+    Background
+</div>
+</h2>
+<p><img src="/images/island.jpg" alt="Sunset"></p>
+<p>Did you know that the soft coral capital of the world, Fiji, is made 90% of water and has over 300 tropical islands! Unfortunately we will not be doing image analysis on the islands of Fiji. In this tutorial we will go over the image processing software Fiji. “Fiji is just ImageJ” is an open-source image processing software and extension of the original ImageJ developed at the National Institutes of Health (NIH). Fiji is used extensively in image analysis for microscopy images in 2D and 3D and is used in labs across the world to analyze phenotypic changes in cells at scale. Today you will have the opportunity to install this software on your computer and run through some basic analyses using some of the preset datasets within Fiji. Additionally, we will provide a mini-project in the next post which will help you familiarize yourself more with the ImageJ interface and identify potential applications in a field of your interest.</p>
+<h2 id="installation" >
+<div>
+    <a href="#installation">
+        #
+    </a>
+    Installation
+</div>
+</h2>
+<p>First you will go to the ImageJ documentation website and navigate <code>Explore</code> → <code>Software</code> → <code>Fiji</code>. Or just follow this link: <a href="https://imagej.net/software/fiji/">https://imagej.net/software/fiji/</a></p>
+<p>Once here you will choose the appropriate download depending on your operating system (OS). This tutorial will assume the usage of window OS but the process should be very similar for Mac devices.</p>
+<div style="height: 20px;"></div>
+
+
+<p><img src="/images/downloads.png" alt="Sunset"></p>
+<div style="height: 20px;"></div>
+
+
+<p>Create a new folder on your desktop to store Fiji and all of your work for this class. The file you have just downloaded will come in a .zip file, extract the files and you can delete the .zip afterwards. Then navigate into the Fiji.app folder and open the ImageJ-win64 (if you’re on windows) application. You will be greeted with some additional documentation windows and a prompt to update the client, please update your ImageJ to the latest version. If you did not receive an update message navigate to <code>Help</code> →  <code>Update</code>.</p>
+<p>Navigate to the ImageJ Updater (<code>Help</code> →  <code>Update</code>) as just specified and hit “Manage Update Sites” scroll and find the plugin called “Bio-Formats”, check the box, apply update, and restart ImageJ. Bio-Formats is a plugin which will allow us to import images of various file formats outputted by microscopes. Some common examples of these file types you may come across include TIFF/OME-TIFF, CZI, ND2, etc. Check the Bio-Formats documentation for a complete list, these are just some of the most popular.</p>
+<div style="height: 20px;"></div>
+
+
+<p><img src="/images/bioformats.png" alt="Sunset"></p>
+<div style="height: 20px;"></div>
+
+
+<p>This completes the software setup section of this tutorial, now we can start working with some data.</p>
+<h2 id="some-basics" >
+<div>
+    <a href="#some-basics">
+        #
+    </a>
+    Some Basics
+</div>
+</h2>
+<p>Fiji comes with many preset data samples that we can use to test out some of the features of this software (<code>File</code> →  <code>Open Samples</code>). By the end of this tutorial you will learn how to do some basic preprocessing and morphological analysis on cellular imaging data in Fiji.</p>
+<p>Now we will go over some of the basics about loading data into Fiji. It is important to understand how image files are loaded in and how you can manipulate these files effectively.</p>
+<p><strong>Lookup Tables (LUT)</strong> are how we will go about applying color to a given image, find the “LUT” tab on Fiji and you will see a wide selection of choices to be used in many applications. For the most part we are only interested in solid colors such as red, green, and blue. It is also possible to create a custom LUT but that is more advanced, for now just know that it is something you are able to do. The term lookup table is used here because we are looking up values within a table of values which maps one color in your original image to another color defined in the table.</p>
+<p><img src="/images/LUT.png" alt="Sunset"></p>
+<div style="height: 20px;"></div>
+
+
+<p><strong>Stacks</strong> are used to retain multiple spatially or temporally related images taken by the microscope. Below are some examples of what each of these may look like using the “Mitosis {5D Stack}” sample from the default Fiji data shown below.</p>
+<p><img src="/images/mitosis.png" alt="Sunset"></p>
+<div style="height: 20px;"></div>
+
+
+<p>An example of a normal stack (Z-stack) would be the MRI sample where we have the XY axes and then we can slide through the Z-axis of the MRI scan.</p>
+<div style="height: 20px;"></div>
+
+
+<p><strong>Composite Images</strong> are mostly seen in florescence microscopy images and allows us to combine multiple color channels and view various cellular features at once. An example of this would be the “florescent cells” sample. Here we have three channels in RGB colors, the red (Texas Red X-Phalloidin) shows F-Actin, green (Goat anti-mouse IgG) shows tubulin, and blue (DAPI) shows nuclei. In practice we will name the images based on the stain and cellular feature so it’s important to know them well.</p>
+<p><img src="/images/rgbcells.png" alt="Sunset"></p>
+<div style="height: 20px;"></div>
+
+
+<p>How can we split multi-channel stack/composite images? It is often the case that we want to take a composite image and split it in order to preprocess different attributes of the image. In order to split an image click <code>Images</code> → <code>Color</code> → <code>Split Channels</code></p>
+<h2 id="filters" >
+<div>
+    <a href="#filters">
+        #
+    </a>
+    Filters
+</div>
+</h2>
+<p>In this section we will cover some basic filtering steps that can help reduce noise and obstructions in imaging data, this is typically the first step of a larger image processing pipeline.</p>
+<p>Max/Min/Median filtering is a technique where we take a patch of the image (kernel) and compute the max/min/median of every pixel color value in that patch and then replace the center value with the max/min/median value. The median filter has the effect that outlier values (very dark or light colors)  will get filtered out, this reduces noise and retains edges better than the averaging (mean) filter because we are not computing a new color value but using an existing one. We can see the difference in how edges are conserved using the boat sample with radius 10.0 Left=Median, Right=Mean.</p>
+<p><img src="/images/medianfilter.png" alt="Sunset"></p>
+<blockquote>
+<p><strong>Exercise 1</strong> Try applying median filtering with varying radius to an image of your choice</p>
+</blockquote>
+<blockquote>
+<p><strong>Exercise 2</strong> Try applying other filters to an image of your choice (min, max, convolve, variance), what kind of effects do they have?</p>
+</blockquote>
+<p><strong>Remark:</strong> How do we select the radius when applying filters to images? This depends on what your objectives are and the type of image you are analyzing (feature size, noise, etc.), typically we start small and determine a radius size experimentally.</p>
+<p>Typically a pixel within an image is represented by three numerical values which tell us the ratio of red (R), green (G), and blue (B) that make up a certain color. So what exactly does it mean to take the maximum or minimum of these values? In the case of Fiji we are actually isolating each channel, applying the filter, then combining it again. Cool, right? In later tutorials we will cover more complicated filtering techniques which make use of mathematical transformations which can be used for better denoising and feature extraction.</p>
+<p><img src="/images/colors.png" alt="Sunset"></p>
+<h2 id="segmentation" >
+<div>
+    <a href="#segmentation">
+        #
+    </a>
+    Segmentation
+</div>
+</h2>
+<p>We will now cover some basic image segmentation, specifically we will look at background removal using the Fiji functions as well as different types of thresholding. First you must make sure that your image is grayscale (<code>Image</code> → <code>Type</code> → <code>8-bit</code>). The background subtraction function within Fiji works better if you have well defined edges in your image so it might help to play around with the brightness and contrast settings (<code>Image</code> → <code>Adjust</code> → <code>Brightness/Contrast</code>) until your image’s edges look a little better. Some images already have plain backgrounds so removal is not necessary.</p>
+<p>Lets take for example the Blobs sample image. We can see that there is a textured background which can interfere with our analyses, in order to remove this we will have to use the rolling ball background subtraction algorithm. To apply this, select <code>Process</code> → <code>Subtract Background</code>.</p>
+<p><strong>Remark:</strong> Using this algorithm may cause image artifacts or unwanted effects so proceed with caution, for our case in purposes we can disregard any artifacting.</p>
+<p>After the background is removed or mitigated we can start trying to segment our features of interest using thresholding. Within Fiji we have many different options for thresholding which can be accessed through the (<code>Image</code> → <code>Adjust</code>) menu. For the time being we won’t concern ourselves with how thresholding works and that will be left for a more in depth future tutorial. The standard threshold option will allow you to manually analyze an intensity histogram which allows us to separate the image based on feature and background color. The problem with this approach is that it requires quite a bit of human thinking and reproducing the result might be difficult.</p>
+<p><img src="/images/manual_thresh.png" alt="Sunset"></p>
+<div style="height: 20px;"></div>
+
+
+<p>To address this problem we can use the <code>Auto Threshold</code> option which can make this selection for us based on some algorithm. In total there are 17 of these that are available in Fiji and we have the option of running all of them at once and then choosing the best one as shown below.</p>
+<div style="height: 20px;"></div>
+
+
+<p><img src="/images/autothresh_2.png" alt="Sunset"></p>
+<div style="height: 20px;"></div>
+
+
+<p>Note that the output of the thresholding is a black and white image, this is called a binary image and each pixel is one of two color values either black or white. These binary images allow us to perform some additional modifications to our image. Take a look under (<code>Process</code> → <code>Binary</code>), these are options available for binary image manipulation. Erosion and dilation can be used to decrease or increase the outer layer from features in the image (black attributes). In future tutorials we will go over these manipulations in more detail. Once we have a segmentation that looks good we are ready to move onto the analysis of the features.</p>
+<h2 id="analysis" >
+<div>
+    <a href="#analysis">
+        #
+    </a>
+    Analysis
+</div>
+</h2>
+<p>Once we have our binary image of our blobs we can run certain analyses on these, namely all of the options listed under (<code>Analyze</code> → <code>Set Measurements</code>). Within this menu you will be able to select/deselect measurements depending one what kind of analyses you’re doing.</p>
+<p>Pay close attention to the option at the bottom “Redirect to:” and recall that the image we are analyzing is binary, meaning that all intensity measurements such as min/max gray values make no sense at all. This redirect option will allow you to use the binary image as a mask and report measurements from another, non-binary, image. So this is when we will use the image of the blobs we duplicated earlier, we will use the binary segmentation image we created to measure features in our original image.</p>
+<div style="height: 20px;"></div>
+
+
+<p><img src="/images/set_measurements.png" alt="Sunset"></p>
+<div style="height: 20px;"></div>
+
+
+<p>Now that we have set our desired measurements we can select the (<code>Analyze</code> → <code>Analyze Particles</code>) option and run the analysis. Right before analyzing the blobs you must specify two attributes, namely the expected size range and circularity of your features. These options will allow you to filter out super small dot-like artifacts that shouldn’t be counted or non-circular objects. Under “Show:” you want to select overlay masks in order to display the results on the binary image, this doesn’t affect the analysis in any way just the way the output data is displayed.</p>
+<p>Now the output of the <code>Analyze Particles</code> function should be a table where the rows correspond to different features in your image and columns correspond to the measurements you selected in the <code>Set Measurements</code> settings.</p>
+<div style="height: 20px;"></div>
+
+
+<p><img src="/images/segmentation.png" alt="Sunset"></p>
+<div style="height: 20px;"></div>
+
+
+<p>A common error that arises in the analysis stage is that the image is inverted so we end up analyzing the background on accident. It can get a bit confusing especially when messing with the LUTs. It is important to note that the setting (<code>Edit</code> → <code>Invert</code>) is different from inverting the LUT, and this is the most common cause of error in the Analyze Particles function. Make sure that when you analyze the particles that the output table has a reasonable number of entries and that the correct areas are being overlay masked in the binary image.</p>
+<p><img src="/images/error.png" alt="Sunset"></p>
+<h2 id="some-final-remarks" >
+<div>
+    <a href="#some-final-remarks">
+        #
+    </a>
+    Some Final Remarks
+</div>
+</h2>
+<p>A key feature that we haven’t mentioned in this tutorial is Fiji’s potential for analyzing 3D cell images. Fiji has many options as you may have noticed in the menus for 3D images and it is actually a similar process. There are many resources I will provide links to dealing with these types of images but for our case and purposes we are only concerned with 2D imaging so you are not required to learn the 3D image analysis.</p>
+<p>This pretty much concludes the Fiji basic analysis tutorial and there is still a lot for you to explore within Fiji. There are also a lot of features which Fiji lacks and in future tutorials we will be talking about other image analysis programs that take a different approach to solving this problem.</p>
+<div style="height: 20px;"></div>
+
+
+<p><strong>Relevant Resources</strong></p>
+<p><a href="https://github.com/hallvaaw/awesome-biological-image-analysis">Awesome Biological Image Analysis</a></p>
+        </div>
+
+    </article>
+
+    
+    
+
+    
+        
+        
+    
+
+    
+
+    
+        
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+        </main>
+        
+            <footer class="common-footer noselect">
+    
+    
+
+    <div class="common-footer-bottom">
+        
+
+        <div style="display: flex; align-items: center; gap:8px">
+            ©  2025
+            
+        </div>
+        <div style="display:flex;align-items: center">
+            
+            
+            
+            
+            
+            
+        </div>
+        <div>
+            Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/Junyi-99/hugo-theme-anubis2">Anubis2</a>.<br>
+            
+
+        </div>
+    </div>
+
+    <p class="h-card vcard">
+
+    <a href=http://localhost:1313/ class="p-name u-url url fn" rel="me"></a>
+
+    
+
+    
+</p>
+
+</footer>
+
+        
+    </div>
+</body>
+</html>
