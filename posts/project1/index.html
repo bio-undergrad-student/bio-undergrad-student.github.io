@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-theme="">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<title>Project - Cell Morphology Analysis in Fiji &#x1f3dd;&#xfe0f; &#43; Pandas &#x1f43c; - Tutorials on Image Analysis Algorithms</title>
+
+<meta name="description" content="This project will serve as a more in-depth look into the different functions within Fiji and image processing in general as well as the Pandas data analysis framework.">
+
+
+
+
+
+<link rel="icon" type="image/x-icon" href="http://localhost:1313/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="http://localhost:1313/favicon.png">
+
+
+
+
+
+
+
+
+    
+
+
+
+<style>
+  body {
+    visibility: hidden;
+    opacity: 0;
+  }
+</style>
+
+<noscript>
+  <style>
+    body {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</noscript>
+
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.4c42aa0abeac804c4933c54677c449cea1f723caae778425d031e98565a0cdef.css" integrity="sha256-TEKqCr6sgExJM8VGd8RJzqH3I8qud4Ql0DHphWWgze8=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.9c1888ebff42c0224ce04dac10cb2c401f1b77f54f78e8d87d73c3bed781c263.css" integrity="sha256-nBiI6/9CwCJM4E2sEMssQB8bd/VPeOjYfXPDvteBwmM=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.acd606c0fce58853afe0248d37bb41acbbcdd8b1aca2412b6c0fa760da0137f3.css" integrity="sha256-rNYGwPzliFOv4CSNN7tBrLvN2LGsokErbA&#43;nYNoBN/M=">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <script src="/js/script.672e2309c296e07c18bcd08b28d797a56222ff941d65f308fba3158c44885b14.js" type="text/javascript" charset="utf-8" integrity="sha256-Zy4jCcKW4HwYvNCLKNeXpWIi/5QdZfMI&#43;6MVjESIWxQ="></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <div class="container">
+        <header class="common-header">
+            
+                <div class="header-top">
+    <div class="header-top-left">
+        <h1 class="site-title noselect">
+    <a href="/">Tutorials on Image Analysis Algorithms</a>
+</h1>
+
+        
+
+
+
+
+
+
+
+    
+        <div class="theme-switcher">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
+
+
+</span>
+
+        </div>
+    
+
+    <script>
+        const STORAGE_KEY = 'user-color-scheme'
+        const defaultTheme = "light"
+
+        let currentTheme
+        let switchButton
+        let autoDefinedScheme = window.matchMedia('(prefers-color-scheme: dark)')
+
+        function switchTheme(e) {
+            currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+            if (localStorage) localStorage.setItem(STORAGE_KEY, currentTheme);
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        const autoChangeScheme = e => {
+            currentTheme = e.matches ? 'dark' : 'light'
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            switchButton = document.querySelector('.theme-switcher')
+            currentTheme = detectCurrentScheme()
+
+            if (currentTheme === 'auto') {
+                autoChangeScheme(autoDefinedScheme);
+                autoDefinedScheme.addListener(autoChangeScheme);
+            } else {
+                document.documentElement.setAttribute('data-theme', currentTheme)
+            }
+
+            if (switchButton) {
+                switchButton.addEventListener('click', switchTheme, false)
+            }
+
+            showContent();
+        })
+
+        function detectCurrentScheme() {
+            if (localStorage !== null && localStorage.getItem(STORAGE_KEY)) {
+                return localStorage.getItem(STORAGE_KEY)
+            }
+            if (defaultTheme) {
+                return defaultTheme
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function showContent() {
+            document.body.style.visibility = 'visible';
+            document.body.style.opacity = 1;
+        }
+
+        function changeGiscusTheme (theme) {
+            function sendMessage(message) {
+              const iframe = document.querySelector('iframe.giscus-frame');
+              if (!iframe) return;
+              iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+            }
+
+            sendMessage({
+              setConfig: {
+                theme: theme
+              }
+            });
+        }
+    </script>
+
+
+        <ul class="social-icons noselect">
+
+
+
+
+
+
+
+    <li>
+            <a href="/index.xml" title="RSS" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+</ul>
+
+    </div>
+    <div class="header-top-right">
+
+    </div>
+</div>
+
+
+    <nav class="noselect">
+        
+        
+        <a class="" href="http://localhost:1313/" title="">Home</a>
+        
+        <a class="" href="http://localhost:1313/about/" title="">About</a>
+        
+        <a class="" href="http://localhost:1313/posts/" title="">Archive</a>
+        
+    </nav>
+
+
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+
+
+            
+        </header>
+        <main id="main" tabindex="-1">
+            
+    
+
+    <article class="post h-entry">
+        <div class="post-header">
+            <header>
+                <h1 class="p-name post-title">Project - Cell Morphology Analysis in Fiji &#x1f3dd;&#xfe0f; + Pandas &#x1f43c;</h1>
+                
+
+            </header>
+            
+
+
+
+<div class="post-info noselect">
+    
+
+    <a class="post-hidden-url u-url" href="/posts/project1/">/posts/project1/</a>
+    <a href="http://localhost:1313/" class="p-name p-author post-hidden-author h-card" rel="me"></a>
+
+
+    <div class="post-taxonomies">
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+        
+
+  
+  
+
+
+
+
+  
+  
+  
+  <details class="toc noselect">
+    <summary>Table of Contents</summary>
+    <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#jump-cp-data">JUMP-CP Data</a></li>
+    <li><a href="#pandas-dataframes">Pandas Dataframes</a></li>
+    <li><a href="#problem-statement">Problem Statement</a></li>
+  </ul>
+</nav></div>
+  </details>
+  
+
+
+
+<script>
+  var toc = document.querySelector(".toc");
+  if (toc) {
+    toc.addEventListener("click", function () {
+      if (event.target.tagName !== "A") {
+        event.preventDefault();
+        if (this.open) {
+          this.open = false;
+          this.classList.remove("expanded");
+        } else {
+          this.open = true;
+          this.classList.add("expanded");
+        }
+      }
+    });
+  }
+</script>
+
+        <div class="content e-content">
+            <p>This project will serve as a more in-depth look into the different functions within Fiji and image processing in general as well as the Pandas data analysis framework.</p>
+<p>Preliminary Reading: <a href="https://www.nature.com/articles/nprot.2016.105">https://www.nature.com/articles/nprot.2016.105</a></p>
+<h2 id="background" >
+<div>
+    <a href="#background">
+        #
+    </a>
+    Background
+</div>
+</h2>
+<p>The last tutorial covered some of the basic functionalities of Fiji but not much opportunity was given to play around with the images and the different filters/adjustments. In this project you will be able to download raw experiment data provided by the JUMP-CP Consortium from a AWS s3 Bucket (Cloud Storage) and analyze that data using Fiji and Pandas in Python.</p>
+<p>The python portion of this project and any type of python programming can be done easily within your web browser (no download needed) by using Google Colab. This resource will allow you to create Jupyter Notebooks i.e. interactive environments where you can write and run code, visualize data, and document your work in one place. This is very convenient if you want to get started as quickly as possible or cannot download applications to your computer. In order to create a Google Colab notebook go to your Google Drive, hit the New (+) button, More, and then Google Colaboratory.</p>
+<h2 id="jump-cp-data" >
+<div>
+    <a href="#jump-cp-data">
+        #
+    </a>
+    JUMP-CP Data
+</div>
+</h2>
+<p>The Joint Undertaking in Morphological Profiling - Cell Painting (JUMP-CP) is a consortium dedicated to analyze the cell morphology of cells with various chemical and genetic perturbations. It makes use the of the cell painting assay (from preliminary reading) for imaging [1].</p>
+<p>The easiest way to download this data is through a resource called Quilt, this is a software that takes the complicated task of managing specifically AWS cloud data and simplifies it but providing a user interface. It is important to consider that Quilt is not available for all project data, in the next tutorial we will go over some of the other approaches to downloading data from a cloud bucket.</p>
+<p><a href="https://open.quiltdata.com/b/cellpainting-gallery/tree/">Jump-CP Quilt</a></p>
+<p>Data within this repository is organized in a very specific manner, in order to understand this organization it is important to know the context. In the highest level of this bucket we see that the name is cellpainting-gallery within this directory we have 33 folders named cpg-00XX where cpg stands for cellpainting gallery. All of these folders represent some of the different contributors to this dataset, the primary dataset we are interested in is called ‘cpg0016-jump’.</p>
+<p>Some additional information about cpg0016 is that the cells we are imaging are osteosarcoma cells and this was a careful selection based on tests determining how visible phenotypic changes would be after perturbing the cells. The specific perturbations are classified into one of two categories, genetic perturbations such as CRISPR knockouts of (7,977 genes) and ORF overexpression of (15,131 unique genes), and chemical perturbations which are miscellaneous compounds/drugs (~115,795 compounds). All of this work was split amongst 12 different sources (data-generating centers) [1].</p>
+<p>Now click on the folder within Quilt for cpg0016, here you will be met with a separate folder for each of the different data-generating centers, click on source_1. Within each of these folders we can start start navigating the data, first you can select between viewing raw image data (images) or analyses/metadata (workspace) for the images. These folders are further narrowed down into different batches of experiments, the folders are labeled with the following convention ‘BatchX-YYYYMMDD’ to tell us the specific date which the data was curated.</p>
+<p>The images folder will be divided up further based on batch and then plate. We have multiple plates, in the case of source_1 these are actually 1536-Well plates, within each plate folder we have some metadata specific to the plate such as the layout and the images themselves (4 per well). There are different file structures and naming conventions for the different sources but it is always the same information.</p>
+<div style="height: 20px;"></div>
+
+
+<p><strong>Naming Convention</strong></p>
+<p><!-- raw HTML omitted --> r01c01f01p01-ch1sk1fk1fl1 <!-- raw HTML omitted --></p>
+<p><strong>r01:</strong> Row 1 of plate</p>
+<p><strong>c01:</strong> Column 1 of plate</p>
+<p><strong>f01:</strong> Field of View (FOV) 1</p>
+<p><strong>p01:</strong> Position 1</p>
+<p><strong>ch1:</strong> Channel 1</p>
+<p><strong>sk1:</strong> Z slice 1</p>
+<div style="height: 20px;"></div>
+
+
+<p>For batch_1 the channel mappings are as follows, these are the standard for the cell painting assay</p>
+<p><img src="/images/cellpainting.png" alt="Sunset">
+<strong>Figure courtesy of [2]</strong></p>
+<div style="height: 20px;"></div>
+
+
+<p><strong>1:</strong> Endoplasmic Reticulum (ER)</p>
+<p><strong>2:</strong> RNA</p>
+<p><strong>3:</strong> Mitochondria (Mito)</p>
+<p><strong>4:</strong> DNA</p>
+<p><strong>5:</strong> AGP (Actin, Golgi, and Plasma)</p>
+<p><strong>Warning:</strong> this mapping, the measured features are the same but the mapping can change from batch to batch. Make sure to double check the metadata file at Source → Workspace → BatchX → PlateY → load_data.csv.gz which tells us exactly what this mapping is, this information can be derived from the ‘FileName_OrigZ’ columns. For batch X, plate Y, and channel Z.</p>
+<h2 id="pandas-dataframes" >
+<div>
+    <a href="#pandas-dataframes">
+        #
+    </a>
+    Pandas Dataframes
+</div>
+</h2>
+<p>In this project you will be looking at a lot of comma separated values (CSV) files and dataframes so it is important to have a solid foundation in this concepts. I recommend you watch the tutorial linked below in order to familiarize yourself with the framework. As mentioned earlier, all of this project can be done within Fiji and a Google Colab so you do not have to download anything other than the data.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/vmEHCJofslg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h2 id="problem-statement" >
+<div>
+    <a href="#problem-statement">
+        #
+    </a>
+    Problem Statement
+</div>
+</h2>
+<p>In the previous tutorial you learned how to do a basic analysis in Fiji for the blob sample, today you will able to apply these learnings to real cellular imaging data. For this project we are primarily concerned with doing some morphological profiling of the nuclei of the perturbed cells at the following locations/config&hellip;</p>
+<div style="height: 20px;"></div>
+
+
+<p><strong>Locations</strong></p>
+<p><strong>1:</strong> source_1: batch_1:plate_UL000109:row_1:column_26:fov_1</p>
+<p><strong>2:</strong> source_1: batch_2:plate_UL001671:row_5:column_23:fov_3</p>
+<p><strong>3:</strong> source_1: batch_3:plate_UL001785:row_11:column_41:fov_2</p>
+<p><strong>4:</strong> source_1: batch_4:plate_UL000097:row_24:column_26:fov_2</p>
+<p><strong>5:</strong> source_1: batch_5:plate_UL001773:row_4:column_30:fov_1</p>
+<p><strong>6:</strong> source_1: batch_6:plate_UL000579:row_31:column_40:fov_3</p>
+<p><strong>Measurements</strong></p>
+<p><strong>1:</strong> Area</p>
+<p><strong>2:</strong> Min gray value</p>
+<p><strong>3:</strong> Max gray value</p>
+<p><strong>4:</strong> Mean gray value</p>
+<p><strong>5:</strong> Center of mass</p>
+<p><strong>6:</strong> Shape descriptors</p>
+<div style="height: 20px;"></div>
+
+
+<p>These different measurements will fill the columns of your particle analysis table, you will then export these tables as CSV files in order to run some further analyses. The following part of the project should be done using Pandas.</p>
+<p>In your Google Colab notebook open the six CSV files using pandas and run the following analyses</p>
+<p><strong>1:</strong> create a new row for the average of each measurement</p>
+<p><strong>2:</strong> create a new row for the average of each measurement</p>
+<p><strong>3:</strong> determine the average cell count from our sample</p>
+<p><strong>4:</strong> find the cell with maximum area</p>
+<p><strong>5:</strong> plot the data for the following columns for each dataframe</p>
+<p><strong>6:</strong> create a new dataframe of reduced size where we keep cells only if they are above the average size</p>
+<p><strong>7:</strong> merge all six dataframes into one dataframe with an additional column saying which batch it came from</p>
+<div style="height: 20px;"></div>
+
+
+<p><strong>References</strong></p>
+<p>[1] S. N. Chandrasekaran et al., “JUMP Cell Painting dataset: morphological impact of 136,000 chemical and genetic perturbations,” Mar. 2023, doi: <a href="https://doi.org/10.1101/2023.03.23.534023">https://doi.org/10.1101/2023.03.23.534023</a>.</p>
+<p>[2] M.-A. Bray et al., “Cell Painting, a high-content image-based assay for morphological profiling using multiplexed fluorescent dyes,” Nature Protocols, vol. 11, no. 9, pp. 1757–1774, Aug. 2016, doi: <a href="https://doi.org/10.1038/nprot.2016.105">https://doi.org/10.1038/nprot.2016.105</a>.</p>
+        </div>
+
+    </article>
+
+    
+    
+
+    
+        
+        
+    
+
+    
+
+    
+        
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+        </main>
+        
+            <footer class="common-footer noselect">
+    
+    
+
+    <div class="common-footer-bottom">
+        
+
+        <div style="display: flex; align-items: center; gap:8px">
+            ©  2025
+            
+        </div>
+        <div style="display:flex;align-items: center">
+            
+            
+            
+            
+            
+            
+        </div>
+        <div>
+            Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/Junyi-99/hugo-theme-anubis2">Anubis2</a>.<br>
+            
+
+        </div>
+    </div>
+
+    <p class="h-card vcard">
+
+    <a href=http://localhost:1313/ class="p-name u-url url fn" rel="me"></a>
+
+    
+
+    
+</p>
+
+</footer>
+
+        
+    </div>
+</body>
+</html>
