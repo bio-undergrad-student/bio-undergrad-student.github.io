@@ -616,7 +616,7 @@ else
 
 
 &lt;p&gt;These different measurements will fill the columns of your particle analysis table, you will then export these tables as CSV files in order to run some further analyses. The following part of the project should be done using Pandas.&lt;/p&gt;
-&lt;p&gt;In your Google Colab notebook open the six CSV files using pandas and run the following analyses&lt;/p&gt;
+&lt;p&gt;In your Google Colab notebook open the six CSV files using pandas and run the following analyses.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;1:&lt;/strong&gt; create a new row for the average of each measurement&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;2:&lt;/strong&gt; create a new row for the average of each measurement&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;3:&lt;/strong&gt; determine the average cell count from our sample&lt;/p&gt;
@@ -630,6 +630,16 @@ else
 &lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;[1] S. N. Chandrasekaran et al., “JUMP Cell Painting dataset: morphological impact of 136,000 chemical and genetic perturbations,” Mar. 2023, doi: &lt;a href=&#34;https://doi.org/10.1101/2023.03.23.534023&#34;&gt;https://doi.org/10.1101/2023.03.23.534023&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;[2] M.-A. Bray et al., “Cell Painting, a high-content image-based assay for morphological profiling using multiplexed fluorescent dyes,” Nature Protocols, vol. 11, no. 9, pp. 1757–1774, Aug. 2016, doi: &lt;a href=&#34;https://doi.org/10.1038/nprot.2016.105&#34;&gt;https://doi.org/10.1038/nprot.2016.105&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Random</title>
+      <link>/posts/random/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/random/</guid>
+      <description>&lt;p&gt;kjsfnjdnknjfnjsfdjksdfnksdfnksdkjsfdnjsdfnksdfnksfdnkj&lt;/p&gt;
+</description>
     </item>
     
   </channel>
