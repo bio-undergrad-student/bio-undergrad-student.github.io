@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-theme="">
+<head>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<title>Cloud Computing in the Biosciences &#x2601;&#xfe0f; - Tutorials on Image Analysis Algorithms</title>
+
+<meta name="description" content="In this tutorial you will learn the basics of data storage and computation in the cloud.">
+
+
+
+
+
+<link rel="icon" type="image/x-icon" href="https://bio-undergrad-student.github.io/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="https://bio-undergrad-student.github.io/favicon.png">
+
+
+
+
+
+
+
+
+    
+
+
+
+<style>
+  body {
+    visibility: hidden;
+    opacity: 0;
+  }
+</style>
+
+<noscript>
+  <style>
+    body {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</noscript>
+
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.min.44f8240afd8df81b52565c4119ac5ae247776c77fc6d7ccf6e101a6c98abfa7a.css" integrity="sha256-RPgkCv2N&#43;BtSVlxBGaxa4kd3bHf8bXzPbhAabJir&#43;no=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.min.c4c04b3ef88e3d619ad4c7ee5e03048422bc55c4fefdc1f07657c1133670aa22.css" integrity="sha256-xMBLPviOPWGa1MfuXgMEhCK8VcT&#43;/cHwdlfBEzZwqiI=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.min.21c5d8fe0a79d623b0adc1ce4bd4f6dd2c05cd939c9aaaa966ba7186b1464f4d.css" integrity="sha256-IcXY/gp51iOwrcHOS9T23SwFzZOcmqqpZrpxhrFGT00=">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <script src="/js/script.min.08f04d96386c73c9bf4d160333f8f448c05a6e01c06770542ee0e013954ce930.js" type="text/javascript" charset="utf-8" integrity="sha256-CPBNljhsc8m/TRYDM/j0SMBabgHAZ3BULuDgE5VM6TA="></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <div class="container">
+        <header class="common-header">
+            
+                <div class="header-top">
+    <div class="header-top-left">
+        <h1 class="site-title noselect">
+    <a href="/">Tutorials on Image Analysis Algorithms</a>
+</h1>
+
+        
+
+
+
+
+
+
+
+    
+        <div class="theme-switcher">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
+
+
+</span>
+
+        </div>
+    
+
+    <script>
+        const STORAGE_KEY = 'user-color-scheme'
+        const defaultTheme = "light"
+
+        let currentTheme
+        let switchButton
+        let autoDefinedScheme = window.matchMedia('(prefers-color-scheme: dark)')
+
+        function switchTheme(e) {
+            currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+            if (localStorage) localStorage.setItem(STORAGE_KEY, currentTheme);
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        const autoChangeScheme = e => {
+            currentTheme = e.matches ? 'dark' : 'light'
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            switchButton = document.querySelector('.theme-switcher')
+            currentTheme = detectCurrentScheme()
+
+            if (currentTheme === 'auto') {
+                autoChangeScheme(autoDefinedScheme);
+                autoDefinedScheme.addListener(autoChangeScheme);
+            } else {
+                document.documentElement.setAttribute('data-theme', currentTheme)
+            }
+
+            if (switchButton) {
+                switchButton.addEventListener('click', switchTheme, false)
+            }
+
+            showContent();
+        })
+
+        function detectCurrentScheme() {
+            if (localStorage !== null && localStorage.getItem(STORAGE_KEY)) {
+                return localStorage.getItem(STORAGE_KEY)
+            }
+            if (defaultTheme) {
+                return defaultTheme
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function showContent() {
+            document.body.style.visibility = 'visible';
+            document.body.style.opacity = 1;
+        }
+
+        function changeGiscusTheme (theme) {
+            function sendMessage(message) {
+              const iframe = document.querySelector('iframe.giscus-frame');
+              if (!iframe) return;
+              iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+            }
+
+            sendMessage({
+              setConfig: {
+                theme: theme
+              }
+            });
+        }
+    </script>
+
+
+        <ul class="social-icons noselect">
+
+
+
+
+
+
+
+    <li>
+            <a href="/index.xml" title="RSS" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+</ul>
+
+    </div>
+    <div class="header-top-right">
+
+    </div>
+</div>
+
+
+    <nav class="noselect">
+        
+        
+        <a class="" href="https://bio-undergrad-student.github.io/" title="">Home</a>
+        
+        <a class="" href="https://bio-undergrad-student.github.io/about/" title="">About</a>
+        
+        <a class="" href="https://bio-undergrad-student.github.io/posts/" title="">Archive</a>
+        
+    </nav>
+
+
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+
+
+            
+        </header>
+        <main id="main" tabindex="-1">
+            
+    
+
+    <article class="post h-entry">
+        <div class="post-header">
+            <header>
+                <h1 class="p-name post-title">Cloud Computing in the Biosciences &#x2601;&#xfe0f;</h1>
+                
+
+            </header>
+            
+
+
+
+<div class="post-info noselect">
+    
+
+    <a class="post-hidden-url u-url" href="/posts/cloud/">/posts/cloud/</a>
+    <a href="https://bio-undergrad-student.github.io/" class="p-name p-author post-hidden-author h-card" rel="me"></a>
+
+
+    <div class="post-taxonomies">
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+        
+
+  
+  
+
+
+
+
+  
+  
+  
+  <details class="toc noselect">
+    <summary>Table of Contents</summary>
+    <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#cloud-resources">Cloud Resources</a></li>
+    <li><a href="#downloadingviewing-data-from-the-cloud">Downloading/Viewing Data from the Cloud</a></li>
+    <li><a href="#aws-command-line-interface-cli">AWS Command Line Interface (CLI)</a></li>
+    <li><a href="#cloud-software-development-kits-sdks">Cloud Software Development Kits (SDKs)</a></li>
+    <li><a href="#getting-started-with-boto3">Getting Started With boto3</a></li>
+    <li><a href="#dissecting-filenames-in-python-using-regular-expressions">Dissecting Filenames in Python Using Regular Expressions</a></li>
+    <li><a href="#some-final-remarks">Some Final Remarks</a></li>
+  </ul>
+</nav></div>
+  </details>
+  
+
+
+
+<script>
+  var toc = document.querySelector(".toc");
+  if (toc) {
+    toc.addEventListener("click", function () {
+      if (event.target.tagName !== "A") {
+        event.preventDefault();
+        if (this.open) {
+          this.open = false;
+          this.classList.remove("expanded");
+        } else {
+          this.open = true;
+          this.classList.add("expanded");
+        }
+      }
+    });
+  }
+</script>
+
+        <div class="content e-content">
+            <p>In this tutorial you will learn the basics of data storage and computation in the cloud.</p>
+<p>When we refer to cloud computing/storage this could mean many different things. An example that almost everyone is familiar with is Google Drive, this is an example of a cloud storage service hosted by Google, this is different from Google’s primary cloud computing service called Google Cloud Platform (GCP). Many technology companies have their own versions of cloud computing services and in this tutorial we will be focusing primarily on Amazon Web Services (AWS) but at the end of the day all of these services are very similar.</p>
+<div style="height: 20px;"></div>
+
+
+<p><img src="/images/plane.jpg" alt="Sunset"></p>
+<h2 id="cloud-resources" >
+<div>
+    <a href="#cloud-resources">
+        #
+    </a>
+    Cloud Resources
+</div>
+</h2>
+<p>In the field of computational biology, researchers typically use their own computers to do their work, this could be a laptop, desktop, or even a high-performance computing cluster (supercomputer). As of recent there has been a push by a number of organizations to switch over to cloud resources, although this is more common in industry workplaces, you may still come across cloud computing in academic research facilities.  A prime example of this would be a resource coming out of the Broad Institute, a biomedical research facility, in collaboration with Microsoft called Terra.bio. Terra is a platform that promotes cloud computing as a way to increase collaboration through data and code sharing among biologists and computer scientists.</p>
+<p>The remainder of this tutorial will be dedicated to introducing various software development tools offered by these cloud computing resources in order to help you learn cellular imaging data analysis on the cloud, preparing you for any future career where cloud computing is a required skill.</p>
+<p>It is first important to understand how we are able to store our data on the cloud, we can show this through the popular AWS s3 bucket. s3 is known as a simple storage bucket which is used to back up data or for general storage purposes, these buckets are actually drives located in massive data centers run by Amazon. The same can be said about actual cloud computing resources such as Google Colab, the computers that allow you to run code (CPUs/GPUs) are located in some remote data center and you essentially connect to them as a virtual machine.</p>
+<h2 id="downloadingviewing-data-from-the-cloud" >
+<div>
+    <a href="#downloadingviewing-data-from-the-cloud">
+        #
+    </a>
+    Downloading/Viewing Data from the Cloud
+</div>
+</h2>
+<p>Now without a specified user interface like Google Drive it is not immediately obvious how one can access cloud resources to store or download data.</p>
+<p>Recall from project 1 that we were able to download the JUMP-CP data from a resource called Quilt, this is a software that takes the complicated task of managing specifically AWS cloud data and simplifies it but providing a user interface. It is important to note that not all datasets or workplaces may subscribe to Quilt or related data management platforms, in this case you will have to access the cloud using a different method we will cover here.</p>
+<h2 id="aws-command-line-interface-cli" >
+<div>
+    <a href="#aws-command-line-interface-cli">
+        #
+    </a>
+    AWS Command Line Interface (CLI)
+</div>
+</h2>
+<p>Another approach to accessing cloud storage is through the command line, to do this you must first download the AWS CLI on your computer. The following website will provide instructions on how you can download and get started with the AWS CLI depending on your operating system.</p>
+<p><a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html</a></p>
+<p>The command line, when used correctly, can be a very powerful resource which allows users to run several software tools which do not have user interfaces. For the AWS CLI we typically start the program with the <code>aws</code> command, when typed alone it will give you several options including a help page and the general format for a command. Here is an example of a aws command to list the contents of the JUMP-CP dataset, this command takes some time to run so don&rsquo;t worry if it is slow.</p>
+<pre><code>aws s3 ls --no-sign-request s3://cellpainting-gallery/
+</code></pre>
+<div style="height: 20px;"></div>
+
+
+<p><strong>Explanation</strong></p>
+<p><strong>(aws)</strong> This invokes the aws program.</p>
+<p><strong>(s3)</strong> Specifies that we want to access an s3 bucket.</p>
+<p><strong>(ls)</strong> Linux command that allows us to list all of the files and folders in a directory</p>
+<p><strong>(no-sign-request)</strong> Is used when accessing public resources, skips authentication process</p>
+<p><strong>(s3://directory/)</strong> This is the directory/folder you wish to access</p>
+<div style="height: 20px;"></div>
+
+
+<p>There are also more commands to work with the files and folders in s3 buckets including copying and moving data, these are almost identical to the previous command except we change the (ls) parameter to the appropriate Linux command. Below are some more examples&hellip;</p>
+<pre><code># Download File
+aws s3 cp --no-sign-request s3://cellpainting-gallery/.../example.TIFF ./downloads/
+
+
+# Download Folder
+aws s3 cp --no-sign-request s3://cellpainting-gallery/.../example/ ./downloads/ --recursive
+
+
+# Download Whole Bucket
+aws s3 sync --no-sign-request s3://cellpainting-gallery/ ./downloads/
+</code></pre>
+<h2 id="cloud-software-development-kits-sdks" >
+<div>
+    <a href="#cloud-software-development-kits-sdks">
+        #
+    </a>
+    Cloud Software Development Kits (SDKs)
+</div>
+</h2>
+<p>A more programmatic approach to access the cloud is through a Software Development Kit (SDK) i.e. a set of tools and libraries which can be used in application development. AWS  has their own SDK which can be loaded into a Python programming environment which allows users to download and upload data seamlessly while they are working with it. In this tutorial we will be using the AWS SDK which is called boto3. This approach will give us a lot more flexibility and will allow us to make very specific queries that we are interested in.</p>
+<p><img src="/images/SDK.jpeg" alt="Sunset"></p>
+<p>The benefit to using a SDK like boto3 is that you can now access your cloud data within a cloud-based programming environment like Google Colab and keeping all of your work (code/analyses) on the cloud without having to download anything on your computer. It is not difficult to see why cloud computing is a major upgrade for a lot of people, especially those in the biological sciences who will be collaborating and sharing data/documents frequently.</p>
+<h2 id="getting-started-with-boto3" >
+<div>
+    <a href="#getting-started-with-boto3">
+        #
+    </a>
+    Getting Started With boto3
+</div>
+</h2>
+<p>To download boto3 to your Google Colab notebook we will use the following command</p>
+<pre><code>pip install boto3
+</code></pre>
+<p>Next you need to make the necessary libraries are loaded by entering the following three lines of code</p>
+<pre><code>import boto3
+from botocore import UNSIGNED
+from botocore.config import Config
+</code></pre>
+<div style="height: 20px;"></div>
+
+
+<p><strong>Explanation</strong></p>
+<p>Line 1 imports the main boto3 SDK and lines 2 and 3 import core (botocore) functionalities that allow us to access public cloud data without credentials/login information.</p>
+<div style="height: 20px;"></div>
+
+
+<p>For the first example you will learn how to use the boto3 SDK for basic tasks such as navigating the file hierarchy of the JUMP-CP data from project 1.</p>
+<p>In order to access the data folders from the colab we need to set up an s3 object so that we have access without an AWS account credentials. It is okay to copy-paste, but make sure to understand what is happening in the code.</p>
+<pre><code># ---------- PART 1 ---------- #
+
+prefix = '' #e.g. 'cpg0016-jump/source_1/images/Batch1_20221004/images'
+s3 = boto3.client('s3', config=Config(signature_version=UNSIGNED))
+paginator = s3.get_paginator('list_objects_v2')
+pages = paginator.paginate(
+    Bucket='cellpainting-gallery',
+    Delimiter='/',
+    Prefix=f&quot;{prefix}/&quot;)
+
+
+# ---------- PART 2 ---------- #
+
+folders = []
+files = []
+
+for page in pages:
+    # Extract folders
+    if 'CommonPrefixes' in page:
+        for k in page['CommonPrefixes']:
+            folders.append(k['Prefix'][:-1].replace(f&quot;{prefix}/&quot;, &quot;&quot;))
+
+    # Extract files
+    if 'Contents' in page:
+        for obj in page['Contents']:
+            key = obj['Key']
+            # Ensure it's not the directory itself
+            if key != f&quot;{prefix}/&quot;:
+                files.append(key.replace(f&quot;{prefix}/&quot;, &quot;&quot;))
+
+
+# ---------- PART 3 ---------- #
+
+print(&quot;Folders:&quot;, folders)
+print(&quot;Files:&quot;, files)
+</code></pre>
+<div style="height: 20px;"></div>
+
+
+<p><strong>Explanation</strong></p>
+<p><strong>(Part 1)</strong> The primary function of this code is load our dataset starting from a given <code>prefix</code> and set up the necessary credentials for accessing the s3 bucket <code>cellpainting-gallery</code>. The actual retrieval of the data within a directory is done by the paginator which splits large datasets into smaller pieces called pages.</p>
+<p><strong>(Part 2)</strong> This code uses the list of pages we retrieved in part 1 and lists the contents of each page using a for-loop. Also note that we differentiate between files and folders and assign each item into the appropriate list for post-processing.</p>
+<p><strong>(Part 3)</strong> In this example part 3 of the code does not do much, here we print the names of all of the folders and files within the <code>prefix</code> directory of the s3 bucket.</p>
+<div style="height: 20px;"></div>
+
+
+<blockquote>
+<p><strong>Exercise 1</strong>  Change the code above to display the contents of a directory of your choosing.</p>
+</blockquote>
+<blockquote>
+<p><strong>Exercise 2</strong>  Add some lines to the part 2 code to count the number of files and folders and then add some lines in part 3 print the counts.</p>
+</blockquote>
+<p>Note that in a more useful program you might do some additional post-processing on certain files or folders. For example, maybe you found out that the nuclei channel data for each image in a imaging dataset was defective for whatever reason, you could delete all of the files or fix them using another software simply by extracting the channel information from the file names and fixing all of them in a for loop. This would reduce the amount of manual labor to zero.</p>
+<p>Recall the microscope image naming convention <code>r01c01f01p01-ch1sk1fk1fl1.TIFF</code>, we could automatically filter wells from the experiment or data associated with specific perturbations simply by using the file names and the AWS SDK. For example, typically we have a lookup table for drugs/perturbations and their associated plates and wells, this would allow for extremely efficient analyses workflows where we do not need all of the data.</p>
+<h2 id="dissecting-filenames-in-python-using-regular-expressions" >
+<div>
+    <a href="#dissecting-filenames-in-python-using-regular-expressions">
+        #
+    </a>
+    Dissecting Filenames in Python Using Regular Expressions
+</div>
+</h2>
+<p>Regular expressions are a programming tool which is used to extract user-defined patterns within a piece of text (string). Here we can easily exploit the naming convention being of the form <code>[a-z]+\d+</code></p>
+<p><img src="/images/rubular.png" alt="Sunset"></p>
+<div style="height: 20px;"></div>
+
+
+<p><strong>Explanation</strong></p>
+<p><strong>(+)</strong>      One or more occurrences</p>
+<p><strong>([a-z])</strong>  Lowercase letter</p>
+<p><strong>(\d)</strong>     Numbers 0-9</p>
+<div style="height: 20px;"></div>
+
+
+<p>Below is some Python code using the regular expression library to break down the image file names.</p>
+<pre><code>import re
+
+filename = &quot;r01c01f01p01-ch1sk1fk1fl1.TIFF&quot;
+
+# Remove the extension
+base_name = filename.replace(&quot;.TIFF&quot;, &quot;&quot;)
+
+# Split by '-'
+parts = base_name.split(&quot;-&quot;)
+
+# Extract individual parts
+prefix_parts = re.findall(r&quot;[a-z]+\d+&quot;, parts[0])
+suffix_parts = re.findall(r&quot;[a-z]+\d+&quot;, parts[1])
+
+print(&quot;Prefix parts:&quot;, prefix_parts)  # ['r01', 'c01', 'f01', 'p01']
+print(&quot;Suffix parts:&quot;, suffix_parts)  # ['ch1', 'sk1', 'fk1', 'fl1']
+</code></pre>
+<p>If you’re interested in learning more about regular expressions and how they work, please refer to the additional reading at the end.</p>
+<blockquote>
+<p><strong>Exercise 3</strong> Do some research online and determine a way to use the code I have provided to display the images corresponding to a specific well (in the form rXcY) of your choosing. Feel free to use AI tools if you are having a hard time.</p>
+</blockquote>
+<h2 id="some-final-remarks" >
+<div>
+    <a href="#some-final-remarks">
+        #
+    </a>
+    Some Final Remarks
+</div>
+</h2>
+<p>To review, in this tutorial you learned how to access data in the cloud using two different methods (CLI and SDK). It should be noted that here we primarily dealt with AWS resources but the procedures for other cloud platforms are very similar, most have their own CLIs and SDKs. Aside from the cloud resources you have also learned how to parse file hierarchies and extract essential information from filenames using regular expressions. These skills will be useful for future tutorials and any projects you work on in the future beyond this class so it is important that you fully understand everything covered in this tutorial before moving on.</p>
+<div style="height: 20px;"></div>
+
+
+<p><strong>Looking Ahead</strong></p>
+<p>In the upcoming tutorials you will learn more about more software for morphological profiling cellular imaging data and continue working with the JUMP-CP data. Beyond morphological profiling we will move into more of the technicalities behind the image processing algorithms and how you can construct your own morphological profiler. Thanks for reading until the end, I hope you enjoyed this tutorial!</p>
+<div style="height: 20px;"></div>
+
+
+<p><strong>Resources</strong></p>
+<p><a href="https://www.geeksforgeeks.org/write-regular-expressions/">Regular Expressions: GeeksforGeeks (Simple)</a></p>
+<p><a href="https://bakalian.cs.umd.edu/assets/notes/regex.pdf">Regular Expressions: Cliff Bakalian (Intermediate)</a></p>
+<div style="height: 20px;"></div>
+
+
+<p><strong>References</strong></p>
+<p>[1] S. N. Chandrasekaran et al., “JUMP Cell Painting dataset: morphological impact of 136,000 chemical and genetic perturbations,” Mar. 2023, doi: <a href="https://doi.org/10.1101/2023.03.23.534023">https://doi.org/10.1101/2023.03.23.534023</a>.</p>
+<p>[2] “Boto3 documentation — Boto3 Docs 1.16.56 documentation,” boto3.amazonaws.com. <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/index.html">https://boto3.amazonaws.com/v1/documentation/api/latest/index.html</a></p>
+        </div>
+
+    </article>
+
+    
+    
+
+    
+        
+        
+    
+
+    
+
+    
+        
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+        </main>
+        
+            <footer class="common-footer noselect">
+    
+    
+
+    <div class="common-footer-bottom">
+        
+
+        <div style="display: flex; align-items: center; gap:8px">
+            ©  2025
+            
+        </div>
+        <div style="display:flex;align-items: center">
+            
+            
+            
+            
+            
+            
+        </div>
+        <div>
+            Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/Junyi-99/hugo-theme-anubis2">Anubis2</a>.<br>
+            
+
+        </div>
+    </div>
+
+    <p class="h-card vcard">
+
+    <a href=https://bio-undergrad-student.github.io/ class="p-name u-url url fn" rel="me"></a>
+
+    
+
+    
+</p>
+
+</footer>
+
+        
+    </div>
+</body>
+</html>

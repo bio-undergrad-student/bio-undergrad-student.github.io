@@ -32,7 +32,7 @@
 &lt;p&gt;Move forward 3 steps → Move left 2 steps → Raise arm → Grab refrigerator door → Open refrigerator → Find strawberry → Grab strawberry → Put strawberry in basket → Close refrigerator door → Turn around → Move forward 2 steps → Move right 3 steps → Drop basket on target&lt;/p&gt;
 &lt;p&gt;This is basically just a sequence of steps that the robot must follow, this is a very simple example of an algorithm. In practice we would have to translate each step into a code version, but that is secondary to designing algorithms.&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/robot.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/robot.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;basic-coding-refresher&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#basic-coding-refresher&#34;&gt;
@@ -71,7 +71,7 @@ for i in range(n)
      print(&amp;quot;Hello World!&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here we have a for loop that runs in time proportional to the size of the input. In this case we say that the algorithm runs in $O(n)$ or &amp;ldquo;big O of n time&amp;rdquo;. This means the algorithm runtime grows in a linear fashion with respect to the input size much like the function $f(x) = x$. Below is a visual of the different common time complexities you may encounter when developing algorithms.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/bigo.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/bigo.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;basics&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#basics&#34;&gt;
@@ -103,7 +103,7 @@ for i in range(n)
 &lt;/h3&gt;
 &lt;p&gt;A searching task is exactly what it sounds like, generally our goal is to search for a particular element within a data structure which is what holds our data. In this part of the tutorial our main objective will be to find a particular number within a list. More formally this problem is defined as searching for a particular integer value within an array. Take the list below as an example&amp;hellip;&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/array.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/array.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;It is simple enough for us to determine if the number 5 is in the list, we can just look at it, for the computer it is a bit more complicated than that, we have to explicitly tell it how to know if a number is present. This is something we have to get used to.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -218,7 +218,7 @@ else
 &lt;p&gt;It is often the case that beginners struggle with algorithms puzzles/problems such as those found on popular websites like LeetCode. The struggle primarily comes from a lack of a developed algorithms toolbox, the truth is that inventing a complicated algorithm just to solve a puzzle is not ideal. As we expand our knowledge of algorithmic techniques, data structures, and types of problems we find that some of these puzzles are trivial once you know the technique it is testing. Therefore your goal should be to learn as many techniques as possible to have the easiest time solving an algorithms problem.  In this tutorial we will cover two of the most popular techniques we see in algorithms development along with some examples and exercises. The two techniques being covered are divide and conquer and greedy, these can be often be applied to a wide range of problems regardless of domain.&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;Like all tutorials we will start with an example that incorporates these techniques. For the sake of this example suppose you are a working as part of a team of marmots whose diets are made up entirely of strawberries, they are also having a hard time working out the logistics of their food supply. This means that they are distributing strawberries to marmots at random, the problem with this approach is that small marmots are getting large strawberries (surplus) and large marmots are getting small strawberries (shortage). Thus, small marmots are contributing to a large amount of food waste and large marmots are going hungry, how can we use algorithms to solve this problem quickly as the marmots are very hungry?&lt;/p&gt;
-&lt;figure&gt;&lt;img src=&#34;http://localhost:1313/images/marmot.jpg&#34;
+&lt;figure&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/marmot.jpg&#34;
          alt=&#34;Example Image&#34; width=&#34;300px&#34;/&gt;
 &lt;/figure&gt;
 
@@ -231,15 +231,15 @@ else
 &lt;/div&gt;
 &lt;/h3&gt;
 &lt;p&gt;Divide and conquer is a problem solving approach/framework which is a bit self explanatory. The technique works by splitting our input in smaller chunks, solving the smaller instances of the problem and then combine the results to solve the full problem. Now this approach cannot be applied to every problem, there are some limitations such as independence that we must be cautious of. Independence in this context refers to the idea that each one of our sub-problems, after splitting the input data, has no relation at all to the other sub-problems. This may become a little more clear once we go over the following example for sorting a list of integers. Suppose we are given the list below…&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/lilarray.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/lilarray.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;p&gt;We want to sort this list under a time constraint but the size of the input array is far too large to be done using our sorting algorithm we learned in part 1, how do we address this problem? Let’s apply the divide and conquer problem solving approach to this!&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Exercise 1&lt;/strong&gt; Come up with three ideas of how we can split our input array in order to solve it more efficiently.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Great! Now the splitting of the array we are interested in is depicted below, here we do the splitting in half each time until we can’t split any further.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/dand1.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/dand1.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;p&gt;At this point we have a bunch of arrays of size 1 that are each in sorted order, why? Any list of one element is automatically in sorted order because there is only one element. Now how will this help us sort the entire list, we haven’t done any type of sorting so far? The trick comes in when we combine the sub-lists, we will sort them as we reconstruct a list of the original size. Take a look at the example below which completes one step of this reconstruction&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/dand2.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/dand2.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Here we take all of our lists of size 1 and construct $\frac{n}{2}$ lists of size 2 which are in sorted order. The sorting happens when we insert our elements into the list of size 2, the smallest element comes first and then the larger element. The algorithm will continue this procedure until we end up with a single list of size $n$, we call this algorithm Merge Sort. The algorithm makes use of a recursive function, meaning a function that calls itself over and over until some base case is reached, in this case we continue calling the &lt;code&gt;MERGE-SORT&lt;/code&gt; function as long as our lists have size greater than 1. Below is some code for the Merge Sort algorithm and the complete reconstruction of the list.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;MERGE-SORT(array, left, right):
     if left &amp;lt; right:
@@ -252,7 +252,7 @@ else
         # Merge the sorted halves
         MERGE(array, left, mid, right)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/dand3.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/dand3.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;p&gt;By using the divide and conquer approach we have now solved the sorting problem much faster than we could before, lets analyze to confirm.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Splitting Operation:&lt;/strong&gt; The big question is how do we represent this splitting and combining operation, clearly this doesn’t touch each element once so it’s not $O(n)$ nor is it doing constant $O(1)$ work, it’s something in between. We call this behavior $O(log(n))$, why? First we must understand what it is that the log function does, think about the following equation&amp;hellip;&lt;/p&gt;
 &lt;p&gt;$$log_2(n) = c \iff 2^c =n$$&lt;/p&gt;
@@ -268,7 +268,7 @@ else
 &lt;/div&gt;
 &lt;/h3&gt;
 &lt;p&gt;The greedy approach to algorithm development is where we make a greedy decision in order to accomplish some task. In this context greedy refers to always taking as much as possible of some quantity. As an example we will go through the well known coin change problem. This is a problem where we are given a set of coin denominations (e.g. 1 cent, 5 cent, 10 cent) and we are asked what is the minimum number of coins required to make a certain amount of change. For example, 35 cents change can be made from 3x10 cent coins and 1x5 cent coin. In this case the greedy approach can be used to find the minimum number of coins required to make change for 35 cents. We simply take as many 10 cent coins as possible followed up by as many 5 cent coins as possible, this gives us 35 cents using 4 coins, any other combination would use more coins. As we can see we make a greedy decision at every step, always take as much as we can.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/coins.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/coins.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Now the problem with the greedy approach is that it doesn’t always work&amp;hellip;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Exercise 2&lt;/strong&gt; Can you find a counterexample for the greedy algorithm for the coin change problem?&lt;/p&gt;
@@ -362,7 +362,7 @@ else
     Background
 &lt;/div&gt;
 &lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/island.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/island.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Did you know that the soft coral capital of the world, Fiji, is made 90% of water and has over 300 tropical islands! Unfortunately we will not be doing image analysis on the islands of Fiji. In this tutorial we will go over the image processing software Fiji. “Fiji is just ImageJ” is an open-source image processing software and extension of the original ImageJ developed at the National Institutes of Health (NIH). Fiji is used extensively in image analysis for microscopy images in 2D and 3D and is used in labs across the world to analyze phenotypic changes in cells at scale. Today you will have the opportunity to install this software on your computer and run through some basic analyses using some of the preset datasets within Fiji. Additionally, we will provide a mini-project in the next post which will help you familiarize yourself more with the ImageJ interface and identify potential applications in a field of your interest.&lt;/p&gt;
 &lt;h2 id=&#34;installation&#34; &gt;
 &lt;div&gt;
@@ -377,7 +377,7 @@ else
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/downloads.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/downloads.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
@@ -386,7 +386,7 @@ else
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/bioformats.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/bioformats.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
@@ -402,12 +402,12 @@ else
 &lt;p&gt;Fiji comes with many preset data samples that we can use to test out some of the features of this software (&lt;code&gt;File&lt;/code&gt; →  &lt;code&gt;Open Samples&lt;/code&gt;). By the end of this tutorial you will learn how to do some basic preprocessing and morphological analysis on cellular imaging data in Fiji.&lt;/p&gt;
 &lt;p&gt;Now we will go over some of the basics about loading data into Fiji. It is important to understand how image files are loaded in and how you can manipulate these files effectively.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Lookup Tables (LUT)&lt;/strong&gt; are how we will go about applying color to a given image, find the “LUT” tab on Fiji and you will see a wide selection of choices to be used in many applications. For the most part we are only interested in solid colors such as red, green, and blue. It is also possible to create a custom LUT but that is more advanced, for now just know that it is something you are able to do. The term lookup table is used here because we are looking up values within a table of values which maps one color in your original image to another color defined in the table.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/LUT.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/LUT.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Stacks&lt;/strong&gt; are used to retain multiple spatially or temporally related images taken by the microscope. Below are some examples of what each of these may look like using the “Mitosis {5D Stack}” sample from the default Fiji data shown below.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/mitosis.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/mitosis.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
@@ -416,7 +416,7 @@ else
 
 
 &lt;p&gt;&lt;strong&gt;Composite Images&lt;/strong&gt; are mostly seen in florescence microscopy images and allows us to combine multiple color channels and view various cellular features at once. An example of this would be the “florescent cells” sample. Here we have three channels in RGB colors, the red (Texas Red X-Phalloidin) shows F-Actin, green (Goat anti-mouse IgG) shows tubulin, and blue (DAPI) shows nuclei. In practice we will name the images based on the stain and cellular feature so it’s important to know them well.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/rgbcells.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/rgbcells.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
@@ -431,7 +431,7 @@ else
 &lt;/h2&gt;
 &lt;p&gt;In this section we will cover some basic filtering steps that can help reduce noise and obstructions in imaging data, this is typically the first step of a larger image processing pipeline.&lt;/p&gt;
 &lt;p&gt;Max/Min/Median filtering is a technique where we take a patch of the image (kernel) and compute the max/min/median of every pixel color value in that patch and then replace the center value with the max/min/median value. The median filter has the effect that outlier values (very dark or light colors)  will get filtered out, this reduces noise and retains edges better than the averaging (mean) filter because we are not computing a new color value but using an existing one. We can see the difference in how edges are conserved using the boat sample with radius 10.0 Left=Median, Right=Mean.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/medianfilter.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/medianfilter.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Exercise 1&lt;/strong&gt; Try applying median filtering with varying radius to an image of your choice&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -440,7 +440,7 @@ else
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Remark:&lt;/strong&gt; How do we select the radius when applying filters to images? This depends on what your objectives are and the type of image you are analyzing (feature size, noise, etc.), typically we start small and determine a radius size experimentally.&lt;/p&gt;
 &lt;p&gt;Typically a pixel within an image is represented by three numerical values which tell us the ratio of red (R), green (G), and blue (B) that make up a certain color. So what exactly does it mean to take the maximum or minimum of these values? In the case of Fiji we are actually isolating each channel, applying the filter, then combining it again. Cool, right? In later tutorials we will cover more complicated filtering techniques which make use of mathematical transformations which can be used for better denoising and feature extraction.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/colors.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/colors.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;segmentation&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#segmentation&#34;&gt;
@@ -453,7 +453,7 @@ else
 &lt;p&gt;Lets take for example the Blobs sample image. We can see that there is a textured background which can interfere with our analyses, in order to remove this we will have to use the rolling ball background subtraction algorithm. To apply this, select &lt;code&gt;Process&lt;/code&gt; → &lt;code&gt;Subtract Background&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Remark:&lt;/strong&gt; Using this algorithm may cause image artifacts or unwanted effects so proceed with caution, for our case in purposes we can disregard any artifacting.&lt;/p&gt;
 &lt;p&gt;After the background is removed or mitigated we can start trying to segment our features of interest using thresholding. Within Fiji we have many different options for thresholding which can be accessed through the (&lt;code&gt;Image&lt;/code&gt; → &lt;code&gt;Adjust&lt;/code&gt;) menu. For the time being we won’t concern ourselves with how thresholding works and that will be left for a more in depth future tutorial. The standard threshold option will allow you to manually analyze an intensity histogram which allows us to separate the image based on feature and background color. The problem with this approach is that it requires quite a bit of human thinking and reproducing the result might be difficult.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/manual_thresh.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/manual_thresh.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
@@ -461,7 +461,7 @@ else
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/autothresh_2.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/autothresh_2.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
@@ -479,7 +479,7 @@ else
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/set_measurements.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/set_measurements.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
@@ -488,12 +488,12 @@ else
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/segmentation.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/segmentation.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
 &lt;p&gt;A common error that arises in the analysis stage is that the image is inverted so we end up analyzing the background on accident. It can get a bit confusing especially when messing with the LUTs. It is important to note that the setting (&lt;code&gt;Edit&lt;/code&gt; → &lt;code&gt;Invert&lt;/code&gt;) is different from inverting the LUT, and this is the most common cause of error in the Analyze Particles function. Make sure that when you analyze the particles that the output table has a reasonable number of entries and that the correct areas are being overlay masked in the binary image.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/error.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/error.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;some-final-remarks&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#some-final-remarks&#34;&gt;
@@ -511,6 +511,237 @@ else
 
 &lt;p&gt;&lt;strong&gt;Relevant Resources&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/hallvaaw/awesome-biological-image-analysis&#34;&gt;Awesome Biological Image Analysis&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Cloud Computing in the Biosciences :cloud:</title>
+      <link>/posts/cloud/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/cloud/</guid>
+      <description>&lt;p&gt;In this tutorial you will learn the basics of data storage and computation in the cloud.&lt;/p&gt;
+&lt;p&gt;When we refer to cloud computing/storage this could mean many different things. An example that almost everyone is familiar with is Google Drive, this is an example of a cloud storage service hosted by Google, this is different from Google’s primary cloud computing service called Google Cloud Platform (GCP). Many technology companies have their own versions of cloud computing services and in this tutorial we will be focusing primarily on Amazon Web Services (AWS) but at the end of the day all of these services are very similar.&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/plane.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;cloud-resources&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#cloud-resources&#34;&gt;
+        #
+    &lt;/a&gt;
+    Cloud Resources
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;In the field of computational biology, researchers typically use their own computers to do their work, this could be a laptop, desktop, or even a high-performance computing cluster (supercomputer). As of recent there has been a push by a number of organizations to switch over to cloud resources, although this is more common in industry workplaces, you may still come across cloud computing in academic research facilities.  A prime example of this would be a resource coming out of the Broad Institute, a biomedical research facility, in collaboration with Microsoft called Terra.bio. Terra is a platform that promotes cloud computing as a way to increase collaboration through data and code sharing among biologists and computer scientists.&lt;/p&gt;
+&lt;p&gt;The remainder of this tutorial will be dedicated to introducing various software development tools offered by these cloud computing resources in order to help you learn cellular imaging data analysis on the cloud, preparing you for any future career where cloud computing is a required skill.&lt;/p&gt;
+&lt;p&gt;It is first important to understand how we are able to store our data on the cloud, we can show this through the popular AWS s3 bucket. s3 is known as a simple storage bucket which is used to back up data or for general storage purposes, these buckets are actually drives located in massive data centers run by Amazon. The same can be said about actual cloud computing resources such as Google Colab, the computers that allow you to run code (CPUs/GPUs) are located in some remote data center and you essentially connect to them as a virtual machine.&lt;/p&gt;
+&lt;h2 id=&#34;downloadingviewing-data-from-the-cloud&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#downloadingviewing-data-from-the-cloud&#34;&gt;
+        #
+    &lt;/a&gt;
+    Downloading/Viewing Data from the Cloud
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Now without a specified user interface like Google Drive it is not immediately obvious how one can access cloud resources to store or download data.&lt;/p&gt;
+&lt;p&gt;Recall from project 1 that we were able to download the JUMP-CP data from a resource called Quilt, this is a software that takes the complicated task of managing specifically AWS cloud data and simplifies it but providing a user interface. It is important to note that not all datasets or workplaces may subscribe to Quilt or related data management platforms, in this case you will have to access the cloud using a different method we will cover here.&lt;/p&gt;
+&lt;h2 id=&#34;aws-command-line-interface-cli&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#aws-command-line-interface-cli&#34;&gt;
+        #
+    &lt;/a&gt;
+    AWS Command Line Interface (CLI)
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Another approach to accessing cloud storage is through the command line, to do this you must first download the AWS CLI on your computer. The following website will provide instructions on how you can download and get started with the AWS CLI depending on your operating system.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html&#34;&gt;https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The command line, when used correctly, can be a very powerful resource which allows users to run several software tools which do not have user interfaces. For the AWS CLI we typically start the program with the &lt;code&gt;aws&lt;/code&gt; command, when typed alone it will give you several options including a help page and the general format for a command. Here is an example of a aws command to list the contents of the JUMP-CP dataset, this command takes some time to run so don&amp;rsquo;t worry if it is slow.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;aws s3 ls --no-sign-request s3://cellpainting-gallery/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Explanation&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(aws)&lt;/strong&gt; This invokes the aws program.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(s3)&lt;/strong&gt; Specifies that we want to access an s3 bucket.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(ls)&lt;/strong&gt; Linux command that allows us to list all of the files and folders in a directory&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(no-sign-request)&lt;/strong&gt; Is used when accessing public resources, skips authentication process&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(s3://directory/)&lt;/strong&gt; This is the directory/folder you wish to access&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;There are also more commands to work with the files and folders in s3 buckets including copying and moving data, these are almost identical to the previous command except we change the (ls) parameter to the appropriate Linux command. Below are some more examples&amp;hellip;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Download File
+aws s3 cp --no-sign-request s3://cellpainting-gallery/.../example.TIFF ./downloads/
+
+
+# Download Folder
+aws s3 cp --no-sign-request s3://cellpainting-gallery/.../example/ ./downloads/ --recursive
+
+
+# Download Whole Bucket
+aws s3 sync --no-sign-request s3://cellpainting-gallery/ ./downloads/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;cloud-software-development-kits-sdks&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#cloud-software-development-kits-sdks&#34;&gt;
+        #
+    &lt;/a&gt;
+    Cloud Software Development Kits (SDKs)
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;A more programmatic approach to access the cloud is through a Software Development Kit (SDK) i.e. a set of tools and libraries which can be used in application development. AWS  has their own SDK which can be loaded into a Python programming environment which allows users to download and upload data seamlessly while they are working with it. In this tutorial we will be using the AWS SDK which is called boto3. This approach will give us a lot more flexibility and will allow us to make very specific queries that we are interested in.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/SDK.jpeg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;The benefit to using a SDK like boto3 is that you can now access your cloud data within a cloud-based programming environment like Google Colab and keeping all of your work (code/analyses) on the cloud without having to download anything on your computer. It is not difficult to see why cloud computing is a major upgrade for a lot of people, especially those in the biological sciences who will be collaborating and sharing data/documents frequently.&lt;/p&gt;
+&lt;h2 id=&#34;getting-started-with-boto3&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#getting-started-with-boto3&#34;&gt;
+        #
+    &lt;/a&gt;
+    Getting Started With boto3
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;To download boto3 to your Google Colab notebook we will use the following command&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pip install boto3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next you need to make the necessary libraries are loaded by entering the following three lines of code&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import boto3
+from botocore import UNSIGNED
+from botocore.config import Config
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Explanation&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Line 1 imports the main boto3 SDK and lines 2 and 3 import core (botocore) functionalities that allow us to access public cloud data without credentials/login information.&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;For the first example you will learn how to use the boto3 SDK for basic tasks such as navigating the file hierarchy of the JUMP-CP data from project 1.&lt;/p&gt;
+&lt;p&gt;In order to access the data folders from the colab we need to set up an s3 object so that we have access without an AWS account credentials. It is okay to copy-paste, but make sure to understand what is happening in the code.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# ---------- PART 1 ---------- #
+
+prefix = &#39;&#39; #e.g. &#39;cpg0016-jump/source_1/images/Batch1_20221004/images&#39;
+s3 = boto3.client(&#39;s3&#39;, config=Config(signature_version=UNSIGNED))
+paginator = s3.get_paginator(&#39;list_objects_v2&#39;)
+pages = paginator.paginate(
+    Bucket=&#39;cellpainting-gallery&#39;,
+    Delimiter=&#39;/&#39;,
+    Prefix=f&amp;quot;{prefix}/&amp;quot;)
+
+
+# ---------- PART 2 ---------- #
+
+folders = []
+files = []
+
+for page in pages:
+    # Extract folders
+    if &#39;CommonPrefixes&#39; in page:
+        for k in page[&#39;CommonPrefixes&#39;]:
+            folders.append(k[&#39;Prefix&#39;][:-1].replace(f&amp;quot;{prefix}/&amp;quot;, &amp;quot;&amp;quot;))
+
+    # Extract files
+    if &#39;Contents&#39; in page:
+        for obj in page[&#39;Contents&#39;]:
+            key = obj[&#39;Key&#39;]
+            # Ensure it&#39;s not the directory itself
+            if key != f&amp;quot;{prefix}/&amp;quot;:
+                files.append(key.replace(f&amp;quot;{prefix}/&amp;quot;, &amp;quot;&amp;quot;))
+
+
+# ---------- PART 3 ---------- #
+
+print(&amp;quot;Folders:&amp;quot;, folders)
+print(&amp;quot;Files:&amp;quot;, files)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Explanation&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(Part 1)&lt;/strong&gt; The primary function of this code is load our dataset starting from a given &lt;code&gt;prefix&lt;/code&gt; and set up the necessary credentials for accessing the s3 bucket &lt;code&gt;cellpainting-gallery&lt;/code&gt;. The actual retrieval of the data within a directory is done by the paginator which splits large datasets into smaller pieces called pages.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(Part 2)&lt;/strong&gt; This code uses the list of pages we retrieved in part 1 and lists the contents of each page using a for-loop. Also note that we differentiate between files and folders and assign each item into the appropriate list for post-processing.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(Part 3)&lt;/strong&gt; In this example part 3 of the code does not do much, here we print the names of all of the folders and files within the &lt;code&gt;prefix&lt;/code&gt; directory of the s3 bucket.&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Exercise 1&lt;/strong&gt;  Change the code above to display the contents of a directory of your choosing.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Exercise 2&lt;/strong&gt;  Add some lines to the part 2 code to count the number of files and folders and then add some lines in part 3 print the counts.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Note that in a more useful program you might do some additional post-processing on certain files or folders. For example, maybe you found out that the nuclei channel data for each image in a imaging dataset was defective for whatever reason, you could delete all of the files or fix them using another software simply by extracting the channel information from the file names and fixing all of them in a for loop. This would reduce the amount of manual labor to zero.&lt;/p&gt;
+&lt;p&gt;Recall the microscope image naming convention &lt;code&gt;r01c01f01p01-ch1sk1fk1fl1.TIFF&lt;/code&gt;, we could automatically filter wells from the experiment or data associated with specific perturbations simply by using the file names and the AWS SDK. For example, typically we have a lookup table for drugs/perturbations and their associated plates and wells, this would allow for extremely efficient analyses workflows where we do not need all of the data.&lt;/p&gt;
+&lt;h2 id=&#34;dissecting-filenames-in-python-using-regular-expressions&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#dissecting-filenames-in-python-using-regular-expressions&#34;&gt;
+        #
+    &lt;/a&gt;
+    Dissecting Filenames in Python Using Regular Expressions
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Regular expressions are a programming tool which is used to extract user-defined patterns within a piece of text (string). Here we can easily exploit the naming convention being of the form &lt;code&gt;[a-z]+\d+&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/rubular.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Explanation&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(+)&lt;/strong&gt;      One or more occurrences&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;([a-z])&lt;/strong&gt;  Lowercase letter&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(\d)&lt;/strong&gt;     Numbers 0-9&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Below is some Python code using the regular expression library to break down the image file names.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import re
+
+filename = &amp;quot;r01c01f01p01-ch1sk1fk1fl1.TIFF&amp;quot;
+
+# Remove the extension
+base_name = filename.replace(&amp;quot;.TIFF&amp;quot;, &amp;quot;&amp;quot;)
+
+# Split by &#39;-&#39;
+parts = base_name.split(&amp;quot;-&amp;quot;)
+
+# Extract individual parts
+prefix_parts = re.findall(r&amp;quot;[a-z]+\d+&amp;quot;, parts[0])
+suffix_parts = re.findall(r&amp;quot;[a-z]+\d+&amp;quot;, parts[1])
+
+print(&amp;quot;Prefix parts:&amp;quot;, prefix_parts)  # [&#39;r01&#39;, &#39;c01&#39;, &#39;f01&#39;, &#39;p01&#39;]
+print(&amp;quot;Suffix parts:&amp;quot;, suffix_parts)  # [&#39;ch1&#39;, &#39;sk1&#39;, &#39;fk1&#39;, &#39;fl1&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you’re interested in learning more about regular expressions and how they work, please refer to the additional reading at the end.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Exercise 3&lt;/strong&gt; Do some research online and determine a way to use the code I have provided to display the images corresponding to a specific well (in the form rXcY) of your choosing. Feel free to use AI tools if you are having a hard time.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;some-final-remarks&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#some-final-remarks&#34;&gt;
+        #
+    &lt;/a&gt;
+    Some Final Remarks
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;To review, in this tutorial you learned how to access data in the cloud using two different methods (CLI and SDK). It should be noted that here we primarily dealt with AWS resources but the procedures for other cloud platforms are very similar, most have their own CLIs and SDKs. Aside from the cloud resources you have also learned how to parse file hierarchies and extract essential information from filenames using regular expressions. These skills will be useful for future tutorials and any projects you work on in the future beyond this class so it is important that you fully understand everything covered in this tutorial before moving on.&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Looking Ahead&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In the upcoming tutorials you will learn more about more software for morphological profiling cellular imaging data and continue working with the JUMP-CP data. Beyond morphological profiling we will move into more of the technicalities behind the image processing algorithms and how you can construct your own morphological profiler. Thanks for reading until the end, I hope you enjoyed this tutorial!&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Resources&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.geeksforgeeks.org/write-regular-expressions/&#34;&gt;Regular Expressions: GeeksforGeeks (Simple)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://bakalian.cs.umd.edu/assets/notes/regex.pdf&#34;&gt;Regular Expressions: Cliff Bakalian (Intermediate)&lt;/a&gt;&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;[1] S. N. Chandrasekaran et al., “JUMP Cell Painting dataset: morphological impact of 136,000 chemical and genetic perturbations,” Mar. 2023, doi: &lt;a href=&#34;https://doi.org/10.1101/2023.03.23.534023&#34;&gt;https://doi.org/10.1101/2023.03.23.534023&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;[2] “Boto3 documentation — Boto3 Docs 1.16.56 documentation,” boto3.amazonaws.com. &lt;a href=&#34;https://boto3.amazonaws.com/v1/documentation/api/latest/index.html&#34;&gt;https://boto3.amazonaws.com/v1/documentation/api/latest/index.html&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -561,7 +792,7 @@ else
 
 
 &lt;p&gt;For batch_1 the channel mappings are as follows, these are the standard for the cell painting assay&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/cellpainting.png&#34; alt=&#34;Sunset&#34;&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/cellpainting.png&#34; alt=&#34;Sunset&#34;&gt;
 &lt;strong&gt;Figure courtesy of [2]&lt;/strong&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
@@ -630,16 +861,6 @@ else
 &lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;[1] S. N. Chandrasekaran et al., “JUMP Cell Painting dataset: morphological impact of 136,000 chemical and genetic perturbations,” Mar. 2023, doi: &lt;a href=&#34;https://doi.org/10.1101/2023.03.23.534023&#34;&gt;https://doi.org/10.1101/2023.03.23.534023&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;[2] M.-A. Bray et al., “Cell Painting, a high-content image-based assay for morphological profiling using multiplexed fluorescent dyes,” Nature Protocols, vol. 11, no. 9, pp. 1757–1774, Aug. 2016, doi: &lt;a href=&#34;https://doi.org/10.1038/nprot.2016.105&#34;&gt;https://doi.org/10.1038/nprot.2016.105&lt;/a&gt;.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Random</title>
-      <link>/posts/random/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/random/</guid>
-      <description>&lt;p&gt;kjsfnjdnknjfnjsfdjksdfnksdfnksdkjsfdnjsdfnksdfnksfdnkj&lt;/p&gt;
-</description>
     </item>
     
   </channel>
