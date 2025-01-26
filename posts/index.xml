@@ -745,6 +745,339 @@ print(&amp;quot;Suffix parts:&amp;quot;, suffix_parts)  # [&#39;ch1&#39;, &#39;s
     </item>
     
     <item>
+      <title>High-Throughput Cellular Image Analysis With CellProfiler :dash:</title>
+      <link>/posts/cellprofiler/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/cellprofiler/</guid>
+      <description>&lt;p&gt;In this tutorial you will be introduced to the morphological profiling tool CellProfiler and some post-processing approaches.&lt;/p&gt;
+&lt;h2 id=&#34;background&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#background&#34;&gt;
+        #
+    &lt;/a&gt;
+    Background
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;There are many cases when we want to analyze thousands of cellular images such as when we do a large drug or CRISPR screen. Quantifying the effects that many drugs or gene perturbations has on cells can be challenging, this is why we use software such as Fiji. However, when we are screening thousands of drugs, we cannot analyze the resulting images manually as we did in project 1, it would take way too long. This is the same realization that Anne Carpenter had when she created the vision for CellProfiler.&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/cell.jpeg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;CellProfiler was first released by scientists at the Whitehead Institute for Biomedical Research in 2006,  it was originally written in the MATLAB programming language but was eventually re-implemented in Python. The main purpose of CellProfiler was to analyze image data from high-content screening and make thousands of measurements at the cellular level. The CellProfiler philosophy is ‘measure everything, ask questions later’ which can be very beneficial when working with lots of data. Much like Fiji, CellProfiler supports the Bio-Formats library as well as many of the same image adjustments. Additionally it supports more sophisticated classification using deep learning and provides dedicated preprocessing modules.&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/pipeline.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;installation-and-setup&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#installation-and-setup&#34;&gt;
+        #
+    &lt;/a&gt;
+    Installation and Setup
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;On Windows and Mac operating systems the CellProfiler is very simple, download the installer using the following link &lt;a href=&#34;https://cellprofiler.org/releases&#34;&gt;CellProfiler&lt;/a&gt; and install. If you’re on a device running Linux it’s going to be a little more involved using a Conda environment follow this link to learn more &lt;a href=&#34;https://github.com/CellProfiler/CellProfiler/wiki/Source-installation-(Linux)&#34;&gt;Linux Installation Instructions&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Once CellProfiler is up and running, you are first met with the a very plain user interface similar to Fiji. We will run through two examples using some of the default data, head over to the this link &lt;a href=&#34;https://cellprofiler.org/examples&#34;&gt;CellProfiler Example Data&lt;/a&gt; and download the files required for the fruit fly cells and the object tracking.&lt;/p&gt;
+&lt;h2 id=&#34;examples&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#examples&#34;&gt;
+        #
+    &lt;/a&gt;
+    Examples
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;We are now going to go over the two examples you just downloaded, after familiarizing yourself with simple functions and pipelines we will go into how you can make your own. Inside each example folder you will be met with two key pieces of information, first a CellProfiler pipeline file &lt;code&gt;.cppipe&lt;/code&gt; and then the data itself.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Setting Default Output&lt;/strong&gt;
+When running pipelines you can automatically save all of the data from an analysis, when dealing with high throughput experiments this data can be become very large. To ensure you are saving all of your data in the correct place check &lt;code&gt;Output Settings&lt;/code&gt; on the bottom left and make sure that you select a convenient location to save all of the outputs.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Automated Image Analysis Using Pipelines&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Now that you have the set the output we are ready to analyze some imaging data. There are two primary steps when doing an analysis, loading the pipeline file and loading the data. Later we will go into more detail on how you can develop your own pipelines or where you can find more.&lt;/p&gt;
+&lt;p&gt;Loading Pipeline: To load the pipeline into your workspace navigate to &lt;code&gt;File&lt;/code&gt; -&amp;gt; &lt;code&gt;Import Pipeline&lt;/code&gt; -&amp;gt; &lt;code&gt;From File&lt;/code&gt; and find the .cppipe file in the folder we downloaded.&lt;/p&gt;
+&lt;p&gt;Loading Data: The pipeline will load all of the tasks or analyses we are doing on the images, not the images themselves. So now you want to import the images we will use for this analysis by dragging and dropping them in the main menu from the folder we downloaded earlier.&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Exercise 1&lt;/strong&gt; Now try it yourself, use the fruit fly pipeline and data we download earlier and run the analysis on CellProfiler&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Exercise 2&lt;/strong&gt; Let’s do another example, this time with time-lapse data for object tracking.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;These two examples show how powerful CellProfiler is for analyzing many images at once. But as you may have noticed, it can take a while to run these pipelines. If you are interested in learning more about what exactly the measurements mean you can take a look at this resource &lt;a href=&#34;https://cellprofiler-manual.s3.amazonaws.com/CellProfiler-3.0.0/modules/measurement.html#measureobjectintensitydistribution&#34;&gt;From CellProfiler Documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/measurements.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you don’t have the time to look at all of the measurements, here is a small preview using &lt;code&gt;MeasureObjectIntensityDistribution&lt;/code&gt;, the diagram above describes exactly what is being measured by this module. It is remarkable how CellProfiler can make this many measurements all at once. However, it also makes one think whether or not all of these measurements are necessary. We will speak on this problem in future tutorials.&lt;/p&gt;
+&lt;h2 id=&#34;morphological-profiling-at-scale&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#morphological-profiling-at-scale&#34;&gt;
+        #
+    &lt;/a&gt;
+    Morphological Profiling at Scale
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Notice that unlike Fiji, we can’t really analyze a single image at our leisure, we must create a pipeline in order to analyze an image. For this reason CellProfiler is typically preferred when analyzing large datasets where we want to apply the same kind of analysis to all of our data. In cases where the dataset is small or we want to apply different kinds of analyses to individual images in a dataset, Fiji might be easier to use.&lt;/p&gt;
+&lt;h3 id=&#34;pipeline-design&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#pipeline-design&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Pipeline Design
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;It is rare that the type of analysis we want to do on real lab data will be readily available online. For this reason many researchers working on imaging will develop their own CellProfiler pipelines to fit the specific study they are working on. &lt;a href=&#34;https://cellprofiler.org/published-pipelines&#34;&gt;Here&lt;/a&gt; is a neat resource, an official list of published pipelines that have been used in scientific studies in a diverse range of application areas. Unlike the examples from earlier, these downloads don’t come with the data from the study but it is still a useful in learning which modules are useful for which studies.&lt;/p&gt;
+&lt;p&gt;Next we will familiarize ourselves with some of the classes of modules that are offered by CellProfiler.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;File Processing&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;These modules are used either when you want to load data for usage or export data and save it to your files or a database.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Image Processing&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The image processing modules are, for the most part, very similar to those found on the ImageJ/Fiji Image/Process tabs. Put simply, these are all modules that apply to an image as a whole. Upon adding one of these modules you will be met with additional options to including input, algorithm, output, and some miscellaneous file settings.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Object Processing&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In CellProfiler we also have modules for individual objects within an image, this means that these apply to each object (cells, nuclei, organelles, etc.). These modules are used to do the actual identification/classification of objects or adjusting the size or attributes of those objects e.g. masking certain objects. To create objects, use the following functions&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;IdentifyPrimaryObjects&lt;/code&gt; Detects the smallest objects, such as nuclei.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;IdentifySecondaryObjects&lt;/code&gt; Expands primary objects to identify regions like whole cells.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;IdentifyTertiaryObjects&lt;/code&gt; Identifies regions by subtracting one object from another (e.g., cytoplasm = cell - nucleus).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/egg.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Measurement&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;These modules will take measurements of your objects, this is very similar to the &lt;code&gt;Analyze&lt;/code&gt; tab in ImageJ/Fiji. If you remember the examples from earlier, the measurements that we made on the fruit fly cell images were very detailed. There are many options for the types of measurements being made, there are some that are taken in reference to the entire image and those which will correspond to individual objects.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Data Tools&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The data tools in CellProfiler refer to any type of data visualization or computation of statistics both of which we also got to see in the examples. For the fruit fly example we had a bar graph displaying the various object information like counts and size.&lt;/p&gt;
+&lt;h3 id=&#34;testing-and-debugging&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#testing-and-debugging&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Testing and Debugging
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;Before implementing your own pipeline it is important that you are aware of the &lt;code&gt;Test Mode&lt;/code&gt; offered by CellProfiler. This feature will be your best friend when developing pipelines as it is unlikely that you will get them to work perfectly the first time. The main function of the test mode is to run your pipeline on some test data and get a preview of the analysis results without saving everything. By using test mode you can tweak the module specifications ever so slightly and quickly see the effect on the result.&lt;/p&gt;
+&lt;p&gt;If you have programmed before in languages such as Java, C, or C++ you may be familiar with the Java debugger (JDB) or GNU Debugger (GDB). These are powerful tools that allow you to run code line by line with the purpose of helping the programmer find the line where errors are arising. CellProfiler’s test mode will allow you to run your pipeline in a very similar way, i.e. instead of code we will run individual modules from the pipeline one by one to make sure we are getting a correct output at every stage. This was never a problem in Fiji as we are already running commands independently but when our objective becomes to create a long string of commands i.e. a pipeline then it becomes a little harder determine where problems are arising.&lt;/p&gt;
+&lt;p&gt;CellProfiler’s test mode teaches us a very valuable lesson applicable to any type of program development, and that is how to break down your code to fix bugs. If you are ever stuck and your code is not running, the exact same approach should be taken.&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Exercise 3&lt;/strong&gt; Implement a simple pipeline in CellProfiler to identify cell count, area, shape properties in the images you selected from project 1.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Looking Back&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Take a look at the input and output of a pipeline for the JUMP-CP data. Some of the pipeline files can be found &lt;a href=&#34;https://github.com/broadinstitute/imaging-platform-pipelines/tree/master/JUMP_production&#34;&gt;HERE&lt;/a&gt;, and another useful exercise is to go back to the JUMP-CP Quilt database found &lt;a href=&#34;https://open.quiltdata.com/b/cellpainting-gallery/tree/&#34;&gt;HERE&lt;/a&gt; and take a look around at the &lt;code&gt;Analysis&lt;/code&gt; folders, these folders contain the CellProfiler outputs for each and every image in the database. It is incredible to think about the scale and size of this database and how many CSV files there are in this AWS bucket. Manually analyzing these images without CellProfiler would be impossible so this would be a perfect example of when a software like this is game-changing.&lt;/p&gt;
+&lt;p&gt;There are still many problems in cellular biology where there is no efficient computational workflow that exists for large datasets. This example shows the applicability and benefits of not only knowing how to use existing software but being able to engineer your own.&lt;/p&gt;
+&lt;h2 id=&#34;post-processing&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#post-processing&#34;&gt;
+        #
+    &lt;/a&gt;
+    Post-Processing
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;While there are a lot of tasks that CellProfiler can help on regarding morphological profiling tasks, it cannot analyze any of the profiling data or prepare the data for analysis. There is a category of tools that can help with this problem, we will go over one of these tools called Cytominer which serves the purpose of cleaning and preparing the data to make biological conclusions. The original version of Cytominer was implemented in R but now we have a Python adaptation called PyCytominer which is what we will use.&lt;/p&gt;
+&lt;h3 id=&#34;more-on-the-cellprofiler-output&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#more-on-the-cellprofiler-output&#34;&gt;
+        ##
+    &lt;/a&gt;
+    More On the CellProfiler Output
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;The CellProfiler output is a $n \times m$ matrix of values corresponding to a specific well on a plate from an experiment. Each of the $n$ rows of the matrix represent the cells found within the well, for each cell we also have $m$ features which can be used to describe those cells.&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/matrix.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;It is important to note that CellProfiler takes a lot of measurements, sometimes in the thousands. Measurements can be highly correlated meaning they depend on each other or can have significantly different distributions making comparison difficult. Having additional highly correlated features that do not contribute to the data that much can complicate further analysis of the results so we’d like to have a way to address these. These problems along with many others can be addressed using the PyCytominer Python package.&lt;/p&gt;
+&lt;h3 id=&#34;pycytominer-features&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#pycytominer-features&#34;&gt;
+        ##
+    &lt;/a&gt;
+    PyCytominer Features
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Aggregation&lt;/strong&gt;
+As the name suggest, this module seeks to aggregate profiles and in particular several single-cell profiles into individual well profiles. This means that means that your new profile/matrix will have rows corresponding to wells as opposed to cells. The primary way to accomplish this is to use the mean or median. The function will summarize all of the cells corresponding to a well using one of these statistics, the default method is the median because it is less sensitive to outliers. Typically you would want to use this module when you have too much data and want to simplify the analysis. Do not use this if you are interested in single cell insights or outliers.&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/aggregation.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Annotation&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This module does not affect the data in any way but it instead helps incorporate the plate metadata into the profiles given a platemap. A platemap is a table that assigns each well in a plate an associated set of metadata values including experiment information, source, plate, etc.&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Normalization&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;When we say we want to normalize the data this typically means to get every feature on the same scale or have consistent distributions. This is useful because it allows us to analyze all of the measurements assuming they have the same range of values (helpful for many machine learning algorithms). Sometimes normalization can help remediate batch effect, the technical variation arising in data if it comes from several different experiments.&lt;/p&gt;
+&lt;p&gt;From the source code we can see there are four different methods for normalization: avail_methods = &lt;code&gt;standardize&lt;/code&gt;, &lt;code&gt;robustize&lt;/code&gt;, &lt;code&gt;mad_robustize&lt;/code&gt;, &lt;code&gt;spherize&lt;/code&gt; It is not clear what these methods are doing based on the names or when they should be used. I will provide a short appendix at the end which will explain each one of these in a little more detail.&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/normalization.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Feature Selection&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This is the process of removing any non-informative features/measurements, this process is typically done using a variety of factors. The features that will be removed are those with low variance, are made up of almost all NaN values, are known to not be useful based on domain knowledge, any outliers, and features that are highly correlated with another. This procedure allows us to reduce the amount of data which greatly simplifies any type of analysis.&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/features.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Consensus&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This module can be used when you have multiple replicates e.g. if you have multiple wells with the same perturbation/condition. The module will combine several replicate profiles corresponding to a user-provided label and create a consensus profile. The options here are either plate-level or well-level consensus using median values by default.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/consensus.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Typically you would use a combination of these different modules to process your data before drawing any type of conclusions. There are more steps you could take in terms of post processing in order to make your data even more suitable but we will go over those in later tutorials. While it is common for PyCytominer to be used for data coming from large scale cell painting experiments, procedures such as feature selection and normalization are still widely used all kinds of machine learning tasks.&lt;/p&gt;
+&lt;h2 id=&#34;final-remarks&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#final-remarks&#34;&gt;
+        #
+    &lt;/a&gt;
+    Final Remarks
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;CellProfiler is a very powerful tool to do morphological profiling in cell imaging data. It is important to know when to use CellProfiler as opposed to other tools like Fiji/ImageJ so that you do not spend any extra effort. Additionally, post-processing is an important step in the analysis pipeline which is often overlooked, make sure to understand the PyCytominer package and when it should be used. Down below I have left some additional project ideas in order to familiarize yourself with these concepts further.&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Additional Project Ideas&lt;/strong&gt;&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Project 1&lt;/strong&gt; Run cellprofiler on a subset of the JUMP-CP data using the JUMP-CP provided pipelines.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Project 2&lt;/strong&gt; Within the Quilt database for source 1 morphological profiles are provided for each and every well in their experiment, these come in the form of &lt;code&gt;.parquet&lt;/code&gt; files. Do some research on the file format and how to work with it, then use PyCytominer to process these into well-level profiles. Do this for about 10 wells.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Project 3 (Advanced)&lt;/strong&gt; Visualize the profiles from project 2 using different dimensionality reduction techniques such as different types of PCA, t-SNE, or UMAP. What do these plots represent? What does it mean if certain points are clustering, or are they all separate?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Resources&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cellprofiler-manual.s3.amazonaws.com/CellProfiler-4.2.8/index.html&#34;&gt;CellProfiler Documentation&lt;/a&gt;&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/KDQFUmDJ3nY&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;[1] D. R. Stirling, M. J. Swain-Bowden, A. M. Lucas, A. E. Carpenter, B. A. Cimini, and A. Goodman, “CellProfiler 4: improvements in speed, utility and usability,” BMC Bioinformatics, vol. 22, no. 1, Sep. 2021, doi: &lt;a href=&#34;https://doi.org/10.1186/s12859-021-04344-9&#34;&gt;https://doi.org/10.1186/s12859-021-04344-9&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;[2] E. Serrano et al., “Reproducible image-based profiling with Pycytominer,” &lt;a href=&#34;http://arxiv.org/&#34;&gt;arXiv.org&lt;/a&gt;, 2023. &lt;a href=&#34;https://arxiv.org/abs/2311.13417&#34;&gt;https://arxiv.org/abs/2311.13417&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;appendix-feature-normalization-techniques&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#appendix-feature-normalization-techniques&#34;&gt;
+        #
+    &lt;/a&gt;
+    Appendix: Feature Normalization Techniques
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;For context the names of avail_methods are made up by the creators of PyCytominer. Here is a list of the normalization functions along with descriptions and cases when each of them should be used.&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Standardize&lt;/strong&gt; - Z-Score Scaler&lt;/p&gt;
+&lt;p&gt;$$
+X_{scaled} = \frac{X-\mu}{\sigma}
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Robustize&lt;/strong&gt; - Robust normalization scaled by interquartile range&lt;/p&gt;
+&lt;p&gt;$$
+X_{scaled} = \frac{(X-median)}{IQR}
+$$&lt;/p&gt;
+&lt;p&gt;IQR is calculated as the difference between the 75th percentile (Q3) and the 25th percentile (Q1)&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Robustize MAD&lt;/strong&gt; - Robust normalization scaled by mean absolute deviation&lt;/p&gt;
+&lt;p&gt;$$
+MAD = \frac{1}{n}\sum_{i=1}^{n} |x_i-\mu|
+$$&lt;/p&gt;
+&lt;p&gt;$$
+X_{scaled} = \frac{(X-median)}{MAD}
+$$&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Remark&lt;/strong&gt; These are called robust normalization techniques because they make use of robust statistics such as the median and mean absolute deviation. For a statistic to be robust means that it is less sensitive to outliers or non-Gaussian data, these are extreme values (very large or very small) that may influence the mean value. So now a good question is, when should robust normalization be used and, when it is used, when to scale by IQR vs MAD?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Spherize&lt;/strong&gt; - Sphering (Whitening) Transformation&lt;/p&gt;
+&lt;p&gt;This method a bit different than all that were mentioned, it is a linear transformation that aims to decorrelate the features and normalize their variance to 1. If you have heard of principle component analysis (PCA) then this transformation may look a little familiar, the following description will require some knowledge of linear algebra but I will try my best to explain what is happening at each step.&lt;/p&gt;
+&lt;p&gt;The following procedure is known as ZCA-Cor (Zero-Phase Component Analysis w.r.t Correlation) and is the default option in the PyCytominer Spherize method.&lt;/p&gt;
+&lt;p&gt;Standardize Data: The first step is to make sure our data has mean zero for the covariance matrix computation. At the same time we can also ensure that our data has unit variance, this will suffice for the ZCA-Cor requirements.&lt;/p&gt;
+&lt;p&gt;$$
+X_{S} = \frac{X - \mu}{\sigma}
+$$&lt;/p&gt;
+&lt;p&gt;Covariance Matrix: The covariance matrix formula $\Sigma$ and its eigendecomposition.&lt;/p&gt;
+&lt;p&gt;$$
+\Sigma = \frac{1}{n-1} X_{S}^TX_{S}
+$$&lt;/p&gt;
+&lt;p&gt;$$
+\Sigma = Q \Lambda Q^T
+$$&lt;/p&gt;
+&lt;p&gt;Compute Sphering Transform: We will take an alternative approach to compute the transform, this is the form for the PCA-Cor sphering transform. The Kessy et al. paper [3] tells us that the ZCA-Cor can be computed in the same way as PCA-Cor but simply adding an additional rotation to return to the original coordinates. To compute the sphering transform $W$ we can use the following&amp;hellip;&lt;/p&gt;
+&lt;p&gt;$$
+W = \Lambda^{-1/2}Q^{T}
+$$&lt;/p&gt;
+&lt;p&gt;First we will take the singular value decomposition (SVD) of our data $X_S$.&lt;/p&gt;
+&lt;p&gt;$$
+X_{S} = USV^{T}
+$$&lt;/p&gt;
+&lt;p&gt;Substituting the SVD in place of $X_S$.&lt;/p&gt;
+&lt;p&gt;$$
+\Sigma = \frac{1}{n-1} X_{S}^TX_{S} = \frac{1}{n-1} VSU^T USV^T =\frac{1}{n-1} VS^2V^T
+$$&lt;/p&gt;
+&lt;p&gt;This tells us that we can get the inverse square root of lambda from the following relationships&amp;hellip;&lt;/p&gt;
+&lt;p&gt;$$
+Q = V
+$$&lt;/p&gt;
+&lt;p&gt;$$
+\Lambda = \frac{1}{n-1} S^2 \implies \Lambda^{-1/2} = S^{-1} \sqrt{n-1}
+$$&lt;/p&gt;
+&lt;p&gt;We now have the PCA-Cor sphering transform within the parenthesis and then an additional rotation $V$ to get the ZCA-Cor sphering transform.&lt;/p&gt;
+&lt;p&gt;$$
+W = V(S^{-1}V^T\sqrt{n-1})
+$$&lt;/p&gt;
+&lt;p&gt;Finally we can apply the transformation to our data.&lt;/p&gt;
+&lt;p&gt;$$
+Z = WX_{S}
+$$&lt;/p&gt;
+&lt;p&gt;Overall the sphering approach to normalization is a lot more involved than all of the others, but why should we bother? Sphering can be very useful depending on what kind of analysis you are doing, for example machine learning algorithms which use gradient-based optimization can benefit greatly from what it has to offer. Another reason why you might want to use sphering is because it can help with batch effect when combining several datasets from different experiments. We will go into greater depth on batch correction in the future. If you’re unsure of which normalization approach to use, you should experiment with different methods until you find the best for your use case.&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you have any additional questions about the procedure discussed above please refer to the Kessy et al. paper [3] or the PyCytominer source code both referenced below.&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/cytomining/pycytominer&#34;&gt;Source Code&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[3] A. Kessy, A. Lewin, and K. Strimmer, “Optimal Whitening and Decorrelation,” The American Statistician, vol. 72, no. 4, pp. 309–314, Jan. 2018, doi: &lt;a href=&#34;https://doi.org/10.1080/00031305.2016.1277159&#34;&gt;https://doi.org/10.1080/00031305.2016.1277159&lt;/a&gt;.
+‌&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Project - Cell Morphology Analysis in Fiji :desert_island: &#43; Pandas :panda_face:</title>
       <link>/posts/project1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
