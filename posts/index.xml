@@ -745,7 +745,7 @@ print(&amp;quot;Suffix parts:&amp;quot;, suffix_parts)  # [&#39;ch1&#39;, &#39;s
     </item>
     
     <item>
-      <title>High-Throughput Cellular Image Analysis With CellProfiler :dash:</title>
+      <title>High-Throughput Cell Image Analysis With CellProfiler :dash:</title>
       <link>/posts/cellprofiler/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -846,7 +846,7 @@ When running pipelines you can automatically save all of the data from an analys
 &lt;p&gt;&lt;code&gt;IdentifyPrimaryObjects&lt;/code&gt; Detects the smallest objects, such as nuclei.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;IdentifySecondaryObjects&lt;/code&gt; Expands primary objects to identify regions like whole cells.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;IdentifyTertiaryObjects&lt;/code&gt; Identifies regions by subtracting one object from another (e.g., cytoplasm = cell - nucleus).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/egg.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/egg2.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Measurement&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;These modules will take measurements of your objects, this is very similar to the &lt;code&gt;Analyze&lt;/code&gt; tab in ImageJ/Fiji. If you remember the examples from earlier, the measurements that we made on the fruit fly cell images were very detailed. There are many options for the types of measurements being made, there are some that are taken in reference to the entire image and those which will correspond to individual objects.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Data Tools&lt;/strong&gt;&lt;/p&gt;
