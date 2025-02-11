@@ -2,26 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-        <loc>http://localhost:1313/posts/algorithms1/</loc>
+        <loc>https://bio-undergrad-student.github.io/posts/algorithms1/</loc>
       </url><url>
-        <loc>http://localhost:1313/posts/algorithms2/</loc>
+        <loc>https://bio-undergrad-student.github.io/posts/algorithms2/</loc>
       </url><url>
-        <loc>http://localhost:1313/posts/fiji/</loc>
+        <loc>https://bio-undergrad-student.github.io/posts/fiji/</loc>
       </url><url>
-        <loc>http://localhost:1313/posts/project1/</loc>
+        <loc>https://bio-undergrad-student.github.io/posts/project1/</loc>
       </url><url>
-        <loc>http://localhost:1313/posts/cloud/</loc>
+        <loc>https://bio-undergrad-student.github.io/posts/cloud/</loc>
       </url><url>
-        <loc>http://localhost:1313/posts/cellprofiler/</loc>
+        <loc>https://bio-undergrad-student.github.io/posts/cellprofiler/</loc>
       </url><url>
-        <loc>http://localhost:1313/about/</loc>
+        <loc>https://bio-undergrad-student.github.io/about/</loc>
       </url><url>
-        <loc>http://localhost:1313/categories/</loc>
+        <loc>https://bio-undergrad-student.github.io/categories/</loc>
       </url><url>
-        <loc>http://localhost:1313/posts/</loc>
+        <loc>https://bio-undergrad-student.github.io/posts/</loc>
       </url><url>
-        <loc>http://localhost:1313/tags/</loc>
+        <loc>https://bio-undergrad-student.github.io/tags/</loc>
       </url><url>
-        <loc>http://localhost:1313/</loc>
+        <loc>https://bio-undergrad-student.github.io/</loc>
       </url>
 </urlset>
