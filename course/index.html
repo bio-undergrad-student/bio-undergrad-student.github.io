@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-theme="">
+<head>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<title>Syllabus for BSCI/CMSC3xx: Introduction to Cell Image Analysis - Tutorials on Image Analysis Algorithms</title>
+
+<meta name="description" content="Here you’ll find an overview of the course — the material I expect we’ll cover, the breakdown of course assignments and credit, and the course policies.">
+
+
+
+
+
+<link rel="icon" type="image/x-icon" href="https://bio-undergrad-student.github.io/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="https://bio-undergrad-student.github.io/favicon.png">
+
+
+
+
+
+
+
+
+    
+
+
+
+<style>
+  body {
+    visibility: hidden;
+    opacity: 0;
+  }
+</style>
+
+<noscript>
+  <style>
+    body {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</noscript>
+
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.min.44f8240afd8df81b52565c4119ac5ae247776c77fc6d7ccf6e101a6c98abfa7a.css" integrity="sha256-RPgkCv2N&#43;BtSVlxBGaxa4kd3bHf8bXzPbhAabJir&#43;no=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.min.c4c04b3ef88e3d619ad4c7ee5e03048422bc55c4fefdc1f07657c1133670aa22.css" integrity="sha256-xMBLPviOPWGa1MfuXgMEhCK8VcT&#43;/cHwdlfBEzZwqiI=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.min.21c5d8fe0a79d623b0adc1ce4bd4f6dd2c05cd939c9aaaa966ba7186b1464f4d.css" integrity="sha256-IcXY/gp51iOwrcHOS9T23SwFzZOcmqqpZrpxhrFGT00=">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <script src="/js/script.min.08f04d96386c73c9bf4d160333f8f448c05a6e01c06770542ee0e013954ce930.js" type="text/javascript" charset="utf-8" integrity="sha256-CPBNljhsc8m/TRYDM/j0SMBabgHAZ3BULuDgE5VM6TA="></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <div class="container">
+        <header class="common-header">
+            
+                <div class="header-top">
+    <div class="header-top-left">
+        <h1 class="site-title noselect">
+    <a href="/">Tutorials on Image Analysis Algorithms</a>
+</h1>
+
+        
+
+
+
+
+
+
+
+    
+        <div class="theme-switcher">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
+
+
+</span>
+
+        </div>
+    
+
+    <script>
+        const STORAGE_KEY = 'user-color-scheme'
+        const defaultTheme = "light"
+
+        let currentTheme
+        let switchButton
+        let autoDefinedScheme = window.matchMedia('(prefers-color-scheme: dark)')
+
+        function switchTheme(e) {
+            currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+            if (localStorage) localStorage.setItem(STORAGE_KEY, currentTheme);
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        const autoChangeScheme = e => {
+            currentTheme = e.matches ? 'dark' : 'light'
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            switchButton = document.querySelector('.theme-switcher')
+            currentTheme = detectCurrentScheme()
+
+            if (currentTheme === 'auto') {
+                autoChangeScheme(autoDefinedScheme);
+                autoDefinedScheme.addListener(autoChangeScheme);
+            } else {
+                document.documentElement.setAttribute('data-theme', currentTheme)
+            }
+
+            if (switchButton) {
+                switchButton.addEventListener('click', switchTheme, false)
+            }
+
+            showContent();
+        })
+
+        function detectCurrentScheme() {
+            if (localStorage !== null && localStorage.getItem(STORAGE_KEY)) {
+                return localStorage.getItem(STORAGE_KEY)
+            }
+            if (defaultTheme) {
+                return defaultTheme
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function showContent() {
+            document.body.style.visibility = 'visible';
+            document.body.style.opacity = 1;
+        }
+
+        function changeGiscusTheme (theme) {
+            function sendMessage(message) {
+              const iframe = document.querySelector('iframe.giscus-frame');
+              if (!iframe) return;
+              iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+            }
+
+            sendMessage({
+              setConfig: {
+                theme: theme
+              }
+            });
+        }
+    </script>
+
+
+        <ul class="social-icons noselect">
+
+
+
+
+
+
+
+    <li>
+            <a href="/index.xml" title="RSS" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+</ul>
+
+    </div>
+    <div class="header-top-right">
+
+    </div>
+</div>
+
+
+    <nav class="noselect">
+        
+        
+        <a class="" href="https://bio-undergrad-student.github.io/" title="">Home</a>
+        
+        <a class="" href="https://bio-undergrad-student.github.io/about/" title="">About</a>
+        
+        <a class="" href="https://bio-undergrad-student.github.io/posts/" title="">Archive</a>
+        
+    </nav>
+
+
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+
+
+            
+        </header>
+        <main id="main" tabindex="-1">
+            
+    
+
+    <article class="post h-entry">
+        <div class="post-header">
+            <header>
+                <h1 class="p-name post-title">Syllabus for BSCI/CMSC3xx: Introduction to Cell Image Analysis</h1>
+                
+
+            </header>
+            
+
+
+
+<div class="post-info noselect">
+    
+
+    <a class="post-hidden-url u-url" href="/posts/syllabus/">/posts/syllabus/</a>
+    <a href="https://bio-undergrad-student.github.io/" class="p-name p-author post-hidden-author h-card" rel="me"></a>
+
+
+    <div class="post-taxonomies">
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+        
+
+  
+  
+
+
+
+
+  
+  
+  
+  <details class="toc noselect">
+    <summary>Table of Contents</summary>
+    <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#assumed-prerequisites"><strong>Assumed prerequisites</strong></a></li>
+    <li><a href="#communicating-with-course-staff"><strong>Communicating with course staff</strong></a></li>
+    <li><a href="#course-schedule">Course Schedule</a>
+      <ul>
+        <li><a href="#unit-1-computer-science-basics">Unit 1: Computer science basics</a></li>
+        <li><a href="#unit-2-cell-imaging-basics">Unit 2: Cell imaging basics</a></li>
+        <li><a href="#unit-3-software-for-morphological-profiling">Unit 3: Software for morphological profiling</a></li>
+        <li><a href="#unit-4-diy-simple-morphological-profiling-tool">Unit 4: DIY simple morphological profiling tool</a></li>
+      </ul>
+    </li>
+    <li><a href="#grading"><strong>Grading</strong></a></li>
+    <li><a href="#course-policies"><strong>Course Policies</strong></a>
+      <ul>
+        <li><a href="#absences--scheduling-accomodations">Absences / scheduling accomodations</a></li>
+        <li><a href="#academic-integrity">Academic integrity</a></li>
+        <li><a href="#accessibility-and-disability-service-ads">Accessibility and Disability Service, ADS</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+  </details>
+  
+
+
+
+<script>
+  var toc = document.querySelector(".toc");
+  if (toc) {
+    toc.addEventListener("click", function () {
+      if (event.target.tagName !== "A") {
+        event.preventDefault();
+        if (this.open) {
+          this.open = false;
+          this.classList.remove("expanded");
+        } else {
+          this.open = true;
+          this.classList.add("expanded");
+        }
+      }
+    });
+  }
+</script>
+
+        <div class="content e-content">
+            <p>Here you’ll find an overview of the course — the material I expect we’ll cover, the breakdown of course assignments and credit, and the course policies.</p>
+<div style="height: 20px;"></div>
+
+
+<p><img src="/images/RNAfish.png" alt="Sunset"></p>
+<div style="height: 20px;"></div>
+
+
+<h2 id="assumed-prerequisites" >
+<div>
+    <a href="#assumed-prerequisites">
+        #
+    </a>
+    <strong>Assumed prerequisites</strong>
+</div>
+</h2>
+<p>This course is supposed to be a introduction to computational biology taught through the example of cellular imaging data analysis. This is an exciting and rapidly growing discipline and has several applications in industry and research settings. What makes the problem of cell imaging so special is that you cannot get away with only the wet lab skills or just the computational skills, you need a fair balance of both. For this reason it is not expected that a student taking this class will be an expert in either, this class will develop all skills from the ground up. The only prerequisite is willingness to learn and basic quantitative skills in math and tools like Excel/R/Python.</p>
+<p>This class will provide a high level overview of different kinds of experiments/assays that are used to generate the imaging data. We will also cover several existing new user friendly software for analyzing cellular imaging data. Finally we will dive into some of  computational methods used by those methods under the hood. The grading for this class will be comprised almost completely of a semester-long group project where you will implement your own software for automatic cell image analysis.</p>
+<h2 id="communicating-with-course-staff" >
+<div>
+    <a href="#communicating-with-course-staff">
+        #
+    </a>
+    <strong>Communicating with course staff</strong>
+</div>
+</h2>
+<p>Other means of communication have not been chosen as of now.</p>
+<p>Interaction beyond the classroom is encouraged, but should be limited to important or more urgent issues. Topics that need not be addressed immediately can wait till class time.</p>
+<div style="height: 20px;"></div>
+
+
+<p><strong>Faculty Advisor:</strong></p>
+<p><a href="mailto:example@umd.edu">example@umd.edu</a></p>
+<p><strong>Course Facilitator:</strong></p>
+<p><a href="mailto:example@umd.edu">example@umd.edu</a></p>
+<h2 id="course-schedule" >
+<div>
+    <a href="#course-schedule">
+        #
+    </a>
+    Course Schedule
+</div>
+</h2>
+<div style="height: 10px;"></div>
+
+<hr>
+<h3 id="unit-1-computer-science-basics" >
+<div>
+    <a href="#unit-1-computer-science-basics">
+        ##
+    </a>
+    Unit 1: Computer science basics
+</div>
+</h3>
+<p>Day 1: Python fundamentals</p>
+<ul>
+<li>Google colab</li>
+<li>Data types</li>
+<li>If statements</li>
+<li>Loops</li>
+</ul>
+<p>Day 2: Python data structures and functions</p>
+<ul>
+<li>Lists and tuples</li>
+<li>Dictionaries and sets</li>
+<li>Functions and modules</li>
+<li>Function use cases</li>
+</ul>
+<p>Day 3: Python I/O and packages for working with images</p>
+<ul>
+<li>File handling</li>
+<li>Basic object oriented programming</li>
+<li>Pillow library</li>
+<li>OpenCV library</li>
+<li>Scikit-Image</li>
+</ul>
+<p>Day 4: Cloud computing basics in Python</p>
+<ul>
+<li>Learning cloud concepts</li>
+<li>Downloading data from the cloud</li>
+<li>Using cloud resources</li>
+<li>Building a s3 cloud database file explorer with boto3</li>
+</ul>
+<div style="height: 10px;"></div>
+
+<hr>
+<h3 id="unit-2-cell-imaging-basics" >
+<div>
+    <a href="#unit-2-cell-imaging-basics">
+        ##
+    </a>
+    Unit 2: Cell imaging basics
+</div>
+</h3>
+<p>Day 5: Basic Microscopy Imaging</p>
+<ul>
+<li>Florescence imaging (Basic small-scale assay e.g immunofluorescence)</li>
+</ul>
+<p>Day 6: High content screening</p>
+<ul>
+<li>Cell painting assay</li>
+</ul>
+<div style="height: 10px;"></div>
+
+<hr>
+<h3 id="unit-3-software-for-morphological-profiling" >
+<div>
+    <a href="#unit-3-software-for-morphological-profiling">
+        ##
+    </a>
+    Unit 3: Software for morphological profiling
+</div>
+</h3>
+<p>Day 7: Fiji (Fiji is Just ImageJ)</p>
+<ul>
+<li>Image processing basics</li>
+<li>Workflows</li>
+</ul>
+<p>Day 8: CellProfiler</p>
+<ul>
+<li>Creating pipelines</li>
+<li>Post-processing</li>
+</ul>
+<p><strong>Midterm Project</strong></p>
+<div style="height: 10px;"></div>
+
+<hr>
+<h3 id="unit-4-diy-simple-morphological-profiling-tool" >
+<div>
+    <a href="#unit-4-diy-simple-morphological-profiling-tool">
+        ##
+    </a>
+    Unit 4: DIY simple morphological profiling tool
+</div>
+</h3>
+<p>Day 9: Planning out the project</p>
+<ul>
+<li>Finding data with ground truth</li>
+<li>Setting up environment</li>
+<li>Choosing 3 main functionalities for the profiler</li>
+<li>Making Github repository for project</li>
+</ul>
+<p>Day 10: Tutorials on Scikit image and openCV</p>
+<ul>
+<li>Homework implement the 2 of your profiler’s features</li>
+</ul>
+<p>Day 11: Creating a simple user interface (CLI)</p>
+<ul>
+<li>Introduction to building a CLI or GUI</li>
+</ul>
+<p>Day 12: Tutorials on method benchmarking methods</p>
+<ul>
+<li>Finding metrics to evaluate methods (machine learning metrics)</li>
+<li>Evaluation against other methods</li>
+</ul>
+<p>Day 13: Office Hours + Checkpoint</p>
+<p>Day 14: Office Hours + Checkpoint</p>
+<p>Day 15: Final Presentations</p>
+<div style="height: 10px;"></div>
+
+<hr>
+<h2 id="grading" >
+<div>
+    <a href="#grading">
+        #
+    </a>
+    <strong>Grading</strong>
+</div>
+</h2>
+<p>Grades will be maintained on (ELMS/department grade server/etc). You will be responsible for all material discussed in lecture as well as other standard means of communication (Piazza, email announcements, etc.), including but not limited to deadlines, policies, assignment changes, etc.</p>
+<p>Any request for reconsideration of any grading on coursework must be submitted within one week of when it is returned. No requests will be considered afterwards.</p>
+<p>Your final course grade will be determined according to the following percentages:</p>
+<div style="height: 10px;"></div>
+
+<p><strong>Homework Assignments (40%)</strong></p>
+<ul>
+<li>Weekly Coding Exercises</li>
+</ul>
+<p><strong>Midterm Project (20%)</strong></p>
+<ul>
+<li>Code</li>
+<li>README.md</li>
+</ul>
+<p><strong>Final Project: (40%)</strong></p>
+<ul>
+<li>Progress Check 1</li>
+<li>Progress Check 2</li>
+<li>Code</li>
+<li>README.md</li>
+<li>Final Presentation</li>
+</ul>
+<p>Subject to change</p>
+<h2 id="course-policies" >
+<div>
+    <a href="#course-policies">
+        #
+    </a>
+    <strong>Course Policies</strong>
+</div>
+</h2>
+<p><strong>Late policy</strong>: Assignments that are turned in late will be docked 1% for each hour they are late up to the first 48 hours. After 48 hours, late assignments will not be accepted. Each student is allowed <em>one</em> free late assignment turnin (you can turn the assignment in up to 48 hours late with no penalty). However, you must let me know that you are using your free late assignment <em>when you turn in your assignment</em>, and the decision is non-revocable (if you decide to use the free late assignment for assignment 1, you can’t than request to take the late penalty for 1 and use the late assignment for assignment 2).</p>
+<p><strong>Regrade policy</strong>: All requests to re-grade, re-check, or re-mark an assignment or exam question <!-- raw HTML omitted -->must be made in writing<!-- raw HTML omitted -->. When the assignment is re-graded, it will be re-checked in its entirety. This means that <em>it is possible to lose points on other problems if they were graded incorrectly or too leniently the first time</em>. Therefore, I urge you to thoroughly consider each regrade request you make.</p>
+<h3 id="absences--scheduling-accomodations" >
+<div>
+    <a href="#absences--scheduling-accomodations">
+        ##
+    </a>
+    Absences / scheduling accomodations
+</div>
+</h3>
+<p><strong>Medical reasons</strong> (Obviously,) If you are exhibiting any symptoms indicative of COVID-19, <!-- raw HTML omitted -->please do not attend class in person<!-- raw HTML omitted -->. Instead get tested (either at the <a href="https://uhr.umd.edu/coronavirus/return-to-campus/covid-19-testing-information/">University health center</a> or elsewhere). Likewise if you believe that you may have been exposed (i.e. have been in close contact for an extended period of time with someone with a confirmed infection), please do not attend class and instead get tested. If, for a health-related or medical reason, you will miss two or more consecutive classes, or will miss class on a recurring basis, or were unable to meet a particular academic obligation of this course, I will require a written note from the Student Health Service or a healthcare provider documenting the range of dates for which you were unable to meet your academic obligations. This note need not contain any diagnostic information.</p>
+<p><strong>Non-medical reasons:</strong> If you will miss any classes or scheduled exams as a result of religious observances, you must submit this information to me, in writing, within the first two weeks of the semester to make necessary accommodations to complete the work that will be missed. In this course, this applies mostly to notifying me about expected absences from class. The homeworks and projects are assigned far-enough in advance that it is not reasonable that extensions or delays be provided for religious reasons.</p>
+<p><strong>Final Grades</strong>: The grade you receive in this class will reflect, as much as possible, the degree to which you have mastered the necessary material. How much somebody “needs” an ‘A’ will have no bearing on whether or not (s)he receives an ‘A’, other than how this need or desire is reflected in the work that (s)he does. I want everyone to do well in this course, and will make every reasonable effort to help you understand the material as well as possible. However, barring errors in the grading of assignments, the grades you receive at the end of the semester are final, and I will not alter them for personal or non-academic reasons, <em>so please do not ask me to</em>!</p>
+<h3 id="academic-integrity" >
+<div>
+    <a href="#academic-integrity">
+        ##
+    </a>
+    Academic integrity
+</div>
+</h3>
+<p><em>TLDR</em> : Don’t cheat. Don’t copy code from friends, classmates, or the internet for the programming assignments. Don’t provide code to classmates for any of the assignments or projects. Don’t cheat on the exams. Be cool, and everything will be cool.</p>
+<p><em>Long form</em> : <a href="https://academiccatalog.umd.edu/undergraduate/registration-academic-requirements-regulations/academic-integrity-student-conduct-codes/">From the University’s Undergraduate Catalog Statement on Academic Integrity</a> :</p>
+<div style="height: 20px;"></div>
+
+
+<p><strong>Cheating:</strong> fraud, deceit, or dishonesty in any academic course or exercise in an attempt to gain an unfair advantage and/or intentionally using or attempting to use unauthorized materials, information, or study aids in any academic course or exercise.</p>
+<p><strong>Fabrication:</strong> intentional and unauthorized falsification or invention of any information or citation in any academic course or exercise.</p>
+<p><strong>Facilitating academic dishonesty:</strong> Intentionally or knowingly helping or attempting to help another to violate any provision of the Code of Academic Integrity.</p>
+<p><strong>Plagiarism</strong> Intentionally or knowingly representing the words or ideas of another as one’s own in any academic course or exercise.</p>
+<div style="height: 20px;"></div>
+
+
+<p>Academic integrity is a very serious issue. Any assignment, project or exam you complete in this course is expected to be your own work. If you are allowed to discuss the details of or work together on an assignment, this will be made explicit. Otherwise, you are expected to complete the work yourself. <em>Plagarism is not just the outright copying of content</em>. If you paraphrase someone else’s thoughts, words, or ideas and you don’t cite your source, this constitues plagraism. It is always much better to turn in an incorrect or incomplete assignment representing your own efforts than to attempt to pass off the work of another as your own. <!-- raw HTML omitted -->If you are academically dishonest in this course, you will recieve a grade of XF, and you will be reported to the university’s Office of Student Conduct<!-- raw HTML omitted -->.</p>
+<h3 id="accessibility-and-disability-service-ads" >
+<div>
+    <a href="#accessibility-and-disability-service-ads">
+        ##
+    </a>
+    Accessibility and Disability Service, ADS
+</div>
+</h3>
+<p>Any student eligible for and requesting reasonable academic accommodations due to a disability is requested to provide, to the instructor in office hours, a letter of accommodation from the Office of Accessibility and Disability Services (ADS) within the first two weeks of the semester. If for some reason ADS accommodation is only granted to a student mid-semester, it applies to coursework from then on, not retroactively. <strong>Please note:</strong> Students must make accommodated testing reservations 3 business days in advance of the test date.</p>
+        </div>
+
+    </article>
+
+    
+    
+
+    
+        
+        
+    
+
+    
+
+    
+        
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+        </main>
+        
+            <footer class="common-footer noselect">
+    
+    
+
+    <div class="common-footer-bottom">
+        
+
+        <div style="display: flex; align-items: center; gap:8px">
+            ©  2025
+            
+        </div>
+        <div style="display:flex;align-items: center">
+            
+            
+            
+            
+            
+            
+        </div>
+        <div>
+            Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/Junyi-99/hugo-theme-anubis2">Anubis2</a>.<br>
+            
+
+        </div>
+    </div>
+
+    <p class="h-card vcard">
+
+    <a href=https://bio-undergrad-student.github.io/ class="p-name u-url url fn" rel="me"></a>
+
+    
+
+    
+</p>
+
+</footer>
+
+        
+    </div>
+</body>
+<

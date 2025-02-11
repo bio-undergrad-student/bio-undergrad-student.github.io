@@ -14,7 +14,7 @@
     
     
     <item>
-      <title>Algorithms Primer Part 1 :abacus:</title>
+      <title>1. Algorithms Primer Part 1 :abacus:</title>
       <link>/posts/algorithms1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -32,7 +32,7 @@
 &lt;p&gt;Move forward 3 steps → Move left 2 steps → Raise arm → Grab refrigerator door → Open refrigerator → Find strawberry → Grab strawberry → Put strawberry in basket → Close refrigerator door → Turn around → Move forward 2 steps → Move right 3 steps → Drop basket on target&lt;/p&gt;
 &lt;p&gt;This is basically just a sequence of steps that the robot must follow, this is a very simple example of an algorithm. In practice we would have to translate each step into a code version, but that is secondary to designing algorithms.&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/robot.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/robot.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;basic-coding-refresher&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#basic-coding-refresher&#34;&gt;
@@ -71,7 +71,7 @@ for i in range(n)
      print(&amp;quot;Hello World!&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here we have a for loop that runs in time proportional to the size of the input. In this case we say that the algorithm runs in $O(n)$ or &amp;ldquo;big O of n time&amp;rdquo;. This means the algorithm runtime grows in a linear fashion with respect to the input size much like the function $f(x) = x$. Below is a visual of the different common time complexities you may encounter when developing algorithms.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/bigo.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/bigo.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;basics&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#basics&#34;&gt;
@@ -103,7 +103,7 @@ for i in range(n)
 &lt;/h3&gt;
 &lt;p&gt;A searching task is exactly what it sounds like, generally our goal is to search for a particular element within a data structure which is what holds our data. In this part of the tutorial our main objective will be to find a particular number within a list. More formally this problem is defined as searching for a particular integer value within an array. Take the list below as an example&amp;hellip;&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/array.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/array.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;It is simple enough for us to determine if the number 5 is in the list, we can just look at it, for the computer it is a bit more complicated than that, we have to explicitly tell it how to know if a number is present. This is something we have to get used to.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -201,7 +201,7 @@ else
     </item>
     
     <item>
-      <title>Algorithms Primer Part 2 :gear:</title>
+      <title>2. Algorithms Primer Part 2 :gear:</title>
       <link>/posts/algorithms2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -218,7 +218,7 @@ else
 &lt;p&gt;It is often the case that beginners struggle with algorithms puzzles/problems such as those found on popular websites like LeetCode. The struggle primarily comes from a lack of a developed algorithms toolbox, the truth is that inventing a complicated algorithm just to solve a puzzle is not ideal. As we expand our knowledge of algorithmic techniques, data structures, and types of problems we find that some of these puzzles are trivial once you know the technique it is testing. Therefore your goal should be to learn as many techniques as possible to have the easiest time solving an algorithms problem.  In this tutorial we will cover two of the most popular techniques we see in algorithms development along with some examples and exercises. The two techniques being covered are divide and conquer and greedy, these can be often be applied to a wide range of problems regardless of domain.&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;Like all tutorials we will start with an example that incorporates these techniques. For the sake of this example suppose you are a working as part of a team of marmots whose diets are made up entirely of strawberries, they are also having a hard time working out the logistics of their food supply. This means that they are distributing strawberries to marmots at random, the problem with this approach is that small marmots are getting large strawberries (surplus) and large marmots are getting small strawberries (shortage). Thus, small marmots are contributing to a large amount of food waste and large marmots are going hungry, how can we use algorithms to solve this problem quickly as the marmots are very hungry?&lt;/p&gt;
-&lt;figure&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/marmot.jpg&#34;
+&lt;figure&gt;&lt;img src=&#34;http://localhost:1313/images/marmot.jpg&#34;
          alt=&#34;Example Image&#34; width=&#34;300px&#34;/&gt;
 &lt;/figure&gt;
 
@@ -231,15 +231,15 @@ else
 &lt;/div&gt;
 &lt;/h3&gt;
 &lt;p&gt;Divide and conquer is a problem solving approach/framework which is a bit self explanatory. The technique works by splitting our input in smaller chunks, solving the smaller instances of the problem and then combine the results to solve the full problem. Now this approach cannot be applied to every problem, there are some limitations such as independence that we must be cautious of. Independence in this context refers to the idea that each one of our sub-problems, after splitting the input data, has no relation at all to the other sub-problems. This may become a little more clear once we go over the following example for sorting a list of integers. Suppose we are given the list below…&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/lilarray.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/lilarray.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;p&gt;We want to sort this list under a time constraint but the size of the input array is far too large to be done using our sorting algorithm we learned in part 1, how do we address this problem? Let’s apply the divide and conquer problem solving approach to this!&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Exercise 1&lt;/strong&gt; Come up with three ideas of how we can split our input array in order to solve it more efficiently.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Great! Now the splitting of the array we are interested in is depicted below, here we do the splitting in half each time until we can’t split any further.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/dand1.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/dand1.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;p&gt;At this point we have a bunch of arrays of size 1 that are each in sorted order, why? Any list of one element is automatically in sorted order because there is only one element. Now how will this help us sort the entire list, we haven’t done any type of sorting so far? The trick comes in when we combine the sub-lists, we will sort them as we reconstruct a list of the original size. Take a look at the example below which completes one step of this reconstruction&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/dand2.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/dand2.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Here we take all of our lists of size 1 and construct $\frac{n}{2}$ lists of size 2 which are in sorted order. The sorting happens when we insert our elements into the list of size 2, the smallest element comes first and then the larger element. The algorithm will continue this procedure until we end up with a single list of size $n$, we call this algorithm Merge Sort. The algorithm makes use of a recursive function, meaning a function that calls itself over and over until some base case is reached, in this case we continue calling the &lt;code&gt;MERGE-SORT&lt;/code&gt; function as long as our lists have size greater than 1. Below is some code for the Merge Sort algorithm and the complete reconstruction of the list.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;MERGE-SORT(array, left, right):
     if left &amp;lt; right:
@@ -252,7 +252,7 @@ else
         # Merge the sorted halves
         MERGE(array, left, mid, right)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/dand3.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/dand3.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;p&gt;By using the divide and conquer approach we have now solved the sorting problem much faster than we could before, lets analyze to confirm.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Splitting Operation:&lt;/strong&gt; The big question is how do we represent this splitting and combining operation, clearly this doesn’t touch each element once so it’s not $O(n)$ nor is it doing constant $O(1)$ work, it’s something in between. We call this behavior $O(log(n))$, why? First we must understand what it is that the log function does, think about the following equation&amp;hellip;&lt;/p&gt;
 &lt;p&gt;$$log_2(n) = c \iff 2^c =n$$&lt;/p&gt;
@@ -268,7 +268,7 @@ else
 &lt;/div&gt;
 &lt;/h3&gt;
 &lt;p&gt;The greedy approach to algorithm development is where we make a greedy decision in order to accomplish some task. In this context greedy refers to always taking as much as possible of some quantity. As an example we will go through the well known coin change problem. This is a problem where we are given a set of coin denominations (e.g. 1 cent, 5 cent, 10 cent) and we are asked what is the minimum number of coins required to make a certain amount of change. For example, 35 cents change can be made from 3x10 cent coins and 1x5 cent coin. In this case the greedy approach can be used to find the minimum number of coins required to make change for 35 cents. We simply take as many 10 cent coins as possible followed up by as many 5 cent coins as possible, this gives us 35 cents using 4 coins, any other combination would use more coins. As we can see we make a greedy decision at every step, always take as much as we can.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/coins.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/coins.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Now the problem with the greedy approach is that it doesn’t always work&amp;hellip;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Exercise 2&lt;/strong&gt; Can you find a counterexample for the greedy algorithm for the coin change problem?&lt;/p&gt;
@@ -347,7 +347,7 @@ else
     </item>
     
     <item>
-      <title>Analyzing Images With Fiji :desert_island:</title>
+      <title>3. Analyzing Images With Fiji :desert_island:</title>
       <link>/posts/fiji/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -362,7 +362,7 @@ else
     Background
 &lt;/div&gt;
 &lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/island.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/island.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Did you know that the soft coral capital of the world, Fiji, is made 90% of water and has over 300 tropical islands! Unfortunately we will not be doing image analysis on the islands of Fiji. In this tutorial we will go over the image processing software Fiji. “Fiji is just ImageJ” is an open-source image processing software and extension of the original ImageJ developed at the National Institutes of Health (NIH). Fiji is used extensively in image analysis for microscopy images in 2D and 3D and is used in labs across the world to analyze phenotypic changes in cells at scale. Today you will have the opportunity to install this software on your computer and run through some basic analyses using some of the preset datasets within Fiji. Additionally, we will provide a mini-project in the next post which will help you familiarize yourself more with the ImageJ interface and identify potential applications in a field of your interest.&lt;/p&gt;
 &lt;h2 id=&#34;installation&#34; &gt;
 &lt;div&gt;
@@ -377,7 +377,7 @@ else
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/downloads.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/downloads.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
@@ -386,7 +386,7 @@ else
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/bioformats.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/bioformats.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
@@ -402,12 +402,12 @@ else
 &lt;p&gt;Fiji comes with many preset data samples that we can use to test out some of the features of this software (&lt;code&gt;File&lt;/code&gt; →  &lt;code&gt;Open Samples&lt;/code&gt;). By the end of this tutorial you will learn how to do some basic preprocessing and morphological analysis on cellular imaging data in Fiji.&lt;/p&gt;
 &lt;p&gt;Now we will go over some of the basics about loading data into Fiji. It is important to understand how image files are loaded in and how you can manipulate these files effectively.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Lookup Tables (LUT)&lt;/strong&gt; are how we will go about applying color to a given image, find the “LUT” tab on Fiji and you will see a wide selection of choices to be used in many applications. For the most part we are only interested in solid colors such as red, green, and blue. It is also possible to create a custom LUT but that is more advanced, for now just know that it is something you are able to do. The term lookup table is used here because we are looking up values within a table of values which maps one color in your original image to another color defined in the table.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/LUT.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/LUT.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Stacks&lt;/strong&gt; are used to retain multiple spatially or temporally related images taken by the microscope. Below are some examples of what each of these may look like using the “Mitosis {5D Stack}” sample from the default Fiji data shown below.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/mitosis.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/mitosis.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
@@ -416,7 +416,7 @@ else
 
 
 &lt;p&gt;&lt;strong&gt;Composite Images&lt;/strong&gt; are mostly seen in florescence microscopy images and allows us to combine multiple color channels and view various cellular features at once. An example of this would be the “florescent cells” sample. Here we have three channels in RGB colors, the red (Texas Red X-Phalloidin) shows F-Actin, green (Goat anti-mouse IgG) shows tubulin, and blue (DAPI) shows nuclei. In practice we will name the images based on the stain and cellular feature so it’s important to know them well.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/rgbcells.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/rgbcells.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
@@ -431,7 +431,7 @@ else
 &lt;/h2&gt;
 &lt;p&gt;In this section we will cover some basic filtering steps that can help reduce noise and obstructions in imaging data, this is typically the first step of a larger image processing pipeline.&lt;/p&gt;
 &lt;p&gt;Max/Min/Median filtering is a technique where we take a patch of the image (kernel) and compute the max/min/median of every pixel color value in that patch and then replace the center value with the max/min/median value. The median filter has the effect that outlier values (very dark or light colors)  will get filtered out, this reduces noise and retains edges better than the averaging (mean) filter because we are not computing a new color value but using an existing one. We can see the difference in how edges are conserved using the boat sample with radius 10.0 Left=Median, Right=Mean.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/medianfilter.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/medianfilter.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Exercise 1&lt;/strong&gt; Try applying median filtering with varying radius to an image of your choice&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -440,7 +440,7 @@ else
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Remark:&lt;/strong&gt; How do we select the radius when applying filters to images? This depends on what your objectives are and the type of image you are analyzing (feature size, noise, etc.), typically we start small and determine a radius size experimentally.&lt;/p&gt;
 &lt;p&gt;Typically a pixel within an image is represented by three numerical values which tell us the ratio of red (R), green (G), and blue (B) that make up a certain color. So what exactly does it mean to take the maximum or minimum of these values? In the case of Fiji we are actually isolating each channel, applying the filter, then combining it again. Cool, right? In later tutorials we will cover more complicated filtering techniques which make use of mathematical transformations which can be used for better denoising and feature extraction.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/colors.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/colors.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;segmentation&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#segmentation&#34;&gt;
@@ -453,7 +453,7 @@ else
 &lt;p&gt;Lets take for example the Blobs sample image. We can see that there is a textured background which can interfere with our analyses, in order to remove this we will have to use the rolling ball background subtraction algorithm. To apply this, select &lt;code&gt;Process&lt;/code&gt; → &lt;code&gt;Subtract Background&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Remark:&lt;/strong&gt; Using this algorithm may cause image artifacts or unwanted effects so proceed with caution, for our case in purposes we can disregard any artifacting.&lt;/p&gt;
 &lt;p&gt;After the background is removed or mitigated we can start trying to segment our features of interest using thresholding. Within Fiji we have many different options for thresholding which can be accessed through the (&lt;code&gt;Image&lt;/code&gt; → &lt;code&gt;Adjust&lt;/code&gt;) menu. For the time being we won’t concern ourselves with how thresholding works and that will be left for a more in depth future tutorial. The standard threshold option will allow you to manually analyze an intensity histogram which allows us to separate the image based on feature and background color. The problem with this approach is that it requires quite a bit of human thinking and reproducing the result might be difficult.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/manual_thresh.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/manual_thresh.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
@@ -461,7 +461,7 @@ else
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/autothresh_2.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/autothresh_2.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
@@ -479,7 +479,7 @@ else
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/set_measurements.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/set_measurements.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
@@ -488,12 +488,12 @@ else
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/segmentation.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/segmentation.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
 &lt;p&gt;A common error that arises in the analysis stage is that the image is inverted so we end up analyzing the background on accident. It can get a bit confusing especially when messing with the LUTs. It is important to note that the setting (&lt;code&gt;Edit&lt;/code&gt; → &lt;code&gt;Invert&lt;/code&gt;) is different from inverting the LUT, and this is the most common cause of error in the Analyze Particles function. Make sure that when you analyze the particles that the output table has a reasonable number of entries and that the correct areas are being overlay masked in the binary image.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/error.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/error.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;some-final-remarks&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#some-final-remarks&#34;&gt;
@@ -514,7 +514,126 @@ else
     </item>
     
     <item>
-      <title>Cloud Computing in the Biosciences :cloud:</title>
+      <title>4. Project - Cell Morphology Analysis in Fiji :desert_island: &#43; Pandas :panda_face:</title>
+      <link>/posts/project1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/project1/</guid>
+      <description>&lt;p&gt;This project will serve as a more in-depth look into the different functions within Fiji and image processing in general as well as the Pandas data analysis framework.&lt;/p&gt;
+&lt;p&gt;Preliminary Reading: &lt;a href=&#34;https://www.nature.com/articles/nprot.2016.105&#34;&gt;https://www.nature.com/articles/nprot.2016.105&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;background&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#background&#34;&gt;
+        #
+    &lt;/a&gt;
+    Background
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;The last tutorial covered some of the basic functionalities of Fiji but not much opportunity was given to play around with the images and the different filters/adjustments. In this project you will be able to download raw experiment data provided by the JUMP-CP Consortium from a AWS s3 Bucket (Cloud Storage) and analyze that data using Fiji and Pandas in Python.&lt;/p&gt;
+&lt;p&gt;The python portion of this project and any type of python programming can be done easily within your web browser (no download needed) by using Google Colab. This resource will allow you to create Jupyter Notebooks i.e. interactive environments where you can write and run code, visualize data, and document your work in one place. This is very convenient if you want to get started as quickly as possible or cannot download applications to your computer. In order to create a Google Colab notebook go to your Google Drive, hit the New (+) button, More, and then Google Colaboratory.&lt;/p&gt;
+&lt;h2 id=&#34;jump-cp-data&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#jump-cp-data&#34;&gt;
+        #
+    &lt;/a&gt;
+    JUMP-CP Data
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;The Joint Undertaking in Morphological Profiling - Cell Painting (JUMP-CP) is a consortium dedicated to analyze the cell morphology of cells with various chemical and genetic perturbations. It makes use the of the cell painting assay (from preliminary reading) for imaging [1].&lt;/p&gt;
+&lt;p&gt;The easiest way to download this data is through a resource called Quilt, this is a software that takes the complicated task of managing specifically AWS cloud data and simplifies it but providing a user interface. It is important to consider that Quilt is not available for all project data, in the next tutorial we will go over some of the other approaches to downloading data from a cloud bucket.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://open.quiltdata.com/b/cellpainting-gallery/tree/&#34;&gt;Jump-CP Quilt&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Data within this repository is organized in a very specific manner, in order to understand this organization it is important to know the context. In the highest level of this bucket we see that the name is cellpainting-gallery within this directory we have 33 folders named cpg-00XX where cpg stands for cellpainting gallery. All of these folders represent some of the different contributors to this dataset, the primary dataset we are interested in is called ‘cpg0016-jump’.&lt;/p&gt;
+&lt;p&gt;Some additional information about cpg0016 is that the cells we are imaging are osteosarcoma cells and this was a careful selection based on tests determining how visible phenotypic changes would be after perturbing the cells. The specific perturbations are classified into one of two categories, genetic perturbations such as CRISPR knockouts of (7,977 genes) and ORF overexpression of (15,131 unique genes), and chemical perturbations which are miscellaneous compounds/drugs (~115,795 compounds). All of this work was split amongst 12 different sources (data-generating centers) [1].&lt;/p&gt;
+&lt;p&gt;Now click on the folder within Quilt for cpg0016, here you will be met with a separate folder for each of the different data-generating centers, click on source_1. Within each of these folders we can start start navigating the data, first you can select between viewing raw image data (images) or analyses/metadata (workspace) for the images. These folders are further narrowed down into different batches of experiments, the folders are labeled with the following convention ‘BatchX-YYYYMMDD’ to tell us the specific date which the data was curated.&lt;/p&gt;
+&lt;p&gt;The images folder will be divided up further based on batch and then plate. We have multiple plates, in the case of source_1 these are actually 1536-Well plates, within each plate folder we have some metadata specific to the plate such as the layout and the images themselves (4 per well). There are different file structures and naming conventions for the different sources but it is always the same information.&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Naming Convention&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; r01c01f01p01-ch1sk1fk1fl1 &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;r01:&lt;/strong&gt; Row 1 of plate&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;c01:&lt;/strong&gt; Column 1 of plate&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;f01:&lt;/strong&gt; Field of View (FOV) 1&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;p01:&lt;/strong&gt; Position 1&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ch1:&lt;/strong&gt; Channel 1&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sk1:&lt;/strong&gt; Z slice 1&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;For batch_1 the channel mappings are as follows, these are the standard for the cell painting assay&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/cellpainting.png&#34; alt=&#34;Sunset&#34;&gt;
+&lt;strong&gt;Figure courtesy of [2]&lt;/strong&gt;&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;1:&lt;/strong&gt; Endoplasmic Reticulum (ER)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2:&lt;/strong&gt; RNA&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3:&lt;/strong&gt; Mitochondria (Mito)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4:&lt;/strong&gt; DNA&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5:&lt;/strong&gt; AGP (Actin, Golgi, and Plasma)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Warning:&lt;/strong&gt; this mapping, the measured features are the same but the mapping can change from batch to batch. Make sure to double check the metadata file at Source → Workspace → BatchX → PlateY → load_data.csv.gz which tells us exactly what this mapping is, this information can be derived from the ‘FileName_OrigZ’ columns. For batch X, plate Y, and channel Z.&lt;/p&gt;
+&lt;h2 id=&#34;pandas-dataframes&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#pandas-dataframes&#34;&gt;
+        #
+    &lt;/a&gt;
+    Pandas Dataframes
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;In this project you will be looking at a lot of comma separated values (CSV) files and dataframes so it is important to have a solid foundation in this concepts. I recommend you watch the tutorial linked below in order to familiarize yourself with the framework. As mentioned earlier, all of this project can be done within Fiji and a Google Colab so you do not have to download anything other than the data.&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/vmEHCJofslg&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;problem-statement&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#problem-statement&#34;&gt;
+        #
+    &lt;/a&gt;
+    Problem Statement
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;In the previous tutorial you learned how to do a basic analysis in Fiji for the blob sample, today you will able to apply these learnings to real cellular imaging data. For this project we are primarily concerned with doing some morphological profiling of the nuclei of the perturbed cells at the following locations/config&amp;hellip;&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Locations&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1:&lt;/strong&gt; source_1: batch_1:plate_UL000109:row_1:column_26:fov_1&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2:&lt;/strong&gt; source_1: batch_2:plate_UL001671:row_5:column_23:fov_3&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3:&lt;/strong&gt; source_1: batch_3:plate_UL001785:row_11:column_41:fov_2&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4:&lt;/strong&gt; source_1: batch_4:plate_UL000097:row_24:column_26:fov_2&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5:&lt;/strong&gt; source_1: batch_5:plate_UL001773:row_4:column_30:fov_1&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;6:&lt;/strong&gt; source_1: batch_6:plate_UL000579:row_31:column_40:fov_3&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Measurements&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1:&lt;/strong&gt; Area&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2:&lt;/strong&gt; Min gray value&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3:&lt;/strong&gt; Max gray value&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4:&lt;/strong&gt; Mean gray value&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5:&lt;/strong&gt; Center of mass&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;6:&lt;/strong&gt; Shape descriptors&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;These different measurements will fill the columns of your particle analysis table, you will then export these tables as CSV files in order to run some further analyses. The following part of the project should be done using Pandas.&lt;/p&gt;
+&lt;p&gt;In your Google Colab notebook open the six CSV files using pandas and run the following analyses.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1:&lt;/strong&gt; create a new row for the average of each measurement&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2:&lt;/strong&gt; create a new row for the average of each measurement&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3:&lt;/strong&gt; determine the average cell count from our sample&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4:&lt;/strong&gt; find the cell with maximum area&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5:&lt;/strong&gt; plot the data for the following columns for each dataframe&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;6:&lt;/strong&gt; create a new dataframe of reduced size where we keep cells only if they are above the average size&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;7:&lt;/strong&gt; merge all six dataframes into one dataframe with an additional column saying which batch it came from&lt;/p&gt;
+&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;[1] S. N. Chandrasekaran et al., “JUMP Cell Painting dataset: morphological impact of 136,000 chemical and genetic perturbations,” Mar. 2023, doi: &lt;a href=&#34;https://doi.org/10.1101/2023.03.23.534023&#34;&gt;https://doi.org/10.1101/2023.03.23.534023&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;[2] M.-A. Bray et al., “Cell Painting, a high-content image-based assay for morphological profiling using multiplexed fluorescent dyes,” Nature Protocols, vol. 11, no. 9, pp. 1757–1774, Aug. 2016, doi: &lt;a href=&#34;https://doi.org/10.1038/nprot.2016.105&#34;&gt;https://doi.org/10.1038/nprot.2016.105&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>5. Cloud Computing in the Biosciences :cloud:</title>
       <link>/posts/cloud/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -524,7 +643,7 @@ else
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/plane.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/plane.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;cloud-resources&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#cloud-resources&#34;&gt;
@@ -592,7 +711,7 @@ aws s3 sync --no-sign-request s3://cellpainting-gallery/ ./downloads/
 &lt;/div&gt;
 &lt;/h2&gt;
 &lt;p&gt;A more programmatic approach to access the cloud is through a Software Development Kit (SDK) i.e. a set of tools and libraries which can be used in application development. AWS  has their own SDK which can be loaded into a Python programming environment which allows users to download and upload data seamlessly while they are working with it. In this tutorial we will be using the AWS SDK which is called boto3. This approach will give us a lot more flexibility and will allow us to make very specific queries that we are interested in.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/SDK.jpeg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/SDK.jpeg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;p&gt;The benefit to using a SDK like boto3 is that you can now access your cloud data within a cloud-based programming environment like Google Colab and keeping all of your work (code/analyses) on the cloud without having to download anything on your computer. It is not difficult to see why cloud computing is a major upgrade for a lot of people, especially those in the biological sciences who will be collaborating and sharing data/documents frequently.&lt;/p&gt;
 &lt;h2 id=&#34;getting-started-with-boto3&#34; &gt;
 &lt;div&gt;
@@ -683,7 +802,7 @@ print(&amp;quot;Files:&amp;quot;, files)
 &lt;/div&gt;
 &lt;/h2&gt;
 &lt;p&gt;Regular expressions are a programming tool which is used to extract user-defined patterns within a piece of text (string). Here we can easily exploit the naming convention being of the form &lt;code&gt;[a-z]+\d+&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/rubular.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/rubular.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
@@ -745,7 +864,7 @@ print(&amp;quot;Suffix parts:&amp;quot;, suffix_parts)  # [&#39;ch1&#39;, &#39;s
     </item>
     
     <item>
-      <title>High-Throughput Cell Image Analysis With CellProfiler :dash:</title>
+      <title>6. High-Throughput Cell Image Analysis With CellProfiler :dash:</title>
       <link>/posts/cellprofiler/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -763,7 +882,7 @@ print(&amp;quot;Suffix parts:&amp;quot;, suffix_parts)  # [&#39;ch1&#39;, &#39;s
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/cell.jpeg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/cell.jpeg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
@@ -771,7 +890,7 @@ print(&amp;quot;Suffix parts:&amp;quot;, suffix_parts)  # [&#39;ch1&#39;, &#39;s
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/pipeline.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/pipeline.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;installation-and-setup&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#installation-and-setup&#34;&gt;
@@ -813,7 +932,7 @@ When running pipelines you can automatically save all of the data from an analys
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/measurements.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/measurements.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
@@ -846,7 +965,7 @@ When running pipelines you can automatically save all of the data from an analys
 &lt;p&gt;&lt;code&gt;IdentifyPrimaryObjects&lt;/code&gt; Detects the smallest objects, such as nuclei.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;IdentifySecondaryObjects&lt;/code&gt; Expands primary objects to identify regions like whole cells.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;IdentifyTertiaryObjects&lt;/code&gt; Identifies regions by subtracting one object from another (e.g., cytoplasm = cell - nucleus).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/egg2.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/egg2.jpg&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Measurement&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;These modules will take measurements of your objects, this is very similar to the &lt;code&gt;Analyze&lt;/code&gt; tab in ImageJ/Fiji. If you remember the examples from earlier, the measurements that we made on the fruit fly cell images were very detailed. There are many options for the types of measurements being made, there are some that are taken in reference to the entire image and those which will correspond to individual objects.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Data Tools&lt;/strong&gt;&lt;/p&gt;
@@ -895,7 +1014,7 @@ When running pipelines you can automatically save all of the data from an analys
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/matrix.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/matrix.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;p&gt;It is important to note that CellProfiler takes a lot of measurements, sometimes in the thousands. Measurements can be highly correlated meaning they depend on each other or can have significantly different distributions making comparison difficult. Having additional highly correlated features that do not contribute to the data that much can complicate further analysis of the results so we’d like to have a way to address these. These problems along with many others can be addressed using the PyCytominer Python package.&lt;/p&gt;
 &lt;h3 id=&#34;pycytominer-features&#34; &gt;
 &lt;div&gt;
@@ -910,7 +1029,7 @@ As the name suggest, this module seeks to aggregate profiles and in particular s
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/aggregation.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/aggregation.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
@@ -925,7 +1044,7 @@ As the name suggest, this module seeks to aggregate profiles and in particular s
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/normalization.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/normalization.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
@@ -934,13 +1053,13 @@ As the name suggest, this module seeks to aggregate profiles and in particular s
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/features.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/features.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Consensus&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;This module can be used when you have multiple replicates e.g. if you have multiple wells with the same perturbation/condition. The module will combine several replicate profiles corresponding to a user-provided label and create a consensus profile. The options here are either plate-level or well-level consensus using median values by default.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/consensus.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/consensus.png&#34; alt=&#34;Sunset&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Typically you would use a combination of these different modules to process your data before drawing any type of conclusions. There are more steps you could take in terms of post processing in order to make your data even more suitable but we will go over those in later tutorials. While it is common for PyCytominer to be used for data coming from large scale cell painting experiments, procedures such as feature selection and normalization are still widely used all kinds of machine learning tasks.&lt;/p&gt;
 &lt;h2 id=&#34;final-remarks&#34; &gt;
 &lt;div&gt;
@@ -1075,125 +1194,6 @@ $$&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/cytomining/pycytominer&#34;&gt;Source Code&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;[3] A. Kessy, A. Lewin, and K. Strimmer, “Optimal Whitening and Decorrelation,” The American Statistician, vol. 72, no. 4, pp. 309–314, Jan. 2018, doi: &lt;a href=&#34;https://doi.org/10.1080/00031305.2016.1277159&#34;&gt;https://doi.org/10.1080/00031305.2016.1277159&lt;/a&gt;.
 ‌&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Project - Cell Morphology Analysis in Fiji :desert_island: &#43; Pandas :panda_face:</title>
-      <link>/posts/project1/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/project1/</guid>
-      <description>&lt;p&gt;This project will serve as a more in-depth look into the different functions within Fiji and image processing in general as well as the Pandas data analysis framework.&lt;/p&gt;
-&lt;p&gt;Preliminary Reading: &lt;a href=&#34;https://www.nature.com/articles/nprot.2016.105&#34;&gt;https://www.nature.com/articles/nprot.2016.105&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;background&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#background&#34;&gt;
-        #
-    &lt;/a&gt;
-    Background
-&lt;/div&gt;
-&lt;/h2&gt;
-&lt;p&gt;The last tutorial covered some of the basic functionalities of Fiji but not much opportunity was given to play around with the images and the different filters/adjustments. In this project you will be able to download raw experiment data provided by the JUMP-CP Consortium from a AWS s3 Bucket (Cloud Storage) and analyze that data using Fiji and Pandas in Python.&lt;/p&gt;
-&lt;p&gt;The python portion of this project and any type of python programming can be done easily within your web browser (no download needed) by using Google Colab. This resource will allow you to create Jupyter Notebooks i.e. interactive environments where you can write and run code, visualize data, and document your work in one place. This is very convenient if you want to get started as quickly as possible or cannot download applications to your computer. In order to create a Google Colab notebook go to your Google Drive, hit the New (+) button, More, and then Google Colaboratory.&lt;/p&gt;
-&lt;h2 id=&#34;jump-cp-data&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#jump-cp-data&#34;&gt;
-        #
-    &lt;/a&gt;
-    JUMP-CP Data
-&lt;/div&gt;
-&lt;/h2&gt;
-&lt;p&gt;The Joint Undertaking in Morphological Profiling - Cell Painting (JUMP-CP) is a consortium dedicated to analyze the cell morphology of cells with various chemical and genetic perturbations. It makes use the of the cell painting assay (from preliminary reading) for imaging [1].&lt;/p&gt;
-&lt;p&gt;The easiest way to download this data is through a resource called Quilt, this is a software that takes the complicated task of managing specifically AWS cloud data and simplifies it but providing a user interface. It is important to consider that Quilt is not available for all project data, in the next tutorial we will go over some of the other approaches to downloading data from a cloud bucket.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://open.quiltdata.com/b/cellpainting-gallery/tree/&#34;&gt;Jump-CP Quilt&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Data within this repository is organized in a very specific manner, in order to understand this organization it is important to know the context. In the highest level of this bucket we see that the name is cellpainting-gallery within this directory we have 33 folders named cpg-00XX where cpg stands for cellpainting gallery. All of these folders represent some of the different contributors to this dataset, the primary dataset we are interested in is called ‘cpg0016-jump’.&lt;/p&gt;
-&lt;p&gt;Some additional information about cpg0016 is that the cells we are imaging are osteosarcoma cells and this was a careful selection based on tests determining how visible phenotypic changes would be after perturbing the cells. The specific perturbations are classified into one of two categories, genetic perturbations such as CRISPR knockouts of (7,977 genes) and ORF overexpression of (15,131 unique genes), and chemical perturbations which are miscellaneous compounds/drugs (~115,795 compounds). All of this work was split amongst 12 different sources (data-generating centers) [1].&lt;/p&gt;
-&lt;p&gt;Now click on the folder within Quilt for cpg0016, here you will be met with a separate folder for each of the different data-generating centers, click on source_1. Within each of these folders we can start start navigating the data, first you can select between viewing raw image data (images) or analyses/metadata (workspace) for the images. These folders are further narrowed down into different batches of experiments, the folders are labeled with the following convention ‘BatchX-YYYYMMDD’ to tell us the specific date which the data was curated.&lt;/p&gt;
-&lt;p&gt;The images folder will be divided up further based on batch and then plate. We have multiple plates, in the case of source_1 these are actually 1536-Well plates, within each plate folder we have some metadata specific to the plate such as the layout and the images themselves (4 per well). There are different file structures and naming conventions for the different sources but it is always the same information.&lt;/p&gt;
-&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Naming Convention&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; r01c01f01p01-ch1sk1fk1fl1 &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;r01:&lt;/strong&gt; Row 1 of plate&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;c01:&lt;/strong&gt; Column 1 of plate&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;f01:&lt;/strong&gt; Field of View (FOV) 1&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;p01:&lt;/strong&gt; Position 1&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;ch1:&lt;/strong&gt; Channel 1&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;sk1:&lt;/strong&gt; Z slice 1&lt;/p&gt;
-&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
-
-
-&lt;p&gt;For batch_1 the channel mappings are as follows, these are the standard for the cell painting assay&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bio-undergrad-student.github.io/images/cellpainting.png&#34; alt=&#34;Sunset&#34;&gt;
-&lt;strong&gt;Figure courtesy of [2]&lt;/strong&gt;&lt;/p&gt;
-&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;1:&lt;/strong&gt; Endoplasmic Reticulum (ER)&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;2:&lt;/strong&gt; RNA&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3:&lt;/strong&gt; Mitochondria (Mito)&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;4:&lt;/strong&gt; DNA&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;5:&lt;/strong&gt; AGP (Actin, Golgi, and Plasma)&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Warning:&lt;/strong&gt; this mapping, the measured features are the same but the mapping can change from batch to batch. Make sure to double check the metadata file at Source → Workspace → BatchX → PlateY → load_data.csv.gz which tells us exactly what this mapping is, this information can be derived from the ‘FileName_OrigZ’ columns. For batch X, plate Y, and channel Z.&lt;/p&gt;
-&lt;h2 id=&#34;pandas-dataframes&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#pandas-dataframes&#34;&gt;
-        #
-    &lt;/a&gt;
-    Pandas Dataframes
-&lt;/div&gt;
-&lt;/h2&gt;
-&lt;p&gt;In this project you will be looking at a lot of comma separated values (CSV) files and dataframes so it is important to have a solid foundation in this concepts. I recommend you watch the tutorial linked below in order to familiarize yourself with the framework. As mentioned earlier, all of this project can be done within Fiji and a Google Colab so you do not have to download anything other than the data.&lt;/p&gt;
-
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;https://www.youtube.com/embed/vmEHCJofslg&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&#34;problem-statement&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#problem-statement&#34;&gt;
-        #
-    &lt;/a&gt;
-    Problem Statement
-&lt;/div&gt;
-&lt;/h2&gt;
-&lt;p&gt;In the previous tutorial you learned how to do a basic analysis in Fiji for the blob sample, today you will able to apply these learnings to real cellular imaging data. For this project we are primarily concerned with doing some morphological profiling of the nuclei of the perturbed cells at the following locations/config&amp;hellip;&lt;/p&gt;
-&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Locations&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;1:&lt;/strong&gt; source_1: batch_1:plate_UL000109:row_1:column_26:fov_1&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;2:&lt;/strong&gt; source_1: batch_2:plate_UL001671:row_5:column_23:fov_3&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3:&lt;/strong&gt; source_1: batch_3:plate_UL001785:row_11:column_41:fov_2&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;4:&lt;/strong&gt; source_1: batch_4:plate_UL000097:row_24:column_26:fov_2&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;5:&lt;/strong&gt; source_1: batch_5:plate_UL001773:row_4:column_30:fov_1&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;6:&lt;/strong&gt; source_1: batch_6:plate_UL000579:row_31:column_40:fov_3&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Measurements&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;1:&lt;/strong&gt; Area&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;2:&lt;/strong&gt; Min gray value&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3:&lt;/strong&gt; Max gray value&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;4:&lt;/strong&gt; Mean gray value&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;5:&lt;/strong&gt; Center of mass&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;6:&lt;/strong&gt; Shape descriptors&lt;/p&gt;
-&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
-
-
-&lt;p&gt;These different measurements will fill the columns of your particle analysis table, you will then export these tables as CSV files in order to run some further analyses. The following part of the project should be done using Pandas.&lt;/p&gt;
-&lt;p&gt;In your Google Colab notebook open the six CSV files using pandas and run the following analyses.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;1:&lt;/strong&gt; create a new row for the average of each measurement&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;2:&lt;/strong&gt; create a new row for the average of each measurement&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3:&lt;/strong&gt; determine the average cell count from our sample&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;4:&lt;/strong&gt; find the cell with maximum area&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;5:&lt;/strong&gt; plot the data for the following columns for each dataframe&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;6:&lt;/strong&gt; create a new dataframe of reduced size where we keep cells only if they are above the average size&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;7:&lt;/strong&gt; merge all six dataframes into one dataframe with an additional column saying which batch it came from&lt;/p&gt;
-&lt;div style=&#34;height: 20px;&#34;&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;[1] S. N. Chandrasekaran et al., “JUMP Cell Painting dataset: morphological impact of 136,000 chemical and genetic perturbations,” Mar. 2023, doi: &lt;a href=&#34;https://doi.org/10.1101/2023.03.23.534023&#34;&gt;https://doi.org/10.1101/2023.03.23.534023&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;[2] M.-A. Bray et al., “Cell Painting, a high-content image-based assay for morphological profiling using multiplexed fluorescent dyes,” Nature Protocols, vol. 11, no. 9, pp. 1757–1774, Aug. 2016, doi: &lt;a href=&#34;https://doi.org/10.1038/nprot.2016.105&#34;&gt;https://doi.org/10.1038/nprot.2016.105&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
   </channel>
